@@ -45,7 +45,8 @@ public class ImageField extends BorderPane  implements Initializable  {
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		model.setRoute("file:///C:\\Users\\JavierN\\Pictures\\pokemon\\main-sprites\\platinum\\");
+//		TODO no me funcionan las rutas relativas
+		model.setRoute("file:C:\\Users\\Javier\\Documents\\GitHub\\Wiki_Pokemon\\src\\Resources\\Examples\\");
 		model.imgIdProperty().addListener( e-> setframes() );
 		Image.imageProperty().bind(model.frame1Property());
 		model.setMouseOn(false);
