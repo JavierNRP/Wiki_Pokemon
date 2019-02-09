@@ -1,0 +1,12 @@
+.pokedex{
+    -fx-background-image: url("/Resources/PokeDex.png");
+    -fx-background-repeat: stretch;
+    -fx-background-position: left top;
+}
+.screen{
+    -fx-border-radius: 20px;
+    -fx-border-width: 5px;
+    -fx-border-color: blue;
+    -fx-background-image: url("/Resources/Examples/10.png");
+    -fx-background-size: 100% 100%;
+}
