@@ -29,6 +29,14 @@ public class Controller implements Initializable {
         }
     }
 
+
+    //Funciones FXML
+    @FXML
+    public void onCloseButton(){
+        System.exit(0);
+    }
+
+    //Getters & Setters
     public AnchorPane getPokedex() {
         return pokedex;
     }
