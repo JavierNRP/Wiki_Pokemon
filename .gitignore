@@ -61,3 +61,8 @@ local.properties
 *.iml
 out
 gen
+src/Resources/PokeDex.png
+src/dad/
+src/pruebas/MainVista.java
+target/classes/.gitignore
+target/generated-sources/
