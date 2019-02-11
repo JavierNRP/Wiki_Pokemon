@@ -9,8 +9,8 @@
         <module name="Wiki_Pokemon" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8">
-      <module name="Wiki_Pokemon" target="8" />
+    <bytecodeTargetLevel>
+      <module name="Wiki_Pokemon" target="10" />
     </bytecodeTargetLevel>
   </component>
 </project>
