@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     @FXML
-    private AnchorPane pokedex;
+    private AnchorPane view;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -21,7 +21,7 @@ public class Controller implements Initializable {
 
     public Controller() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("View/MainLayout/main.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/main.fxml"));
             loader.setController(this);
             loader.load();
         } catch (IOException e) {
@@ -37,7 +37,7 @@ public class Controller implements Initializable {
     }
 
     //Getters & Setters
-    public AnchorPane getPokedex() {
-        return pokedex;
+    public AnchorPane getView() {
+        return view;
     }
 }

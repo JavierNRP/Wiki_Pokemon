@@ -1,4 +1,4 @@
-package Components.Image;
+package components.image;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
