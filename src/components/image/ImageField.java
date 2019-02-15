@@ -43,15 +43,23 @@ public class ImageField extends BorderPane  implements Initializable  {
     	}
 	}
     
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 //		TODO no me funcionan las rutas relativas
-		model.setRoute("file:C:\\Users\\Javier\\Documents\\GitHub\\Wiki_Pokemon\\src\\Resources\\Examples\\");
+		model.setRoute("file:C:\\Users\\JavierN\\Repositories\\Wiki_Pokemon\\src\\Resources\\Examples\\");
 		model.imgIdProperty().addListener( e-> setframes() );
 		Image.imageProperty().bind(model.frame1Property());
 		model.setMouseOn(false);
+		
+		this.setOnMouseEntered(e -> new Thread(animation).start());
+		this.setOnMouseExited(e -> animation.cancel());
 
-		new Thread(animation).start();
+//		this.sceneProperty().addListener(e -> System.out.println("bind"));
+//		this.getScene().getWindow().setOnCloseRequest(e -> animation.cancel());
+//		.getScene().windowProperty().addListener(e -> System.out.println("bind"));
+//		.getWindow().onCloseRequestProperty().addListener(e -> animation.cancel());
+		
 	}
 	
 	private void setframes() {
@@ -70,13 +78,12 @@ public class ImageField extends BorderPane  implements Initializable  {
 					TimeUnit.MILLISECONDS.sleep(500);
 					Image.imageProperty().unbind();
 					Image.imageProperty().bind(model.frame1Property());
+//					System.out.println("imagen");
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Image.imageProperty().unbind();
-			Image.imageProperty().bind(model.frame1Property());
 			return null;
 		}
 	};
