@@ -1,10 +1,10 @@
-package components.typeselector;
+package Components.TypeSelector;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import components.TypesData;
+import Components.TypesData;
 import javafx.beans.property.IntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

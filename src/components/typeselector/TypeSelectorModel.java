@@ -1,4 +1,4 @@
-package components.typeselector;
+package Components.TypeSelector;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

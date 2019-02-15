@@ -37,6 +37,7 @@ public class PokemonField extends GridPane implements Initializable {
 		image.imgIdProperty().bind(model.pokeIdProperty());
 		type_p.typeIdProperty().bind(model.type_pProperty());
 		type_s.typeIdProperty().bind(model.type_sProperty());
+//		TODO bindear todos los datos segun pokeId
 	}
 
 }

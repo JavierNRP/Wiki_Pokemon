@@ -1,7 +1,7 @@
 package pruebas;
 
-import components.typeselector.TypeSelectorField;
-import components.weakness.WeaknessField;
+import Components.TypeSelector.TypeSelectorField;
+import Components.Weakness.WeaknessField;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;

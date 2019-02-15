@@ -1,4 +1,4 @@
-package components.typeselector;
+package Components.TypeSelector;
 
 public class TypeObject {
 

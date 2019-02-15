@@ -1,4 +1,4 @@
-package components;
+package Components;
 public class TypesData {
 	static public String[] typeNames = {
 			"Normal  ", "Fight   ", "Flying  ", "Poison  ",

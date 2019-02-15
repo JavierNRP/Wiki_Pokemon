@@ -1,4 +1,4 @@
-package components.weakness;
+package Components.Weakness;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;

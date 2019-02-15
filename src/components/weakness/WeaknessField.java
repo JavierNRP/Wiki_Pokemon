@@ -1,10 +1,10 @@
-package components.weakness;
+package Components.Weakness;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import components.TypesData;
+import Components.TypesData;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

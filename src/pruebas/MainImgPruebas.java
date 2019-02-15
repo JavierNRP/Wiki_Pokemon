@@ -1,8 +1,9 @@
 package pruebas;
 
-import components.image.ImageField;
-import components.typeselector.TypeSelectorField;
-import components.weakness.WeaknessField;
+import Components.Image.ImageField;
+import Components.Pokemon.PokemonField;
+import Components.TypeSelector.TypeSelectorField;
+import Components.Weakness.WeaknessField;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -18,6 +19,7 @@ public class MainImgPruebas extends Application {
       WeaknessField testW = new WeaknessField();
       TypeSelectorField testS = new TypeSelectorField();
       ImageField testI = new ImageField();
+      PokemonField testP = new PokemonField();
 //      testI.setImgId(2);
       
       Button show = new Button();
@@ -32,7 +34,7 @@ public class MainImgPruebas extends Application {
       
       VBox root = new VBox();
       root.setStyle("-fx-background-color: #ECD82D; ");
-      root.getChildren().addAll(testW, testS, show, testI, imgtext, change);
+      root.getChildren().addAll(testW, testS, show, testI, imgtext, change, testP);
       Scene scene = new Scene(root,600,600);
       primaryStage.setScene(scene);
       primaryStage.show();
