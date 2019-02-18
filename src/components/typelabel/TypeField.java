@@ -1,4 +1,4 @@
-package components.TypeLabel;
+package components.typelabel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
