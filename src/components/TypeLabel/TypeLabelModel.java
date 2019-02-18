@@ -1,4 +1,4 @@
-package Components.TypeLabel;
+package components.TypeLabel;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

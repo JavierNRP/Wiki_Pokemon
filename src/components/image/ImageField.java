@@ -1,4 +1,4 @@
-package Components.Image;
+package components.image;
 
 import java.io.IOException;
 import java.net.URL;

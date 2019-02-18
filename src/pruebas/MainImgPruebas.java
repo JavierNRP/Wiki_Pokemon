@@ -1,9 +1,9 @@
 package pruebas;
 
-import Components.Image.ImageField;
-import Components.Pokemon.PokemonField;
-import Components.TypeSelector.TypeSelectorField;
-import Components.Weakness.WeaknessField;
+import components.image.ImageField;
+import components.pokemon.PokemonField;
+import components.typeselector.TypeSelectorField;
+import components.weakness.WeaknessField;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;

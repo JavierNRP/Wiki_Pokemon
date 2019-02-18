@@ -1,10 +1,10 @@
-package Components.Pokemon;
+package components.pokemon;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Components.Image.ImageField;
-import Components.TypeLabel.TypeField;
+import components.image.ImageField;
+import components.TypeLabel.TypeField;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;

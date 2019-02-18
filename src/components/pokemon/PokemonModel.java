@@ -1,4 +1,4 @@
-package Components.Pokemon;
+package components.pokemon;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

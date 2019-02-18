@@ -1,9 +1,9 @@
-package Components.TypeLabel;
+package components.TypeLabel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Components.TypesData;
+import components.TypesData;
 import javafx.beans.property.IntegerProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
