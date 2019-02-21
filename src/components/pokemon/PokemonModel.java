@@ -9,13 +9,13 @@ public class PokemonModel {
 	
 	private IntegerProperty type_p;
 	private IntegerProperty type_s;
-	private IntegerProperty imgId;
+	private IntegerProperty pokeId;
 	private StringProperty text;
 
 	public PokemonModel() {
 		type_p = new SimpleIntegerProperty(this, "type_p");
 		type_s = new SimpleIntegerProperty(this, "type_s");
-		imgId = new SimpleIntegerProperty(this, "imgId");
+		pokeId = new SimpleIntegerProperty(this, "pokeId");
 		text = new SimpleStringProperty(this, "text");
 	}
 
@@ -27,9 +27,9 @@ public class PokemonModel {
 	protected final int getType_s() { return this.type_sProperty().get(); }
 	protected final void setType_s(final int type_s) { this.type_sProperty().set(type_s); }
 
-	protected final IntegerProperty imgIdProperty() { return this.imgId; }
-	protected final int getImgId() { return this.imgIdProperty().get(); }
-	protected final void setImgId(final int imgId) { this.imgIdProperty().set(imgId); }
+	protected final IntegerProperty pokeIdProperty() { return this.pokeId; }
+	protected final int getPokeId() { return this.pokeIdProperty().get(); }
+	protected final void setPokeId(final int pokeId) { this.pokeIdProperty().set(pokeId); }
 
 	protected final StringProperty textProperty() { return this.text; }
 	protected final String getText() { return this.textProperty().get(); }

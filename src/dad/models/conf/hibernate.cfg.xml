@@ -23,10 +23,10 @@
 		<property name="hibernate.search.default.indexBase" />
 		<property name="hbm2ddl.auto">create-drop</property>
 		<!-- Mapping files-->
-		<mapping class="dad.Models.estructura.Pokemon"/>
-		<mapping class="dad.Models.estructura.Tipo"/>
-		<mapping class="dad.Models.estructura.Evolucion"/>
-		<mapping class="dad.Models.estructura.Movimiento"/>
-		<mapping class="dad.Models.estructura.Pokemon_Movimiento"/>
+		<mapping class="dad.models.estructura.Pokemon"/>
+		<mapping class="dad.models.estructura.Tipo"/>
+		<mapping class="dad.models.estructura.Evolucion"/>
+		<mapping class="dad.models.estructura.Movimiento"/>
+		<mapping class="dad.models.estructura.Pokemon_Movimiento"/>
 	</session-factory>
 </hibernate-configuration>
