@@ -1,22 +1,25 @@
-.pokedex{
+.pokedex {
     -fx-background-color: transparent;
     -fx-background-image: url("../../resources/PokeDex.png");
     -fx-background-repeat: stretch;
     -fx-background-position: left top;
 }
-.screen{
+
+.screen {
     /*-fx-border-radius: 20px;*/
     /*-fx-border-width: 5px;*/
     /*-fx-border-color: blue;*/
-    -fx-background-image: url("../../resources/examples/10.png");
+    -fx-background-image: url("../../resources/examples/6.png");
     -fx-background-size: 100% 100%;
 }
-.numscreen{
+
+.numscreen {
     -fx-background-radius: 15px;
     -fx-background-color: linear-gradient(green, darkgreen);
     -fx-border-insets: 0px;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)
 }
+
 .numPokedex {
     -fx-background-radius: 15px;
     -fx-background-color: white;
@@ -25,13 +28,93 @@
     -fx-font-weight: bold;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
 }
-.closeButton{
+
+.closeButton {
     -fx-background-color: transparent;
     -fx-font-family: monospaced;
     -fx-font-size: 20px;
     -fx-text-fill: #760000;
     -fx-font-weight: 900;
 }
-.closeButton:hover{
+
+.closeButton:hover {
     -fx-text-fill: #400000;
+}
+
+.green-console {
+    text-area-background: transparent;
+    -fx-background-radius: 30px;
+    -fx-font-family: Consolas;
+    -fx-font-weight: bold;
+    -fx-text-fill: #004d00;
+    -fx-font-size: 15px;
+}
+
+.green-console .content {
+    -fx-background-radius: 30px;
+    -fx-background-color: green;
+    -fx-padding: 15px;
+}
+
+.green-console .scroll-pane {
+    -fx-background-radius: 30px;
+    -fx-background-color: green;
+    -fx-padding: 15px;
+    -fx-vbar-policy: never;
+
+}
+
+.green-console .scroll-pane .viewport {
+    -fx-background-radius: 30px;
+    -fx-background-color: green;
+    -fx-padding: 15px;
+}
+
+.green-console .scroll-pane .content {
+    -fx-background-radius: 30px;
+    -fx-background-color: green;
+    -fx-padding: 15px;
+}
+.text-area .scroll-bar:vertical:disabled {
+    -fx-opacity: 0;
+}
+.red-button {
+    -fx-background-radius: 100%;
+    -fx-background-color: red;
+}
+.red-button:pressed{
+    -fx-background-color: #bf0000;
+    -fx-translate-y: 2px;
+}
+.blue-button {
+    -fx-background-radius: 100%;
+    -fx-background-color: blue;
+}
+.blue-button:pressed{
+    -fx-background-color: darkblue;
+    -fx-translate-y: 2px;
+}
+.v-cruceta{
+    -fx-background-image: url("../../resources/v-gamepad.png");
+    -fx-background-size: stretch;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.v-cruceta:pressed {
+    -fx-background-image: url("../../resources/v-gamepad-pressed.png");
+    -fx-translate-y: 3;
+}
+.h-cruceta{
+    -fx-background-image: url("../../resources/h-gamepad.png");
+    -fx-background-size: stretch;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.h-cruceta:pressed {
+    -fx-background-image: url("../../resources/h-gamepad-pressed.png");
+    -fx-translate-y: 3;
 }

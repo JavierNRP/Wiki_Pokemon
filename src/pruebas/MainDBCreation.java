@@ -1,13 +1,10 @@
 package pruebas;
 
+import dad.models.estructura.*;
 import org.hibernate.Session;
 
 import components.TypesData;
 import dad.models.conf.HibernateUtil;
-import dad.models.estructura.Eficacia;
-import dad.models.estructura.Evolucion;
-import dad.models.estructura.Pokemon;
-import dad.models.estructura.Tipo;
 
 public class MainDBCreation {
 
