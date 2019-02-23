@@ -1,14 +1,16 @@
 package dad;
 
 import components.image.ImageField;
+import dad.models.Model;
+import dad.models.estructura.Pokemon;
 import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +23,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     boolean pressed = false;
+    Model m = new Model();
 
     @FXML
     private Pane screen;
@@ -37,14 +40,24 @@ public class Controller implements Initializable {
     @FXML
     private TextField searchBar;
 
+    @FXML
+    private ToggleButton rightArrow;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        screen.getChildren().add(new ImageField(2));
         EventHandler<KeyEvent> filter = event -> onKeyEventFilter(event);
         view.addEventFilter(KeyEvent.ANY, filter);
+        //Cambiar frames de imagenes
+        Pokemon pkm = new Pokemon(1,"Bulbasour");
+        m.setActual(pkm);
+
+        ImageField img = new ImageField();
+        img.setImgId(1);
+        screen.getChildren().add(img);
     }
 
     private void onKeyEventFilter(KeyEvent event) {
+        //Controlador de eventos de teclas
         if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER) {
             redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
             if (!pressed) {
@@ -56,8 +69,15 @@ public class Controller implements Initializable {
             redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
             pressed = false;
         } else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.RIGHT) {
-
+            rightArrow.fire();
+            rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.RIGHT) {
+            rightArrow.fire();
+            rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
         }
+
+
+
 
     }
 

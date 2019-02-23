@@ -33,8 +33,8 @@ public class ImageField extends BorderPane  implements Initializable  {
     		e.printStackTrace();
     	}
 	}
-    
-    
+
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 //		TODO no me funcionan las rutas relativas
@@ -50,10 +50,8 @@ public class ImageField extends BorderPane  implements Initializable  {
 		new Thread(animation).start();
 		this.sceneProperty().addListener((observableScene, oldScene, newScene) -> {
 			if(oldScene == null && newScene != null) {
-				System.out.println("if1");
 				newScene.windowProperty().addListener((observableWindow, oldWindow, newWindow) -> {
 					if(oldWindow == null && newWindow != null) {
-						System.out.println("if2");
 						newWindow.onCloseRequestProperty().addListener(e -> animation.cancel(false));
 						newWindow.focusedProperty().addListener(e -> System.out.println("focused"));
 						newWindow.onCloseRequestProperty().addListener(e -> System.out.println("closed"));
@@ -87,10 +85,9 @@ public class ImageField extends BorderPane  implements Initializable  {
 					TimeUnit.MILLISECONDS.sleep(500);
 					Image.imageProperty().unbind();
 					Image.imageProperty().bind(model.frame1Property());
-					System.out.println("imagen");
+					System.out.println(model.getFrame1().getWidth());
 				}
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return null;
