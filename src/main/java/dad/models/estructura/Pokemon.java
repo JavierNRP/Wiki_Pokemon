@@ -23,6 +23,8 @@ public class Pokemon {
     @Field
     private String nombre;
 
+    //todo agregar columna descripcion, peso y altura;
+
     @IndexedEmbedded(depth = 1)
     @ManyToMany(mappedBy = "pokemons", cascade = CascadeType.ALL)
     @Size(min = 1, max = 2)

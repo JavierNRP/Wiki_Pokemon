@@ -2,20 +2,15 @@ package dad;
 
 import dad.models.Model;
 import dad.models.estructura.Pokemon;
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.animation.TimelineBuilder;
 import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -30,45 +25,56 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    boolean pressed = false;
+    int count = 0;
     private Model m = new Model();
     private ImageView img1;
     private ImageView img2;
 
-
+    @FXML
+    private Label pokeNumText;
     @FXML
     private Pane screen;
-
     @FXML
     private AnchorPane view;
-
     @FXML
     private Button redButton;
-
     @FXML
     private TextArea greenConsole;
-
     @FXML
     private TextField searchBar;
-
+    @FXML
+    private Button searchButton;
     @FXML
     private ToggleButton rightArrow;
+    @FXML
+    private ToggleButton leftArrow;
+    @FXML
+    private ToggleButton upArrow;
+    @FXML
+    private ToggleButton downArrow;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         EventHandler<KeyEvent> filter = event -> onKeyEventFilter(event);
         view.addEventFilter(KeyEvent.ANY, filter);
-        //Cambiar frames de imagenes
-        Pokemon pkm = new Pokemon(6, "Bulbasour");
+        Pokemon pkm = new Pokemon(1, "Bulbasour");
         m.setActual(pkm);
+        System.out.println(m.getActual().getId());
+
+
 
 
 
         //Crear transicion con la animacion del pokemon
         m.setFrame1(new Image(PokeDexAPP.class.getResource("/image/pokemon/" + m.getActual().getId() + ".png").toString()));
         m.setFrame2(new Image(PokeDexAPP.class.getResource("/image/pokemon/frame2/" + m.getActual().getId() + ".png").toString()));
-        img1 = new ImageView(m.getFrame1());
-        img2 = new ImageView(m.getFrame2());
+
+        img1 = new ImageView();
+        img2 = new ImageView();
+
+        //Bindear las imagesproperty
+        img1.imageProperty().bind(m.frame1Property());
+        img2.imageProperty().bind(m.frame2Property());
 
         Group animation = new Group(img1);
         animation.setAutoSizeChildren(true);
@@ -86,28 +92,61 @@ public class Controller implements Initializable {
         tl.play();
 
 
-
         screen.getChildren().add(animation);
+
+        //Bindeos
+        pokeNumText.textProperty().bind(m.getActual().idProperty().asString());
     }
 
     private void onKeyEventFilter(KeyEvent event) {
-        //Controlador de eventos de teclas
-        if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER) {
+        //Evento Tecla enter cuando no está seleccionado el buscador
+        if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER && !searchBar.isFocused()) {
             redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
-            if (!pressed) {
-                pressed = true;
-                redButton.fire();
-            }
             event.consume();
-        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.ENTER) {
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.ENTER && !searchBar.isFocused()) {
+            redButton.fire();
             redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
-            pressed = false;
-        } else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.RIGHT) {
-            rightArrow.fire();
+        }
+
+        //Evento Tecla enter cuando el buscador esta seleccionado
+        if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER && searchBar.isFocused()) {
+            searchButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+            event.consume();
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.ENTER && searchBar.isFocused()) {
+            searchButton.fire();
+            searchButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+        }
+
+        //Derecha
+        else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.RIGHT && !searchBar.isFocused()) {
             rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
-        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.RIGHT) {
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.RIGHT && !searchBar.isFocused()) {
             rightArrow.fire();
             rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+        }
+
+        //Izquierda
+        else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.LEFT && !searchBar.isFocused()) {
+            leftArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.LEFT && !searchBar.isFocused()) {
+            leftArrow.fire();
+            leftArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+        }
+
+        //Arriba
+        else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.UP) {
+            upArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.UP) {
+            upArrow.fire();
+            upArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+        }
+
+        //Abajo
+        else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.DOWN) {
+            downArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.DOWN) {
+            downArrow.fire();
+            downArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
         }
 
     }
@@ -131,12 +170,27 @@ public class Controller implements Initializable {
 
     @FXML
     public void onPrueba() {
-        System.out.println("ejecutado");
+        System.out.println("ejecutado" + count++);
     }
 
     @FXML
-    public void onArrowRight() {
-        System.out.println("Arrow test");
+    public void onNextPokemon() {
+        System.out.println("right");
+    }
+
+    @FXML
+    public void onPreviusPokemon() {
+        System.out.println("left");
+    }
+
+    @FXML
+    public void onUpArrow() {
+        System.out.println("up");
+    }
+
+    @FXML
+    public void onDownArrow() {
+        System.out.println("down");
     }
 
     @FXML

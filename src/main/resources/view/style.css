@@ -40,6 +40,10 @@
 .closeButton:hover {
     -fx-text-fill: #400000;
 }
+.closeButton:pressed {
+    -fx-text-fill: #400000;
+    -fx-translate-y: 2px;
+}
 
 .green-console {
     text-area-background: transparent;
@@ -117,4 +121,24 @@
 .h-cruceta:pressed {
     -fx-background-image: url("../image/pokedex/h-gamepad-pressed.png");
     -fx-translate-y: 3;
+}
+.search-button {
+    -fx-background-image: url("../image/pokedex/searchImg.png");
+    -fx-background-size: stretch;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.search-button:pressed {
+    -fx-background-image: url("../image/pokedex/searchImg-pressed.png");
+    -fx-translate-y: 3;
+}
+.search-bar{
+    /*-fx-background-color: green;*/
+    -fx-background-radius: 30px;
+    -fx-font-family: Consolas;
+    -fx-font-weight: bold;
+    -fx-text-fill: #004d00;
+    -fx-font-size: 15px;
 }

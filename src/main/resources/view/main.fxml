@@ -14,19 +14,21 @@
       <AnchorPane fx:id="screen" layoutX="72.0" layoutY="189.0" maxHeight="300.0" maxWidth="329.0" minHeight="300.0" minWidth="329.0" prefHeight="300.0" prefWidth="329.0" styleClass="screen" />
       <AnchorPane layoutX="302.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="121.0" styleClass="numscreen">
          <children>
-            <Label fx:id="numPokedex" alignment="CENTER" layoutX="23.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="75.0" styleClass="numPokedex" text="151" />
+            <Label fx:id="pokeNumText" alignment="CENTER" layoutX="23.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="75.0" styleClass="numPokedex" text="???" />
          </children></AnchorPane>
       <Button layoutX="920.0" layoutY="121.0" mnemonicParsing="false" onAction="#onCloseButton" styleClass="closeButton" text="X" />
-      <TextArea fx:id="greenConsole" layoutX="556.0" layoutY="209.0" prefHeight="227.0" prefWidth="385.0" styleClass="green-console" wrapText="true">
+      <TextArea fx:id="greenConsole" layoutX="556.0" layoutY="200.0" prefHeight="236.0" prefWidth="385.0" styleClass="green-console" wrapText="true">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <effect>
             <InnerShadow />
          </effect></TextArea>
-      <TextField layoutX="556.0" layoutY="164.0" prefHeight="25.0" prefWidth="351.0" />
-      <Button layoutX="885.0" layoutY="128.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="Mute" />
-      <Button layoutX="910.0" layoutY="164.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="Button" />
+      <TextField fx:id="searchBar" layoutX="558.0" layoutY="160.0" prefHeight="25.0" prefWidth="351.0" styleClass="search-bar">
+         <effect>
+            <InnerShadow />
+         </effect></TextField>
+      <Button fx:id="searchButton" layoutX="914.0" layoutY="161.0" maxHeight="25.0" maxWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="search-button" />
       <Button layoutX="870.0" layoutY="482.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="67.0" styleClass="blue-button">
          <effect>
             <InnerShadow />
@@ -36,26 +38,25 @@
             <InnerShadow />
          </effect>
       </Button>
-      <ToggleButton layoutX="704.0" layoutY="505.0" mnemonicParsing="false" text="ToggleButton" />
-      <ToggleButton layoutX="598.0" layoutY="451.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="25.0" rotate="180.0" styleClass="v-cruceta">
+      <ToggleButton fx:id="upArrow" layoutX="598.0" layoutY="451.0" mnemonicParsing="false" onAction="#onUpArrow" prefHeight="50.0" prefWidth="25.0" rotate="180.0" styleClass="v-cruceta">
          <effect>
             <InnerShadow />
          </effect>
       </ToggleButton>
-      <ToggleButton layoutX="558.0" layoutY="493.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" rotate="180.0" styleClass="h-cruceta">
+      <ToggleButton fx:id="leftArrow" layoutX="558.0" layoutY="493.0" mnemonicParsing="false" onAction="#onPreviusPokemon" prefHeight="25.0" prefWidth="50.0" rotate="180.0" styleClass="h-cruceta">
          <effect>
             <InnerShadow />
          </effect>
       </ToggleButton>
-      <ToggleButton fx:id="rightArrow" layoutX="613.0" layoutY="494.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" styleClass="h-cruceta">
+      <ToggleButton fx:id="rightArrow" layoutX="613.0" layoutY="494.0" mnemonicParsing="false" onAction="#onNextPokemon" prefHeight="25.0" prefWidth="50.0" styleClass="h-cruceta">
          <effect>
             <InnerShadow />
          </effect>
       </ToggleButton>
-      <Button layoutX="598.0" layoutY="510.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="25.0" styleClass="v-cruceta">
+      <ToggleButton fx:id="downArrow" layoutX="598.0" layoutY="510.0" mnemonicParsing="false" onAction="#onDownArrow" prefHeight="50.0" prefWidth="25.0" styleClass="v-cruceta">
          <effect>
             <InnerShadow />
          </effect>
-      </Button>
+      </ToggleButton>
    </children>
 </AnchorPane>
