@@ -11,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -25,6 +24,8 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
+    public static final int TOTAL_POKEMON = 151;
+    public static final int SCROLL_SPACE = 21;
     int count = 0;
     private Model m = new Model();
     private ImageView img1;
@@ -61,13 +62,8 @@ public class Controller implements Initializable {
         m.setActual(pkm);
         System.out.println(m.getActual().getId());
 
-
-
-
-
         //Crear transicion con la animacion del pokemon
-        m.setFrame1(new Image(PokeDexAPP.class.getResource("/image/pokemon/" + m.getActual().getId() + ".png").toString()));
-        m.setFrame2(new Image(PokeDexAPP.class.getResource("/image/pokemon/frame2/" + m.getActual().getId() + ".png").toString()));
+
 
         img1 = new ImageView();
         img2 = new ImageView();
@@ -96,6 +92,9 @@ public class Controller implements Initializable {
 
         //Bindeos
         pokeNumText.textProperty().bind(m.getActual().idProperty().asString());
+
+
+        greenConsole.setText("fasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdf");
     }
 
     private void onKeyEventFilter(KeyEvent event) {
@@ -136,16 +135,16 @@ public class Controller implements Initializable {
         //Arriba
         else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.UP) {
             upArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
-        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.UP) {
             upArrow.fire();
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.UP) {
             upArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
         }
 
         //Abajo
         else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.DOWN) {
             downArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
-        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.DOWN) {
             downArrow.fire();
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.DOWN) {
             downArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
         }
 
@@ -175,22 +174,37 @@ public class Controller implements Initializable {
 
     @FXML
     public void onNextPokemon() {
-        System.out.println("right");
+        //todo cargar el siguiente pokemon de la base de datos
+        if (m.getActual().getId() <= TOTAL_POKEMON) {
+            Pokemon pkm = new Pokemon(m.getActual().getId() + 1, "prueba");
+            m.setActual(pkm);
+        }
     }
 
     @FXML
     public void onPreviusPokemon() {
-        System.out.println("left");
+        if (m.getActual().getId() > 1) {
+            if (m.getActual().getId() <= TOTAL_POKEMON) {
+                //todo cargar pokemon de la base de datos
+                Pokemon pkm = new Pokemon(m.getActual().getId() - 1, "prueba");
+                m.setActual(pkm);
+            }
+        }
     }
 
     @FXML
     public void onUpArrow() {
-        System.out.println("up");
+        if (greenConsole.getScrollTop() > 0) {
+            if (greenConsole.getScrollTop() < SCROLL_SPACE) {
+                greenConsole.setScrollTop(0);
+            }
+            greenConsole.setScrollTop(greenConsole.getScrollTop() - SCROLL_SPACE);
+        }
     }
 
     @FXML
     public void onDownArrow() {
-        System.out.println("down");
+        greenConsole.setScrollTop(greenConsole.getScrollTop() + SCROLL_SPACE);
     }
 
     @FXML
