@@ -1,6 +1,6 @@
 .pokedex {
     -fx-background-color: transparent;
-    -fx-background-image: url("../../resources/PokeDex.png");
+    -fx-background-image: url("../image/pokedex/PokeDex.png");
     -fx-background-repeat: stretch;
     -fx-background-position: left top;
 }
@@ -9,7 +9,7 @@
     /*-fx-border-radius: 20px;*/
     /*-fx-border-width: 5px;*/
     /*-fx-border-color: blue;*/
-    /*-fx-background-image: url("../../resources/examples/6.png");*/
+    /*-fx-background-image: url("../../resources/pokemon/6.png");*/
     /*-fx-background-size: 100% 100%;*/
 }
 
@@ -95,7 +95,7 @@
     -fx-translate-y: 2px;
 }
 .v-cruceta{
-    -fx-background-image: url("../../resources/v-gamepad.png");
+    -fx-background-image: url("../image/pokedex/v-gamepad.png");
     -fx-background-size: stretch;
     -fx-border-color: transparent;
     -fx-background-color: transparent;
@@ -103,11 +103,11 @@
     -fx-background-position: center;
 }
 .v-cruceta:pressed {
-    -fx-background-image: url("../../resources/v-gamepad-pressed.png");
+    -fx-background-image: url("../image/pokedex/v-gamepad-pressed.png");
     -fx-translate-y: 3;
 }
 .h-cruceta{
-    -fx-background-image: url("../../resources/h-gamepad.png");
+    -fx-background-image: url("../image/pokedex/h-gamepad.png");
     -fx-background-size: stretch;
     -fx-border-color: transparent;
     -fx-background-color: transparent;
@@ -115,6 +115,6 @@
     -fx-background-position: center;
 }
 .h-cruceta:pressed {
-    -fx-background-image: url("../../resources/h-gamepad-pressed.png");
+    -fx-background-image: url("../image/pokedex/h-gamepad-pressed.png");
     -fx-translate-y: 3;
 }

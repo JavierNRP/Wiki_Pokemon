@@ -1,9 +1,13 @@
 package dad.models;
 
 import dad.models.estructura.Pokemon;
+import javafx.scene.Group;
+import javafx.scene.image.Image;
 
 public class Model {
-    Pokemon actual,siguiente,anterior;
+    private Pokemon actual;
+    private Image frame1;
+    private Image frame2;
 
     public Pokemon getActual() {
         return actual;
@@ -13,19 +17,19 @@ public class Model {
         this.actual = actual;
     }
 
-    public Pokemon getSiguiente() {
-        return siguiente;
+    public Image getFrame1() {
+        return frame1;
     }
 
-    public void setSiguiente(Pokemon siguiente) {
-        this.siguiente = siguiente;
+    public void setFrame1(Image frame1) {
+        this.frame1 = frame1;
     }
 
-    public Pokemon getAnterior() {
-        return anterior;
+    public Image getFrame2() {
+        return frame2;
     }
 
-    public void setAnterior(Pokemon anterior) {
-        this.anterior = anterior;
+    public void setFrame2(Image frame2) {
+        this.frame2 = frame2;
     }
 }
