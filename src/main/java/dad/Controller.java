@@ -2,10 +2,8 @@ package dad;
 
 import dad.models.Model;
 import dad.models.estructura.Pokemon;
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.animation.TimelineBuilder;
 import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
