@@ -81,9 +81,10 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
 
-
-        Pokemon pkm = new Pokemon(1, "Bulbasour");
+        session.beginTransaction();
+        Pokemon pkm = session.get(Pokemon.class,1);
         m.setActual(pkm);
+        session.getTransaction().commit();
 
         //Ocultar los campos de detalles
         nameLabel.setDisable(true);
@@ -164,6 +165,7 @@ public class Controller implements Initializable {
         } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.RIGHT && !searchBar.isFocused()) {
             rightArrow.fire();
             rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+            event.consume();
         }
 
         //Izquierda
@@ -172,6 +174,7 @@ public class Controller implements Initializable {
         } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.LEFT && !searchBar.isFocused()) {
             leftArrow.fire();
             leftArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+            event.consume();
         }
 
         //Arriba
@@ -254,14 +257,14 @@ public class Controller implements Initializable {
         }
         move.play();
         scale.play();
-
     }
 
     @FXML
     public void onNextPokemon() {
-        //todo cargar el siguiente pokemon de la base de datos
         if (m.getActual().getId() < TOTAL_POKEMON) {
-            Pokemon pkm = new Pokemon(m.getActual().getId() + 1, "prueba");
+            session.beginTransaction();
+            Pokemon pkm = session.get(Pokemon.class,m.getActual().getId() + 1);
+            session.getTransaction().commit();
             m.setActual(pkm);
         }
     }
@@ -270,8 +273,9 @@ public class Controller implements Initializable {
     public void onPreviusPokemon() {
         if (m.getActual().getId() > 1) {
             if (m.getActual().getId() <= TOTAL_POKEMON) {
-                //todo cargar pokemon de la base de datos
-                Pokemon pkm = new Pokemon(m.getActual().getId() - 1, "prueba");
+                session.beginTransaction();
+                Pokemon pkm = session.get(Pokemon.class, m.getActual().getId() - 1);
+                session.getTransaction().commit();
                 m.setActual(pkm);
             }
         }

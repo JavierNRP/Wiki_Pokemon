@@ -6,13 +6,14 @@ import org.hibernate.search.annotations.IndexedEmbedded;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "POKEMON")
 @Indexed
-public class Pokemon {
+public class Pokemon implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
