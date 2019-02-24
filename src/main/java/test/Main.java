@@ -10,6 +10,7 @@ import dad.models.estructura.MetodoEvolucion;
 import dad.models.estructura.Pokemon;
 import dad.models.estructura.Tipo;
 
+@SuppressWarnings("Duplicates")
 public class Main {
 
 	public static void main(String[] args) throws Exception {
@@ -296,22 +297,28 @@ public class Main {
 		bulbasaurPokemon.setNombre("Bulbasaur");
 		bulbasaurPokemon.getTipos().add(plantaTipo);
 		bulbasaurPokemon.getTipos().add(venenoTipo);
+		plantaTipo.getPokemons().add(bulbasaurPokemon);
+		venenoTipo.getPokemons().add(bulbasaurPokemon);
 
 		Pokemon ivysaurPokemon = new Pokemon();
 		ivysaurPokemon.setNombre("Ivysaur");
 		ivysaurPokemon.getTipos().add(plantaTipo);
 		ivysaurPokemon.getTipos().add(venenoTipo);
+		plantaTipo.getPokemons().add(ivysaurPokemon);
+		venenoTipo.getPokemons().add(ivysaurPokemon);
 
 		Pokemon venusaurPokemon = new Pokemon();
 		venusaurPokemon.setNombre("Venusaur");
 		venusaurPokemon.getTipos().add(plantaTipo);
 		venusaurPokemon.getTipos().add(venenoTipo);
-	
+		plantaTipo.getPokemons().add(venusaurPokemon);
+		venenoTipo.getPokemons().add(venusaurPokemon);
+
 		Evolucion evolucionBulbasaurIvysaur = new Evolucion();
 		evolucionBulbasaurIvysaur.getPokemons().add(bulbasaurPokemon);
 		evolucionBulbasaurIvysaur.getPokemons().add(ivysaurPokemon);
 		evolucionBulbasaurIvysaur.setMetodo(MetodoEvolucion.NIVEL);
-		
+
 		Evolucion evolucionIvysaurVenusaur = new Evolucion();
 		evolucionIvysaurVenusaur.getPokemons().add(ivysaurPokemon);
 		evolucionIvysaurVenusaur.getPokemons().add(venusaurPokemon);
@@ -325,21 +332,25 @@ public class Main {
 		session.save(bulbasaurPokemon);
 		session.save(ivysaurPokemon);
 		session.save(venusaurPokemon);
-		
+
 //		Charmander Charmeleon Charizard
-		
+
 		Pokemon charmanderPokemon = new Pokemon();
 		charmanderPokemon.setNombre("Charmander");
 		charmanderPokemon.getTipos().add(fuegoTipo);
+		fuegoTipo.getPokemons().add(charmanderPokemon);
 
 		Pokemon charmeleonPokemon = new Pokemon();
 		charmeleonPokemon.setNombre("Charmeleon");
 		charmeleonPokemon.getTipos().add(fuegoTipo);
+		fuegoTipo.getPokemons().add(charmeleonPokemon);
 
 		Pokemon charizardPokemon = new Pokemon();
 		charizardPokemon.setNombre("Charizard");
 		charizardPokemon.getTipos().add(fuegoTipo);
 		charizardPokemon.getTipos().add(voladorTipo);
+		fuegoTipo.getPokemons().add(charizardPokemon);
+		voladorTipo.getPokemons().add(charizardPokemon);
 
 		Evolucion evolucionCharmanderCharmeleon = new Evolucion();
 		evolucionCharmanderCharmeleon.getPokemons().add(charmanderPokemon);

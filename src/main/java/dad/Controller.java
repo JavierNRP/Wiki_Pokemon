@@ -1,8 +1,10 @@
 package dad;
 
+import components.TypesData;
 import dad.models.Model;
 import dad.models.conf.HibernateUtil;
 import dad.models.estructura.Pokemon;
+import dad.models.estructura.Tipo;
 import dad.models.searches.Search;
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
@@ -14,18 +16,17 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
 import org.controlsfx.control.textfield.TextFields;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -67,7 +68,23 @@ public class Controller implements Initializable {
     @FXML
     private Label nameLabel;
     @FXML
-    public ScrollPane scrollScreen;
+    private ScrollPane scrollScreen;
+    @FXML
+    private GridPane typesGrid;
+    @FXML
+    private VBox typesBox;
+    @FXML
+    private HBox evolutionView;
+
+    public Controller() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main.fxml"));
+            loader.setController(this);
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,14 +98,14 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
 
+        //Cargar primer pokemon de la base de datos
         session.beginTransaction();
-        Pokemon pkm = session.get(Pokemon.class,1);
+        Pokemon pkm = session.get(Pokemon.class, 1);
         m.setActual(pkm);
         session.getTransaction().commit();
 
         //Ocultar los campos de detalles
-        nameLabel.setDisable(true);
-        nameLabel.setVisible(false);
+        hideDetails(true);
 
         //Crear transicion con la animacion del pokemon
         img1 = new ImageView();
@@ -115,13 +132,14 @@ public class Controller implements Initializable {
 
         //Agregar los elementos a la pantalla de la pokedex
         screen.getChildren().add(animation);
-
+        refreshTypes();
 
         //Bindeos
         pokeNumText.textProperty().bind(m.getActual().idProperty().asString());
         nameLabel.textProperty().bind(m.getActual().nombreProperty());
         greenConsole.textProperty().bind(Bindings.concat(
                 "Pokémon: ", m.getActual().nombreProperty(),
+                "\nTipo: ", m.getActual().tiposProperty(),
                 "\nAltura: ", m.getActual().alturaProperty(),
                 "\nPeso: ", m.getActual().pesoProperty(),
                 "\nDescripción: ", m.getActual().descripcionProperty())
@@ -138,6 +156,13 @@ public class Controller implements Initializable {
 
         });
 
+    }
+
+    private void refreshTypes() {
+        typesBox.getChildren().clear();
+        for (Tipo t : m.getActual().getTipos()) {
+            typesBox.getChildren().add(makeTypeLabel(t.getId()));
+        }
     }
 
     private void onKeyEventFilter(KeyEvent event) {
@@ -201,16 +226,37 @@ public class Controller implements Initializable {
 
     }
 
-    public Controller() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main.fxml"));
-            loader.setController(this);
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void hideDetails(Boolean b) {
+        if (b) {
+            nameLabel.setDisable(true);
+            nameLabel.setVisible(false);
+            typesGrid.setDisable(true);
+            typesGrid.setVisible(false);
+        } else {
+            nameLabel.setDisable(false);
+            nameLabel.setVisible(true);
+            typesGrid.setDisable(false);
+            typesGrid.setVisible(true);
         }
     }
 
+    private Label makeTypeLabel(Integer id) {
+        Label typelabel = new Label();
+        typelabel.setText(TypesData.typeNames[id - 1]);
+        typelabel.setStyle(TypesData.typeColors[id - 1]);
+        typelabel.setAlignment(Pos.CENTER);
+        typelabel.setMinWidth(100);
+        typelabel.setEffect(new InnerShadow());
+        typelabel.getStyleClass().add("screen-text");
+        typelabel.getStyleClass().add("type-label");
+        return typelabel;
+    }
+
+    private void makeEvolutionChain() {
+        session.beginTransaction();
+        if (m.getActual().getEvoluciones().isEmpty()) {
+        }
+    }
 
     //Funciones FXML
     @FXML
@@ -239,8 +285,7 @@ public class Controller implements Initializable {
             scale.setByY(-1);
 
             //Habilitar datos ocultos
-            nameLabel.setDisable(false);
-            nameLabel.setVisible(true);
+            hideDetails(false);
         } else {
             details = false;
 
@@ -258,8 +303,7 @@ public class Controller implements Initializable {
             scale.setByY(1);
 
             //Ocultar datos
-            nameLabel.setDisable(true);
-            nameLabel.setVisible(false);
+            hideDetails(true);
         }
         move.play();
         scale.play();
@@ -269,9 +313,10 @@ public class Controller implements Initializable {
     public void onNextPokemon() {
         if (m.getActual().getId() < TOTAL_POKEMON) {
             session.beginTransaction();
-            Pokemon pkm = session.get(Pokemon.class,m.getActual().getId() + 1);
+            Pokemon pkm = session.get(Pokemon.class, m.getActual().getId() + 1);
             session.getTransaction().commit();
             m.setActual(pkm);
+            refreshTypes();
         }
     }
 
@@ -283,6 +328,7 @@ public class Controller implements Initializable {
                 Pokemon pkm = session.get(Pokemon.class, m.getActual().getId() - 1);
                 session.getTransaction().commit();
                 m.setActual(pkm);
+                refreshTypes();
             }
         }
     }
@@ -312,4 +358,5 @@ public class Controller implements Initializable {
     public Pane getScreen() {
         return screen;
     }
+
 }

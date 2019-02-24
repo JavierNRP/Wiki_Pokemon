@@ -7,8 +7,8 @@ import org.hibernate.search.annotations.IndexedEmbedded;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "POKEMON")
@@ -36,15 +36,15 @@ public class Pokemon implements Serializable {
     @IndexedEmbedded(depth = 1)
     @ManyToMany(mappedBy = "pokemons", cascade = CascadeType.ALL)
     @Size(min = 1, max = 2)
-    private Set<Tipo> tipos = new HashSet<Tipo>();
+    private List<Tipo> tipos = new ArrayList<>();
 
     @ManyToMany(mappedBy = "pokemons", cascade = CascadeType.ALL)
     @Column(name = "evoluciones")
-    private Set<Evolucion> evoluciones = new HashSet<Evolucion>();
+    private List<Evolucion> evoluciones = new ArrayList<>();
 
     @ManyToMany(mappedBy = "pokemons")
     @Column(name = "movimientos")
-    private Set<Movimiento> movimientos = new HashSet<Movimiento>();
+    private List<Movimiento> movimientos = new ArrayList<>();
 
     public Pokemon() {
 
@@ -59,36 +59,20 @@ public class Pokemon implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Set<Tipo> getTipos() {
-        return tipos;
-    }
-
-    public void setTipos(Set<Tipo> tipos) {
-        this.tipos = tipos;
+    public Integer getId() {
+        return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public Integer getId() {
-        return id;
+    public String getNombre() {
+        return nombre;
     }
 
-    public Set<Evolucion> getEvoluciones() {
-        return evoluciones;
-    }
-
-    public void setEvoluciones(Set<Evolucion> evoluciones) {
-        this.evoluciones = evoluciones;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
@@ -115,11 +99,27 @@ public class Pokemon implements Serializable {
         this.altura = altura;
     }
 
-    public Set<Movimiento> getMovimientos() {
+    public List<Tipo> getTipos() {
+        return tipos;
+    }
+
+    public void setTipos(List<Tipo> tipos) {
+        this.tipos = tipos;
+    }
+
+    public List<Evolucion> getEvoluciones() {
+        return evoluciones;
+    }
+
+    public void setEvoluciones(List<Evolucion> evoluciones) {
+        this.evoluciones = evoluciones;
+    }
+
+    public List<Movimiento> getMovimientos() {
         return movimientos;
     }
 
-    public void setMovimientos(Set<Movimiento> movimientos) {
+    public void setMovimientos(List<Movimiento> movimientos) {
         this.movimientos = movimientos;
     }
 }

@@ -4,6 +4,7 @@
     -fx-background-repeat: stretch;
     -fx-background-position: left top;
 }
+
 .screen {
     -fx-background-color: transparent;
 }
@@ -13,9 +14,11 @@
     -fx-hbar-policy: never;
     -fx-vbar-policy: never;
 }
+
 .scroll-pane.content {
     -fx-content-display: 30px;
 }
+
 .scroll-pane .viewport {
     -fx-background-color: transparent;
 }
@@ -47,6 +50,7 @@
 .closeButton:hover {
     -fx-text-fill: #400000;
 }
+
 .closeButton:pressed {
     -fx-text-fill: #400000;
     -fx-translate-y: 2px;
@@ -86,26 +90,32 @@
     -fx-background-color: green;
     -fx-padding: 15px;
 }
+
 .text-area .scroll-bar:vertical:disabled {
     -fx-opacity: 0;
 }
+
 .red-button {
     -fx-background-radius: 100%;
     -fx-background-color: red;
 }
-.red-button:pressed{
+
+.red-button:pressed {
     -fx-background-color: #bf0000;
     -fx-translate-y: 2px;
 }
+
 .blue-button {
     -fx-background-radius: 100%;
     -fx-background-color: blue;
 }
-.blue-button:pressed{
+
+.blue-button:pressed {
     -fx-background-color: darkblue;
     -fx-translate-y: 2px;
 }
-.v-cruceta{
+
+.v-cruceta {
     -fx-background-image: url("../image/pokedex/v-gamepad.png");
     -fx-background-size: stretch;
     -fx-border-color: transparent;
@@ -113,11 +123,13 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
+
 .v-cruceta:pressed {
     -fx-background-image: url("../image/pokedex/v-gamepad-pressed.png");
     -fx-translate-y: 3;
 }
-.h-cruceta{
+
+.h-cruceta {
     -fx-background-image: url("../image/pokedex/h-gamepad.png");
     -fx-background-size: stretch;
     -fx-border-color: transparent;
@@ -125,10 +137,12 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
+
 .h-cruceta:pressed {
     -fx-background-image: url("../image/pokedex/h-gamepad-pressed.png");
     -fx-translate-y: 3;
 }
+
 .search-button {
     -fx-background-image: url("../image/pokedex/searchImg.png");
     -fx-background-size: stretch;
@@ -137,11 +151,13 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
 }
+
 .search-button:pressed {
     -fx-background-image: url("../image/pokedex/searchImg-pressed.png");
     -fx-translate-y: 3;
 }
-.search-bar{
+
+.search-bar {
     /*-fx-background-color: green;*/
     -fx-background-radius: 30px;
     -fx-font-family: Consolas;
@@ -149,8 +165,22 @@
     -fx-text-fill: #004d00;
     -fx-font-size: 15px;
 }
+
 .nombre-pokemon {
     -fx-font-family: Consolas;
     -fx-font-size: 18;
     -fx-font-weight: bold;
+}
+
+.screen-text {
+    -fx-font-family: Consolas;
+    -fx-font-size: 14;
+    -fx-font-weight: bolder;
+}
+
+.type-label {
+    -fx-background-radius: 10px;
+    -fx-border-color: black;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2.5px;
 }

@@ -1,7 +1,8 @@
 package dad.models.estructura;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +26,7 @@ import org.hibernate.search.annotations.IndexedEmbedded;
 @Entity
 @Indexed
 @Table(name = "TIPO")
-public class Tipo {
+public class Tipo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,11 +45,11 @@ public class Tipo {
 	@IndexedEmbedded
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "tipos")
-	private Set<Pokemon> pokemons = new HashSet<Pokemon>();
+	private List<Pokemon> pokemons = new ArrayList<Pokemon>();
 	
 	@OneToMany(mappedBy="tipoAtaque")
 	@Column(name="movimientos")
-	private Set<Movimiento> movimientos;
+	private List<Movimiento> movimientos;
 
 	public Tipo() {
 
@@ -82,4 +83,12 @@ public class Tipo {
 		this.eficacias = eficacias;
 	}
 
+	public List<Pokemon> getPokemons() {
+		return pokemons;
+	}
+
+	@Override
+	public String toString() {
+		return 	nombre;
+	}
 }

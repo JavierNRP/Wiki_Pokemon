@@ -1,6 +1,8 @@
 package dad.models.estructura;
 
-import java.util.HashSet;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -19,7 +21,7 @@ import org.hibernate.search.annotations.Indexed;
 @Entity
 @Indexed
 @Table(name = "EVOLUCION")
-public class Evolucion {
+public class Evolucion implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +30,7 @@ public class Evolucion {
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "evoluciones")
-	private Set<Pokemon> pokemons = new HashSet<Pokemon>();
+	private List<Pokemon> pokemons = new ArrayList<Pokemon>();
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "metodoEvolucion", nullable = false)
@@ -50,11 +52,11 @@ public class Evolucion {
 		this.id = id;
 	}
 
-	public Set<Pokemon> getPokemons() {
+	public List<Pokemon> getPokemons() {
 		return pokemons;
 	}
 
-	public void setPokemons(Set<Pokemon> pokemons) {
+	public void setPokemons(List<Pokemon> pokemons) {
 		this.pokemons = pokemons;
 	}
 

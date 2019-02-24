@@ -97,4 +97,8 @@ buildNumber.properties
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
 
-data/pokewikidb.lck
+data/
+dad.models.estructura.Evolucion/
+dad.models.estructura.Movimiento/
+dad.models.estructura.Pokemon/
+dad.models.estructura.Tipo/

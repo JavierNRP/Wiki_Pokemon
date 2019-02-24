@@ -2,10 +2,8 @@ package dad.models;
 
 import dad.PokeDexAPP;
 import dad.models.estructura.Pokemon;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.collections.FXCollections;
 import javafx.scene.image.Image;
 
 public class Model {
@@ -31,6 +29,8 @@ public class Model {
 		actual.setDescripcion(pkm.getDescripcion());
 		actual.setPeso(pkm.getPeso());
 		actual.setAltura(pkm.getAltura());
+		actual.setEvoluciones(pkm.getEvoluciones());
+		actual.setTipos(FXCollections.observableArrayList(pkm.getTipos()));
 		// todo agregar los otros atributos al campo
 
 		setFrame1(new Image(PokeDexAPP.class.getResource("/image/pokemon/" + actual.getId() + ".png").toString()));

@@ -4,13 +4,12 @@ import dad.models.estructura.Evolucion;
 import dad.models.estructura.Movimiento;
 import dad.models.estructura.Pokemon;
 import dad.models.estructura.Tipo;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PokemonProperty {
     private IntegerProperty id;
@@ -21,11 +20,11 @@ public class PokemonProperty {
     private StringProperty altura;
 
     //todo agregar movimientos y evoluciones a las properties
-    private Set<Tipo> tipos = new HashSet<>();
+    private ListProperty<Tipo> tipos;
 
-    private Set<Evolucion> evoluciones = new HashSet<>();
+    private List<Evolucion> evoluciones = new ArrayList<>();
 
-    private Set<Movimiento> movimientos = new HashSet<>();
+    private List<Movimiento> movimientos = new ArrayList<>();
 
 
     //Constructores
@@ -35,6 +34,7 @@ public class PokemonProperty {
         this.peso = new SimpleStringProperty(this, "PESO POKEMON");
         this.altura = new SimpleStringProperty(this, "ALTURA POKEMON");
         this.descripcion = new SimpleStringProperty(this, "DESCRIPCION POKEMON");
+        this.tipos = new SimpleListProperty<Tipo>(this, "TIPOS", FXCollections.observableArrayList());
         //todo agregar los demas atributos
     }
 
@@ -44,6 +44,8 @@ public class PokemonProperty {
         this.peso = new SimpleStringProperty(this, "PESO POKEMON", pkm.getPeso());
         this.altura = new SimpleStringProperty(this, "ALTURA POKEMON", pkm.getAltura());
         this.descripcion = new SimpleStringProperty(this, "DESCRIPCION POKEMON", pkm.getDescripcion());
+        this.tipos = new SimpleListProperty<Tipo>(this, "TIPOS", FXCollections.observableArrayList(pkm.getTipos()));
+        this.evoluciones = pkm.getEvoluciones();
         //todo agregar los demas atributos
     }
 
@@ -72,19 +74,23 @@ public class PokemonProperty {
         this.nombre.set(nombre);
     }
 
-    public Set<Tipo> getTipos() {
+    public ObservableList<Tipo> getTipos() {
+        return tipos.get();
+    }
+
+    public ListProperty<Tipo> tiposProperty() {
         return tipos;
     }
 
-    public void setTipos(Set<Tipo> tipos) {
-        this.tipos = tipos;
+    public void setTipos(ObservableList<Tipo> tipos) {
+        this.tipos.set(tipos);
     }
 
-    public Set<Evolucion> getEvoluciones() {
+    public List<Evolucion> getEvoluciones() {
         return evoluciones;
     }
 
-    public void setEvoluciones(Set<Evolucion> evoluciones) {
+    public void setEvoluciones(List<Evolucion> evoluciones) {
         this.evoluciones = evoluciones;
     }
 

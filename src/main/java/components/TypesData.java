@@ -1,11 +1,11 @@
 package components;
 public class TypesData {
 	static public String[] typeNames = {
-			"Normal  ", "Fight   ", "Flying  ", "Poison  ",
-			"Ground  ", "Rock    ", "Bug     ", "Ghost   ",
-			"Steel   ", "Fire    ", "Water   ", "Grass   ",
-			"Electric", "Psychic ", "Ice     ","Dragon  ",
-			"Dark    ","Fairy   "
+			"Normal", "Lucha", "Volador", "Veneno",
+			"Tierra", "Roca", "Bicho", "Fantasma",
+			"Acero", "Fuego", "agua", "Planta",
+			"Eléctrico", "Psíquico", "Hielo","Dragón",
+			"Siniestro","Hada"
 	};
 	static public String[] typeColors = {
 			"-fx-background-color: #A8A878; ",
