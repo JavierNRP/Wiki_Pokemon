@@ -17,7 +17,7 @@ public class Search {
 	Session sesion;
 	FullTextSession fullTextSesion;
 
-	public Search() throws Exception {
+	public Search() throws Exception{
 		hibernateUtil = new HibernateUtil();
 		sesion = hibernateUtil.getSession();
 		fullTextSesion = org.hibernate.search.Search.getFullTextSession(sesion);

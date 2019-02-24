@@ -2,6 +2,7 @@ package dad;
 
 import dad.models.Model;
 import dad.models.estructura.Pokemon;
+import dad.models.searches.Search;
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
@@ -23,6 +24,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.controlsfx.control.textfield.TextFields;
 
 public class Controller implements Initializable {
 
@@ -102,6 +105,18 @@ public class Controller implements Initializable {
         //Bindeos
         pokeNumText.textProperty().bind(m.getActual().idProperty().asString());
         nameLabel.textProperty().bind(m.getActual().nombreProperty());
+        m.busquedaProperty().bind(searchBar.textProperty());
+        m.busquedaProperty().addListener((ob,ov,nv)->{
+        	Search search;
+			try {
+				search = new Search();
+				TextFields.bindAutoCompletion(searchBar, search.getResultadosBusquedaPokemon(nv));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+        	
+        });
+        
 
         greenConsole.setText("fasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdf");
     }
