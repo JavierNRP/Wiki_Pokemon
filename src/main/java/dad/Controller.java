@@ -1,6 +1,7 @@
 package dad;
 
 import dad.models.Model;
+import dad.models.conf.HibernateUtil;
 import dad.models.estructura.Pokemon;
 import dad.models.searches.Search;
 import javafx.animation.KeyFrame;
@@ -22,6 +23,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import org.controlsfx.control.textfield.TextFields;
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +40,7 @@ public class Controller implements Initializable {
     private ImageView img2;
     private Group animation;
     private Boolean details = false;
+    private static Session session;
 
     @FXML
     private Label pokeNumText;
@@ -68,6 +73,15 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         EventHandler<KeyEvent> filter = event -> onKeyEventFilter(event);
         view.addEventFilter(KeyEvent.ANY, filter);
+
+        //Obtener la sesion de la base de datos;
+        try {
+            session = new HibernateUtil().getSession();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         Pokemon pkm = new Pokemon(1, "Bulbasour");
         m.setActual(pkm);
 

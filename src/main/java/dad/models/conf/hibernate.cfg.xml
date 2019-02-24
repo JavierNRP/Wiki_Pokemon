@@ -4,7 +4,7 @@
 	<session-factory>
 		<!-- Database connection settings-->
 		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-		<property name="connection.url">jdbc:hsqldb:data/pokewikidb</property>
+		<property name="connection.url">jdbc:hsqldb:file:data/pokewikidb;shutdown=true;hsqldb.write_delay=false</property>
 		<property name="connection.username">sa</property>
 		<property name="connection.password"></property>
 		<!-- JDBC connection pool (use the built-in)-->
@@ -21,7 +21,7 @@
 		<property name="show_sql">true</property>
 		<property name="hibernate.search.default.directory_provider"/>
 		<property name="hibernate.search.default.indexBase" />
-		<property name="hbm2ddl.auto">create-drop</property>
+		<property name="hbm2ddl.auto">update</property>
 		<!-- Mapping files-->
 		<mapping class="dad.models.estructura.Pokemon"/>
 		<mapping class="dad.models.estructura.Tipo"/>

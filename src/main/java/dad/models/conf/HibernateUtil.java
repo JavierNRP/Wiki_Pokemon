@@ -20,7 +20,7 @@ public class HibernateUtil {
 		Class.forName("org.hsqldb.jdbcDriver");
 		System.out.println("Driver cargado.");
 
-		String url = "jdbc:hsqldb:data/pokewikidb";
+		String url = "jdbc:hsqldb:file:data/pokewikidb;shutdown=true;hsqldb.write_delay=false";
 		conn = DriverManager.getConnection(url, "sa", "");
 		System.out.println("Conexión establecida.");
 	}

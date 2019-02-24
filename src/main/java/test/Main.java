@@ -325,11 +325,12 @@ public class Main {
 		session.save(bulbasaurPokemon);
 		session.save(ivysaurPokemon);
 		session.save(venesaurPokemon);
-		
+
+		session.flush();
 		session.getTransaction().commit();
 		session.close();
 		hibernateUtil.getSession().close();
-
+		org.hsqldb.DatabaseManager.closeDatabases(0);
 		// System.out.println(survey.getId());
 
 //		session.save(survey);
