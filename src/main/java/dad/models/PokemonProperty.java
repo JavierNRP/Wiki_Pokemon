@@ -1,6 +1,7 @@
 package dad.models;
 
 import dad.models.estructura.Evolucion;
+import dad.models.estructura.Movimiento;
 import dad.models.estructura.Pokemon;
 import dad.models.estructura.Tipo;
 import javafx.beans.property.IntegerProperty;
@@ -24,7 +25,7 @@ public class PokemonProperty {
 
     private Set<Evolucion> evoluciones = new HashSet<>();
 
-    
+    private Set<Movimiento> movimientos = new HashSet<>();
 
 
     //Constructores
