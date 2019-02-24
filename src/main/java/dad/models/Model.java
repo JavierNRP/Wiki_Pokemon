@@ -28,6 +28,9 @@ public class Model {
 	public void setActual(Pokemon pkm) {
 		actual.setId(pkm.getId());
 		actual.setNombre(pkm.getNombre());
+		actual.setDescripcion(pkm.getDescripcion());
+		actual.setPeso(pkm.getPeso());
+		actual.setAltura(pkm.getAltura());
 		// todo agregar los otros atributos al campo
 
 		setFrame1(new Image(PokeDexAPP.class.getResource("/image/pokemon/" + actual.getId() + ".png").toString()));

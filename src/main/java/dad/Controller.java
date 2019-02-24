@@ -7,6 +7,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.beans.binding.Bindings;
 import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,12 +21,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import org.controlsfx.control.textfield.TextFields;
 
 public class Controller implements Initializable {
 
@@ -105,24 +105,28 @@ public class Controller implements Initializable {
         //Bindeos
         pokeNumText.textProperty().bind(m.getActual().idProperty().asString());
         nameLabel.textProperty().bind(m.getActual().nombreProperty());
-        m.busquedaProperty().bind(searchBar.textProperty());
-        m.busquedaProperty().addListener((ob,ov,nv)->{
-        	Search search;
-			try {
-				search = new Search();
-				TextFields.bindAutoCompletion(searchBar, search.getResultadosBusquedaPokemon(nv));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-        	
-        });
-        
+        greenConsole.textProperty().bind(Bindings.concat(
+                "PokÈmon: ", m.getActual().nombreProperty(),
+                "\nAltura: ", m.getActual().alturaProperty(),
+                "\nPeso: ", m.getActual().pesoProperty(),
+                "\nDescripciÛn: ", m.getActual().descripcionProperty())
+        );
+        m.busquedaProperty().bindBidirectional(searchBar.textProperty());
+        m.busquedaProperty().addListener((ob, ov, nv) -> {
+            Search search;
+            try {
+                search = new Search();
+                TextFields.bindAutoCompletion(searchBar, search.getResultadosBusquedaPokemon(nv));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        greenConsole.setText("fasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdf");
+        });
+
     }
 
     private void onKeyEventFilter(KeyEvent event) {
-        //Evento Tecla enter cuando no est√° seleccionado el buscador
+        //Evento Tecla enter cuando no est· seleccionado el buscador
         if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER && !searchBar.isFocused()) {
             redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
             event.consume();
@@ -207,7 +211,7 @@ public class Controller implements Initializable {
             move.setFromY(95);
             move.setToY(40);
 
-            //Cambio de tama√±o
+            //Cambio de tamaÒo
             scale.setByX(-1);
             scale.setByY(-1);
 
@@ -226,7 +230,7 @@ public class Controller implements Initializable {
             move.setFromY(40);
             move.setToY(95);
 
-            //Cambio de tama√±o
+            //Cambio de tamaÒo
             scale.setByX(1);
             scale.setByY(1);
 

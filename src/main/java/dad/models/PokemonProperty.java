@@ -16,26 +16,34 @@ public class PokemonProperty {
     private IntegerProperty id;
 
     private StringProperty nombre;
+    private StringProperty descripcion;
+    private StringProperty peso;
+    private StringProperty altura;
 
-    //todo agregar descripcion, peso y altura
     //todo agregar movimientos y evoluciones a las properties
-    private Set<Tipo> tipos = new HashSet<Tipo>();
+    private Set<Tipo> tipos = new HashSet<>();
 
-    private Set<Evolucion> evoluciones = new HashSet<Evolucion>();
+    private Set<Evolucion> evoluciones = new HashSet<>();
 
-    private Set<Pokemon_Movimiento> pokemons_movimientos = new HashSet<Pokemon_Movimiento>();
+    private Set<Pokemon_Movimiento> pokemons_movimientos = new HashSet<>();
 
 
     //Constructores
     public PokemonProperty() {
         this.id = new SimpleIntegerProperty(this, "NUMERO POKEDEX");
         this.nombre = new SimpleStringProperty(this, "NOMBRE POKEMON");
+        this.peso = new SimpleStringProperty(this, "PESO POKEMON");
+        this.altura = new SimpleStringProperty(this, "ALTURA POKEMON");
+        this.descripcion = new SimpleStringProperty(this, "DESCRIPCION POKEMON");
         //todo agregar los demas atributos
     }
 
     public PokemonProperty(Pokemon pkm) {
         this.id = new SimpleIntegerProperty(this, "NUMERO POKEDEX", pkm.getId());
         this.nombre = new SimpleStringProperty(this, "NOMBRE POKEMON", pkm.getNombre());
+        this.peso = new SimpleStringProperty(this, "PESO POKEMON", pkm.getPeso());
+        this.altura = new SimpleStringProperty(this, "ALTURA POKEMON", pkm.getAltura());
+        this.descripcion = new SimpleStringProperty(this, "DESCRIPCION POKEMON", pkm.getDescripcion());
         //todo agregar los demas atributos
     }
 
@@ -86,5 +94,41 @@ public class PokemonProperty {
 
     public void setPokemons_movimientos(Set<Pokemon_Movimiento> pokemons_movimientos) {
         this.pokemons_movimientos = pokemons_movimientos;
+    }
+
+    public String getDescripcion() {
+        return descripcion.get();
+    }
+
+    public StringProperty descripcionProperty() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion.set(descripcion);
+    }
+
+    public String getPeso() {
+        return peso.get();
+    }
+
+    public StringProperty pesoProperty() {
+        return peso;
+    }
+
+    public void setPeso(String peso) {
+        this.peso.set(peso);
+    }
+
+    public String getAltura() {
+        return altura.get();
+    }
+
+    public StringProperty alturaProperty() {
+        return altura;
+    }
+
+    public void setAltura(String altura) {
+        this.altura.set(altura);
     }
 }
