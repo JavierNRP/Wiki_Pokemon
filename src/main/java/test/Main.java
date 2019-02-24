@@ -462,6 +462,128 @@ public class Main {
 		session.save(weedlePokemon);
 		session.save(kakunaPokemon);
 		session.save(beedrillPokemon);
+
+//		Pidgey Pidgeotto Pidgeot
+
+		Pokemon pidgeyPokemon = new Pokemon();
+		pidgeyPokemon.setNombre("Pidgey");
+		pidgeyPokemon.getTipos().add(normalTipo);
+		pidgeyPokemon.getTipos().add(voladorTipo);
+
+		Pokemon pidgeottoPokemon = new Pokemon();
+		pidgeottoPokemon.setNombre("Pidgeotto");
+		pidgeottoPokemon.getTipos().add(normalTipo);
+		pidgeottoPokemon.getTipos().add(voladorTipo);
+
+		Pokemon pidgeotPokemon = new Pokemon();
+		pidgeotPokemon.setNombre("Pidgeot");
+		pidgeotPokemon.getTipos().add(normalTipo);
+		pidgeotPokemon.getTipos().add(voladorTipo);
+
+		Evolucion evolucionPidgeyPidgeotto = new Evolucion();
+		evolucionPidgeyPidgeotto.getPokemons().add(pidgeyPokemon);
+		evolucionPidgeyPidgeotto.getPokemons().add(pidgeottoPokemon);
+		evolucionPidgeyPidgeotto.setMetodo(MetodoEvolucion.NIVEL);
+
+		Evolucion evolucionPidgeottoPidgeot = new Evolucion();
+		evolucionPidgeottoPidgeot.getPokemons().add(pidgeottoPokemon);
+		evolucionPidgeottoPidgeot.getPokemons().add(pidgeotPokemon);
+		evolucionPidgeottoPidgeot.setMetodo(MetodoEvolucion.NIVEL);
+
+		pidgeyPokemon.getEvoluciones().add(evolucionPidgeyPidgeotto);
+		pidgeottoPokemon.getEvoluciones().add(evolucionPidgeottoPidgeot);
+		session.save(evolucionPidgeyPidgeotto);
+		session.save(evolucionPidgeottoPidgeot);
+
+		session.save(pidgeyPokemon);
+		session.save(pidgeottoPokemon);
+		session.save(pidgeotPokemon);
+
+//		Rattata Raticate
+
+		Pokemon rattataPokemon = new Pokemon();
+		rattataPokemon.setNombre("Rattata");
+		rattataPokemon.getTipos().add(normalTipo);
+
+		Pokemon raticatePokemon = new Pokemon();
+		raticatePokemon.setNombre("Raticate");
+		raticatePokemon.getTipos().add(normalTipo);
+
+		Evolucion evolucionRattataRaticate = new Evolucion();
+		evolucionRattataRaticate.getPokemons().add(rattataPokemon);
+		evolucionRattataRaticate.getPokemons().add(raticatePokemon);
+		evolucionRattataRaticate.setMetodo(MetodoEvolucion.NIVEL);
+
+		rattataPokemon.getEvoluciones().add(evolucionRattataRaticate);
+		session.save(evolucionRattataRaticate);
+
+		session.save(rattataPokemon);
+		session.save(raticatePokemon);
+
+//		Spearow Fearow
+
+		Pokemon spearowPokemon = new Pokemon();
+		spearowPokemon.setNombre("Spearow");
+		spearowPokemon.getTipos().add(normalTipo);
+		spearowPokemon.getTipos().add(voladorTipo);
+
+		Pokemon fearowPokemon = new Pokemon();
+		fearowPokemon.setNombre("Fearow");
+		fearowPokemon.getTipos().add(normalTipo);
+		fearowPokemon.getTipos().add(voladorTipo);
+
+		Evolucion evolucionSpearowFearow = new Evolucion();
+		evolucionSpearowFearow.getPokemons().add(spearowPokemon);
+		evolucionSpearowFearow.getPokemons().add(fearowPokemon);
+		evolucionSpearowFearow.setMetodo(MetodoEvolucion.NIVEL);
+
+		spearowPokemon.getEvoluciones().add(evolucionSpearowFearow);
+		session.save(evolucionSpearowFearow);
+
+		session.save(spearowPokemon);
+		session.save(fearowPokemon);
+
+//		Ekans Arbok
+
+		Pokemon ekansPokemon = new Pokemon();
+		ekansPokemon.setNombre("Ekans");
+		ekansPokemon.getTipos().add(venenoTipo);
+
+		Pokemon arbokPokemon = new Pokemon();
+		arbokPokemon.setNombre("Arbok");
+		arbokPokemon.getTipos().add(venenoTipo);
+
+		Evolucion evolucionEkansArbok = new Evolucion();
+		evolucionEkansArbok.getPokemons().add(ekansPokemon);
+		evolucionEkansArbok.getPokemons().add(arbokPokemon);
+		evolucionEkansArbok.setMetodo(MetodoEvolucion.NIVEL);
+
+		ekansPokemon.getEvoluciones().add(evolucionEkansArbok);
+		session.save(evolucionEkansArbok);
+
+		session.save(ekansPokemon);
+		session.save(arbokPokemon);
+
+//		Pikachu Raichu
+
+		Pokemon pikachuPokemon = new Pokemon();
+		pikachuPokemon.setNombre("Pikachu");
+		pikachuPokemon.getTipos().add(electricoTipo);
+
+		Pokemon raichuPokemon = new Pokemon();
+		raichuPokemon.setNombre("Raichu");
+		raichuPokemon.getTipos().add(electricoTipo);
+
+		Evolucion evolucionPikachuRaichu = new Evolucion();
+		evolucionPikachuRaichu.getPokemons().add(pikachuPokemon);
+		evolucionPikachuRaichu.getPokemons().add(raichuPokemon);
+		evolucionPikachuRaichu.setMetodo(MetodoEvolucion.NIVEL);
+
+		pikachuPokemon.getEvoluciones().add(evolucionPikachuRaichu);
+		session.save(evolucionPikachuRaichu);
+
+		session.save(pikachuPokemon);
+		session.save(raichuPokemon);
 		
 		session.flush();
 		session.getTransaction().commit();
