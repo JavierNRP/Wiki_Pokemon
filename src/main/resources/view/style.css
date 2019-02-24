@@ -4,13 +4,20 @@
     -fx-background-repeat: stretch;
     -fx-background-position: left top;
 }
-
 .screen {
-    /*-fx-border-radius: 20px;*/
-    /*-fx-border-width: 5px;*/
-    /*-fx-border-color: blue;*/
-    /*-fx-background-image: url("../../resources/pokemon/6.png");*/
-    /*-fx-background-size: 100% 100%;*/
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: never;
+}
+.scroll-pane.content {
+    -fx-content-display: 30px;
+}
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
 }
 
 .numscreen {
@@ -141,4 +148,9 @@
     -fx-font-weight: bold;
     -fx-text-fill: #004d00;
     -fx-font-size: 15px;
+}
+.nombre-pokemon {
+    -fx-font-family: Consolas;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
 }

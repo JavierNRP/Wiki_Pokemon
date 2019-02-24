@@ -3,7 +3,9 @@ package dad;
 import dad.models.Model;
 import dad.models.estructura.Pokemon;
 import javafx.animation.KeyFrame;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -26,10 +28,11 @@ public class Controller implements Initializable {
 
     public static final int TOTAL_POKEMON = 151;
     public static final int SCROLL_SPACE = 21;
-    int count = 0;
     private Model m = new Model();
     private ImageView img1;
     private ImageView img2;
+    private Group animation;
+    private Boolean details = false;
 
     @FXML
     private Label pokeNumText;
@@ -53,6 +56,10 @@ public class Controller implements Initializable {
     private ToggleButton upArrow;
     @FXML
     private ToggleButton downArrow;
+    @FXML
+    private Label nameLabel;
+    @FXML
+    public ScrollPane scrollScreen;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,11 +67,12 @@ public class Controller implements Initializable {
         view.addEventFilter(KeyEvent.ANY, filter);
         Pokemon pkm = new Pokemon(1, "Bulbasour");
         m.setActual(pkm);
-        System.out.println(m.getActual().getId());
+
+        //Ocultar los campos de detalles
+        nameLabel.setDisable(true);
+        nameLabel.setVisible(false);
 
         //Crear transicion con la animacion del pokemon
-
-
         img1 = new ImageView();
         img2 = new ImageView();
 
@@ -72,7 +80,7 @@ public class Controller implements Initializable {
         img1.imageProperty().bind(m.frame1Property());
         img2.imageProperty().bind(m.frame2Property());
 
-        Group animation = new Group(img1);
+        animation = new Group(img1);
         animation.setAutoSizeChildren(true);
         animation.setScaleX(3);
         animation.setScaleY(3);
@@ -87,12 +95,13 @@ public class Controller implements Initializable {
         tl.setAutoReverse(true);
         tl.play();
 
-
+        //Agregar los elementos a la pantalla de la pokedex
         screen.getChildren().add(animation);
+
 
         //Bindeos
         pokeNumText.textProperty().bind(m.getActual().idProperty().asString());
-
+        nameLabel.textProperty().bind(m.getActual().nombreProperty());
 
         greenConsole.setText("fasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdffasdfasd\nasdfasdfadfasd\nasdfasdfasdfa\nasdfasdfa\n\nasdfasdfasdfadfasd\nasdfasdfasdf");
     }
@@ -168,14 +177,57 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void onPrueba() {
-        System.out.println("ejecutado" + count++);
+    public void onDetailsButton() {
+        ScaleTransition scale = new ScaleTransition(Duration.millis(300), animation);
+        TranslateTransition move = new TranslateTransition(Duration.millis(300), animation);
+        move.setNode(animation);
+        if (!details) {
+            details = true;
+
+            //Transiciones
+
+            //Movimiento
+            move.setFromX(130);
+            move.setToX(48);
+            move.setFromY(95);
+            move.setToY(40);
+
+            //Cambio de tamaño
+            scale.setByX(-1);
+            scale.setByY(-1);
+
+            //Habilitar datos ocultos
+            nameLabel.setDisable(false);
+            nameLabel.setVisible(true);
+        } else {
+            details = false;
+
+            //Transiciones
+
+            //Movimiento
+            move.setToY(130);
+            move.setFromX(48);
+            move.setToX(130);
+            move.setFromY(40);
+            move.setToY(95);
+
+            //Cambio de tamaño
+            scale.setByX(1);
+            scale.setByY(1);
+
+            //Ocultar datos
+            nameLabel.setDisable(true);
+            nameLabel.setVisible(false);
+        }
+        move.play();
+        scale.play();
+
     }
 
     @FXML
     public void onNextPokemon() {
         //todo cargar el siguiente pokemon de la base de datos
-        if (m.getActual().getId() <= TOTAL_POKEMON) {
+        if (m.getActual().getId() < TOTAL_POKEMON) {
             Pokemon pkm = new Pokemon(m.getActual().getId() + 1, "prueba");
             m.setActual(pkm);
         }
@@ -194,17 +246,14 @@ public class Controller implements Initializable {
 
     @FXML
     public void onUpArrow() {
-        if (greenConsole.getScrollTop() > 0) {
-            if (greenConsole.getScrollTop() < SCROLL_SPACE) {
-                greenConsole.setScrollTop(0);
-            }
-            greenConsole.setScrollTop(greenConsole.getScrollTop() - SCROLL_SPACE);
-        }
+        greenConsole.setScrollTop(greenConsole.getScrollTop() - SCROLL_SPACE);
+        scrollScreen.setVvalue(scrollScreen.getVvalue() - 0.08);
     }
 
     @FXML
     public void onDownArrow() {
         greenConsole.setScrollTop(greenConsole.getScrollTop() + SCROLL_SPACE);
+        scrollScreen.setVvalue(scrollScreen.getVvalue() + 0.08);
     }
 
     @FXML

@@ -28,7 +28,6 @@ public class PokeDexAPP extends Application {
         primaryStage.setScene(sc);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
-
     }
 
     public static void main(String[] args) {
