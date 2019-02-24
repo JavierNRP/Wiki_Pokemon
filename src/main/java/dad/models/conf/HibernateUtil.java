@@ -13,7 +13,7 @@ public class HibernateUtil {
 	Connection conn;
 
 	public HibernateUtil() throws Exception {
-		SessionFactory sessionFactory = new Configuration().configure(new File("src/dad/Models/conf/hibernate.cfg.xml"))
+		SessionFactory sessionFactory = new Configuration().configure(new File("src/main/java/dad/models/conf/hibernate.cfg.xml"))
 				.buildSessionFactory();
 		session = sessionFactory.openSession();
 

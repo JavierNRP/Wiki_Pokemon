@@ -27,6 +27,5 @@
 		<mapping class="dad.models.estructura.Tipo"/>
 		<mapping class="dad.models.estructura.Evolucion"/>
 		<mapping class="dad.models.estructura.Movimiento"/>
-		<mapping class="dad.models.estructura.Pokemon_Movimiento"/>
 	</session-factory>
 </hibernate-configuration>

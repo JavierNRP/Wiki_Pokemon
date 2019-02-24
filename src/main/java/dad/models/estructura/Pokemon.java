@@ -23,8 +23,6 @@ public class Pokemon {
     @Field
     private String nombre;
 
-    //todo agregar columna descripcion, peso y altura;
-
     @IndexedEmbedded(depth = 1)
     @ManyToMany(mappedBy = "pokemons", cascade = CascadeType.ALL)
     @Size(min = 1, max = 2)
@@ -34,9 +32,9 @@ public class Pokemon {
     @Column(name = "evoluciones")
     private Set<Evolucion> evoluciones = new HashSet<Evolucion>();
 
-    @OneToMany(mappedBy = "pokemon_movimiento_id.pokemon")
-    @Column(name = "pokemons_movimientos")
-    private Set<Pokemon_Movimiento> pokemons_movimientos = new HashSet<Pokemon_Movimiento>();
+    @ManyToMany(mappedBy = "pokemons")
+    @Column(name = "movimientos")
+    private Set<Movimiento> movimientos = new HashSet<Movimiento>();
 
     public Pokemon() {
 

@@ -3,6 +3,7 @@ package dad.models.estructura;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,8 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -26,8 +27,8 @@ public class Movimiento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
+	@Column(name = "identificador")
+	private Integer identificador;
 
 	@Column(name = "nombre", nullable = false)
 	private String nombre;
@@ -39,9 +40,9 @@ public class Movimiento {
 	@JoinColumn(name = "id")
 	private Tipo tipoAtaque;
 
-	@OneToMany(mappedBy = "pokemon_movimiento_id.movimiento")
-	@Column(name = "movimientos_pokemons")
-	private Set<Pokemon_Movimiento> movimientos_pokemons = new HashSet<Pokemon_Movimiento>();
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "movimientos")
+	private Set<Pokemon> pokemons = new HashSet<Pokemon>();
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipoMovimiento", nullable = false)
@@ -67,11 +68,11 @@ public class Movimiento {
 	}
 
 	public Integer getId() {
-		return id;
+		return identificador;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.identificador = id;
 	}
 
 	public String getNombre() {
@@ -98,12 +99,12 @@ public class Movimiento {
 		this.tipoAtaque = tipoAtaque;
 	}
 
-	public Set<Pokemon_Movimiento> getMovimientos_pokemons() {
-		return movimientos_pokemons;
+	public Set<Pokemon> getPokemons() {
+		return pokemons;
 	}
 
-	public void setMovimientos_pokemons(Set<Pokemon_Movimiento> movimientos_pokemons) {
-		this.movimientos_pokemons = movimientos_pokemons;
+	public void setPokemons(Set<Pokemon> pokemons) {
+		this.pokemons = pokemons;
 	}
 
 	public MovimientoTipo getTipoMovimiento() {
