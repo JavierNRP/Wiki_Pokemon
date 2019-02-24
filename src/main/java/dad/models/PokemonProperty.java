@@ -2,7 +2,6 @@ package dad.models;
 
 import dad.models.estructura.Evolucion;
 import dad.models.estructura.Pokemon;
-import dad.models.estructura.Pokemon_Movimiento;
 import dad.models.estructura.Tipo;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
