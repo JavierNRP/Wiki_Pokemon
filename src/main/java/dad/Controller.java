@@ -162,6 +162,7 @@ public class Controller implements Initializable {
         //Derecha
         else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.RIGHT && !searchBar.isFocused()) {
             rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+            event.consume();
         } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.RIGHT && !searchBar.isFocused()) {
             rightArrow.fire();
             rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
@@ -171,6 +172,7 @@ public class Controller implements Initializable {
         //Izquierda
         else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.LEFT && !searchBar.isFocused()) {
             leftArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+            event.consume();
         } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.LEFT && !searchBar.isFocused()) {
             leftArrow.fire();
             leftArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
@@ -181,16 +183,20 @@ public class Controller implements Initializable {
         else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.UP) {
             upArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
             upArrow.fire();
+            event.consume();
         } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.UP) {
             upArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+            event.consume();
         }
 
         //Abajo
         else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.DOWN) {
             downArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
             downArrow.fire();
+            event.consume();
         } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.DOWN) {
             downArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+            event.consume();
         }
 
     }
