@@ -10,14 +10,14 @@ import dad.models.estructura.MetodoEvolucion;
 import dad.models.estructura.Pokemon;
 import dad.models.estructura.Tipo;
 
-public class Main {
+public class textoparapegarenmain {
 
 	public static void main(String[] args) throws Exception {
 		HibernateUtil hibernateUtil = new HibernateUtil();
 		// hibernateUtil.executeSQLCommand("create table survey (id int,name
 		// varchar);");
 		Session session = hibernateUtil.getSession();
-		
+
 		session.beginTransaction();
 		
 		Tipo normalTipo = new Tipo();
@@ -290,111 +290,9 @@ public class Main {
 		}
 		session.save(hadaTipo);
 		
-//		Bulbasaur Ivysaur Venusaur
+//		para pegar  |||
+//					VVV
 
-		Pokemon bulbasaurPokemon = new Pokemon();
-		bulbasaurPokemon.setNombre("Bulbasaur");
-		bulbasaurPokemon.getTipos().add(plantaTipo);
-		bulbasaurPokemon.getTipos().add(venenoTipo);
-
-		Pokemon ivysaurPokemon = new Pokemon();
-		ivysaurPokemon.setNombre("Ivysaur");
-		ivysaurPokemon.getTipos().add(plantaTipo);
-		ivysaurPokemon.getTipos().add(venenoTipo);
-
-		Pokemon venusaurPokemon = new Pokemon();
-		venusaurPokemon.setNombre("Venusaur");
-		venusaurPokemon.getTipos().add(plantaTipo);
-		venusaurPokemon.getTipos().add(venenoTipo);
-	
-		Evolucion evolucionBulbasaurIvysaur = new Evolucion();
-		evolucionBulbasaurIvysaur.getPokemons().add(bulbasaurPokemon);
-		evolucionBulbasaurIvysaur.getPokemons().add(ivysaurPokemon);
-		evolucionBulbasaurIvysaur.setMetodo(MetodoEvolucion.NIVEL);
-		
-		Evolucion evolucionIvysaurVenusaur = new Evolucion();
-		evolucionIvysaurVenusaur.getPokemons().add(ivysaurPokemon);
-		evolucionIvysaurVenusaur.getPokemons().add(venusaurPokemon);
-		evolucionIvysaurVenusaur.setMetodo(MetodoEvolucion.NIVEL);
-
-		bulbasaurPokemon.getEvoluciones().add(evolucionBulbasaurIvysaur);
-		ivysaurPokemon.getEvoluciones().add(evolucionIvysaurVenusaur);
-		session.save(evolucionBulbasaurIvysaur);
-		session.save(evolucionIvysaurVenusaur);
-
-		session.save(bulbasaurPokemon);
-		session.save(ivysaurPokemon);
-		session.save(venusaurPokemon);
-		
-//		Charmander Charmeleon Charizard
-		
-		Pokemon charmanderPokemon = new Pokemon();
-		charmanderPokemon.setNombre("Charmander");
-		charmanderPokemon.getTipos().add(fuegoTipo);
-
-		Pokemon charmeleonPokemon = new Pokemon();
-		charmeleonPokemon.setNombre("Charmeleon");
-		charmeleonPokemon.getTipos().add(fuegoTipo);
-
-		Pokemon charizardPokemon = new Pokemon();
-		charizardPokemon.setNombre("Charizard");
-		charizardPokemon.getTipos().add(fuegoTipo);
-		charizardPokemon.getTipos().add(voladorTipo);
-
-		Evolucion evolucionCharmanderCharmeleon = new Evolucion();
-		evolucionCharmanderCharmeleon.getPokemons().add(charmanderPokemon);
-		evolucionCharmanderCharmeleon.getPokemons().add(charmeleonPokemon);
-		evolucionCharmanderCharmeleon.setMetodo(MetodoEvolucion.NIVEL);
-		
-		Evolucion evolucionCharmeleonCharizad = new Evolucion();
-		evolucionCharmeleonCharizad.getPokemons().add(charmeleonPokemon);
-		evolucionCharmeleonCharizad.getPokemons().add(charizardPokemon);
-		evolucionCharmeleonCharizad.setMetodo(MetodoEvolucion.NIVEL);
-		
-		charmanderPokemon.getEvoluciones().add(evolucionCharmanderCharmeleon);
-		charmeleonPokemon.getEvoluciones().add(evolucionCharmeleonCharizad);
-		session.save(evolucionCharmanderCharmeleon);
-		session.save(evolucionCharmeleonCharizad);
-		
-		session.save(charmanderPokemon);
-		session.save(charmeleonPokemon);
-		session.save(charizardPokemon);
-
-//		Squirtle Wartortle Blastoise
-		
-		Pokemon squirtlePokemon = new Pokemon();
-		squirtlePokemon.setNombre("Squirtle");
-		squirtlePokemon.getTipos().add(aguaTipo);
-
-		Pokemon wartortlePokemon = new Pokemon();
-		wartortlePokemon.setNombre("Wartortle");
-		wartortlePokemon.getTipos().add(aguaTipo);
-
-		Pokemon blastoisePokemon = new Pokemon();
-		blastoisePokemon.setNombre("Blastoise");
-		blastoisePokemon.getTipos().add(aguaTipo);
-
-		Evolucion evolucionSquirtleWartortle = new Evolucion();
-		evolucionSquirtleWartortle.getPokemons().add(squirtlePokemon);
-		evolucionSquirtleWartortle.getPokemons().add(wartortlePokemon);
-		evolucionSquirtleWartortle.setMetodo(MetodoEvolucion.NIVEL);
-
-		Evolucion evolucionWartortleCharizad = new Evolucion();
-		evolucionWartortleCharizad.getPokemons().add(wartortlePokemon);
-		evolucionWartortleCharizad.getPokemons().add(blastoisePokemon);
-		evolucionWartortleCharizad.setMetodo(MetodoEvolucion.NIVEL);
-
-		squirtlePokemon.getEvoluciones().add(evolucionSquirtleWartortle);
-		wartortlePokemon.getEvoluciones().add(evolucionWartortleCharizad);
-		session.save(evolucionSquirtleWartortle);
-		session.save(evolucionWartortleCharizad);
-
-		session.save(squirtlePokemon);
-		session.save(wartortlePokemon);
-		session.save(blastoisePokemon);
-
-//		Caterpie Metapod Butterfree
-		
 		Pokemon caterpiePokemon = new Pokemon();
 		caterpiePokemon.setNombre("Caterpie");
 		caterpiePokemon.getTipos().add(bichoTipo);
@@ -413,72 +311,18 @@ public class Main {
 		evolucionCaterpieMetapod.getPokemons().add(metapodPokemon);
 		evolucionCaterpieMetapod.setMetodo(MetodoEvolucion.NIVEL);
 
-		Evolucion evolucionMetapodButterfree = new Evolucion();
-		evolucionMetapodButterfree.getPokemons().add(metapodPokemon);
-		evolucionMetapodButterfree.getPokemons().add(butterfreePokemon);
-		evolucionMetapodButterfree.setMetodo(MetodoEvolucion.NIVEL);
+		Evolucion evolucionMetapodCharizad = new Evolucion();
+		evolucionMetapodCharizad.getPokemons().add(metapodPokemon);
+		evolucionMetapodCharizad.getPokemons().add(butterfreePokemon);
+		evolucionMetapodCharizad.setMetodo(MetodoEvolucion.NIVEL);
 
 		caterpiePokemon.getEvoluciones().add(evolucionCaterpieMetapod);
-		metapodPokemon.getEvoluciones().add(evolucionMetapodButterfree);
+		metapodPokemon.getEvoluciones().add(evolucionMetapodCharizad);
 		session.save(evolucionCaterpieMetapod);
-		session.save(evolucionMetapodButterfree);
+		session.save(evolucionMetapodCharizad);
 
 		session.save(caterpiePokemon);
 		session.save(metapodPokemon);
 		session.save(butterfreePokemon);
-		
-//		Weedle Kakuna Beedrill
-		
-		Pokemon weedlePokemon = new Pokemon();
-		weedlePokemon.setNombre("Weedle");
-		weedlePokemon.getTipos().add(bichoTipo);
-		weedlePokemon.getTipos().add(venenoTipo);
-
-		Pokemon kakunaPokemon = new Pokemon();
-		kakunaPokemon.setNombre("Kakuna");
-		kakunaPokemon.getTipos().add(bichoTipo);
-		kakunaPokemon.getTipos().add(venenoTipo);
-
-		Pokemon beedrillPokemon = new Pokemon();
-		beedrillPokemon.setNombre("Beedrill");
-		beedrillPokemon.getTipos().add(bichoTipo);
-		beedrillPokemon.getTipos().add(venenoTipo);
-
-		Evolucion evolucionWeedleKakuna = new Evolucion();
-		evolucionWeedleKakuna.getPokemons().add(weedlePokemon);
-		evolucionWeedleKakuna.getPokemons().add(kakunaPokemon);
-		evolucionWeedleKakuna.setMetodo(MetodoEvolucion.NIVEL);
-
-		Evolucion evolucionKakunaBeedrill = new Evolucion();
-		evolucionKakunaBeedrill.getPokemons().add(kakunaPokemon);
-		evolucionKakunaBeedrill.getPokemons().add(beedrillPokemon);
-		evolucionKakunaBeedrill.setMetodo(MetodoEvolucion.NIVEL);
-
-		weedlePokemon.getEvoluciones().add(evolucionWeedleKakuna);
-		kakunaPokemon.getEvoluciones().add(evolucionKakunaBeedrill);
-		session.save(evolucionWeedleKakuna);
-		session.save(evolucionKakunaBeedrill);
-
-		session.save(weedlePokemon);
-		session.save(kakunaPokemon);
-		session.save(beedrillPokemon);
-		
-		session.flush();
-		session.getTransaction().commit();
-		session.close();
-		hibernateUtil.getSession().close();
-		org.hsqldb.DatabaseManager.closeDatabases(0);
-		// System.out.println(survey.getId());
-
-//		session.save(survey);
-//		session.flush();
-//
-//		System.out.println(survey.getId());
-//		Survey surveyInSession = (Survey) session.get(Survey.class, survey.getId());
-//		System.out.println(surveyInSession.getName());
-
-		// hibernateUtil.checkData("select * from survey");
 	}
-
 }
-
