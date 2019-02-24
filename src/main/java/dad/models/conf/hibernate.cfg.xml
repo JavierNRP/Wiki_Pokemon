@@ -12,7 +12,7 @@
 		<!-- SQL dialect -->
 		<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
 		<!-- Enable Hibernate's current session context-->
-		<property name="current_session_context_class">org.hibernate.context.ManagedSessionContext</property>
+		<property name="current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
 		<property name="hibernate.cache.use_second_level_cache">false</property>
 		<property name="hibernate.cache.use_query_cache">false</property>
 		<!-- Disable the second-level cache -->
