@@ -19,13 +19,13 @@ public class Model {
     private ObjectProperty<Media> media;
     private StringProperty busqueda;
 
-    public Model() {
-        actual = new PokemonProperty();
-        frame1 = new SimpleObjectProperty<>(this, "FRAME 1");
-        frame2 = new SimpleObjectProperty<>(this, "FRAME 2");
-        busqueda = new SimpleStringProperty(this, "busqueda", "");
-        media = new SimpleObjectProperty<>(this, "POKEMON CRIE");
-    }
+	public Model() {
+		actual = new PokemonProperty();
+		frame1 = new SimpleObjectProperty<>(this, "FRAME 1");
+		frame2 = new SimpleObjectProperty<>(this, "FRAME 2");
+		media = new SimpleObjectProperty<>(this,"MEDIA");
+		busqueda = new SimpleStringProperty(this, "busqueda", "");
+	}
 
     public PokemonProperty getActual() {
         return actual;
@@ -44,8 +44,7 @@ public class Model {
         setFrame1(new Image(PokeDexAPP.class.getResource("/image/pokemon/" + actual.getId() + ".png").toString()));
         setFrame2(new Image(PokeDexAPP.class.getResource("/image/pokemon/frame2/" + actual.getId() + ".png").toString()));
 
-        setMedia(new Media(PokeDexAPP.class.getResource("/sounds/cries/" + actual.getId() + ".mp3").toString()));
-    }
+		setMedia(new Media(PokeDexAPP.class.getResource("/sounds/cries/" + actual.getId() + ".mp3").toString()));
 
     public Image getFrame1() {
         return frame1.get();

@@ -22,15 +22,15 @@ public class Search {
 
     public List<Pokemon> getResultadosBusquedaPokemon(String busqueda) {
         List<Pokemon> resultadosList = new ArrayList<>();
-        sesion.getTransaction().begin();
+        sesion.beginTransaction();
         QueryBuilder qb = fullTextSesion.getSearchFactory().buildQueryBuilder().forEntity(Pokemon.class).get();
-        Query luceneQuery = qb.keyword().wildcard().onField("nombre").matching(busqueda+"*").createQuery();
+		Query luceneQuery = qb.keyword().wildcard().onField("nombre").matching(busqueda + "*").createQuery();
         javax.persistence.Query query = fullTextSesion.createFullTextQuery(luceneQuery, Pokemon.class).setMaxResults(5);
         for (Object ob : query.getResultList()) {
             resultadosList.add((Pokemon) ob);
         }
         sesion.getTransaction().commit();
-        sesion.close();
+        
         return resultadosList;
     }
 
