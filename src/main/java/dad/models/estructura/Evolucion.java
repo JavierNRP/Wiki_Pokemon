@@ -68,4 +68,11 @@ public class Evolucion implements Serializable {
 		this.metodoEvolucion = metodo;
 	}
 
+
+
+
+	@Override
+	public String toString() {
+		return pokemons.toString();
+	}
 }

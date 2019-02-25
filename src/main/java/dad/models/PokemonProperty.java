@@ -35,6 +35,7 @@ public class PokemonProperty {
         this.altura = new SimpleStringProperty(this, "ALTURA POKEMON");
         this.descripcion = new SimpleStringProperty(this, "DESCRIPCION POKEMON");
         this.tipos = new SimpleListProperty<Tipo>(this, "TIPOS", FXCollections.observableArrayList());
+        this.evoluciones = new SimpleListProperty<Evolucion>(this,"EVOLUCIONES",FXCollections.observableArrayList());
         //todo agregar los demas atributos
     }
 
@@ -45,7 +46,7 @@ public class PokemonProperty {
         this.altura = new SimpleStringProperty(this, "ALTURA POKEMON", pkm.getAltura());
         this.descripcion = new SimpleStringProperty(this, "DESCRIPCION POKEMON", pkm.getDescripcion());
         this.tipos = new SimpleListProperty<Tipo>(this, "TIPOS", FXCollections.observableArrayList(pkm.getTipos()));
-        this.evoluciones = pkm.getEvoluciones();
+        this.evoluciones = new SimpleListProperty<Evolucion>(this,"EVOLUCIONES",FXCollections.observableArrayList(pkm.getEvoluciones()));
         //todo agregar los demas atributos
     }
 

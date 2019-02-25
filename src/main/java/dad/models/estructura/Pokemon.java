@@ -122,4 +122,9 @@ public class Pokemon implements Serializable {
     public void setMovimientos(List<Movimiento> movimientos) {
         this.movimientos = movimientos;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

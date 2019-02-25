@@ -20,7 +20,7 @@
 		<!-- Echo all executed SQL to stdout-->
 		<property name="show_sql">true</property>
 		<property name="hibernate.search.default.directory_provider"/>
-		<property name="hibernate.search.default.indexBase" />
+		<property name="hibernate.search.default.indexBase = data/index" />
 		<property name="hbm2ddl.auto">update</property>
 		<!-- Mapping files-->
 		<mapping class="dad.models.estructura.Pokemon"/>

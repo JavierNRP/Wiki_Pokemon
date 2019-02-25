@@ -333,6 +333,9 @@ public class Main {
 		session.save(ivysaurPokemon);
 		session.save(venusaurPokemon);
 
+		System.out.println(bulbasaurPokemon.getEvoluciones());
+		System.out.println(ivysaurPokemon.getEvoluciones());
+
 //		Charmander Charmeleon Charizard
 
 		Pokemon charmanderPokemon = new Pokemon();

@@ -31,6 +31,7 @@ public class Model {
 		actual.setAltura(pkm.getAltura());
 		actual.setEvoluciones(pkm.getEvoluciones());
 		actual.setTipos(FXCollections.observableArrayList(pkm.getTipos()));
+		actual.setEvoluciones(FXCollections.observableArrayList(pkm.getEvoluciones()));
 		// todo agregar los otros atributos al campo
 
 		setFrame1(new Image(PokeDexAPP.class.getResource("/image/pokemon/" + actual.getId() + ".png").toString()));

@@ -3,6 +3,7 @@ package dad;
 import components.TypesData;
 import dad.models.Model;
 import dad.models.conf.HibernateUtil;
+import dad.models.estructura.Evolucion;
 import dad.models.estructura.Pokemon;
 import dad.models.estructura.Tipo;
 import dad.models.searches.Search;
@@ -36,6 +37,7 @@ public class Controller implements Initializable {
 
     public static final int TOTAL_POKEMON = 151;
     public static final int SCROLL_SPACE = 21;
+    public static final int ELMENTOS_POR_DEFECTO_EVOLUTIONVIEW = 3;
     private Model m = new Model();
     private ImageView img1;
     private ImageView img2;
@@ -133,6 +135,7 @@ public class Controller implements Initializable {
         //Agregar los elementos a la pantalla de la pokedex
         screen.getChildren().add(animation);
         refreshTypes();
+        makeEvolutionChain();
 
         //Bindeos
         pokeNumText.textProperty().bind(m.getActual().idProperty().asString());
@@ -150,6 +153,7 @@ public class Controller implements Initializable {
             try {
                 search = new Search();
                 TextFields.bindAutoCompletion(searchBar, search.getResultadosBusquedaPokemon(nv));
+                System.out.println();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -254,7 +258,29 @@ public class Controller implements Initializable {
 
     private void makeEvolutionChain() {
         session.beginTransaction();
-        if (m.getActual().getEvoluciones().isEmpty()) {
+        session.getTransaction().commit();
+        if (m.getActual().getEvoluciones().size() > 1) {
+            if (m.getActual().getEvoluciones().size() > 2) {
+                //EVEE
+                for (Evolucion e : m.getActual().getEvoluciones()) {
+                    if (e.getPokemons().get(0).getId() != m.getActual().getId()) {
+                        //Es una preevolucion
+                    } else {
+                        //Es una evolucion
+                    }
+                }
+            } else {
+                // PREEVOLUCION Y EVOLUCION
+            }
+        } else if (m.getActual().getEvoluciones().get(0).getPokemons().get(0).getId() == m.getActual().getEvoluciones().get(0).getPokemons().get(0).getId()) {
+            //CON UNA EVOLUCION
+        } else if (m.getActual().getEvoluciones().get(0).getPokemons().get(0).getId() != m.getActual().getEvoluciones().get(0).getPokemons().get(0).getId()) {
+            //CON UNA PREEVOLUCION
+        } else {
+            //Si ha llegado aca y no se ha agregado ningun pokemon, no tiene evolucion
+            Label label = new Label("Sin Evoluciones");
+            label.getStyleClass().add("nombre-pokemon");
+            evolutionView.getChildren().add(2, label);
         }
     }
 
@@ -317,19 +343,19 @@ public class Controller implements Initializable {
             session.getTransaction().commit();
             m.setActual(pkm);
             refreshTypes();
+            makeEvolutionChain();
         }
     }
 
     @FXML
     public void onPreviusPokemon() {
         if (m.getActual().getId() > 1) {
-            if (m.getActual().getId() <= TOTAL_POKEMON) {
-                session.beginTransaction();
-                Pokemon pkm = session.get(Pokemon.class, m.getActual().getId() - 1);
-                session.getTransaction().commit();
-                m.setActual(pkm);
-                refreshTypes();
-            }
+            session.beginTransaction();
+            Pokemon pkm = session.get(Pokemon.class, m.getActual().getId() - 1);
+            session.getTransaction().commit();
+            m.setActual(pkm);
+            refreshTypes();
+            makeEvolutionChain();
         }
     }
 
@@ -359,4 +385,7 @@ public class Controller implements Initializable {
         return screen;
     }
 
+    public static Session getSession() {
+        return session;
+    }
 }
