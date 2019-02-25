@@ -29,7 +29,7 @@ public class Model {
 		actual.setDescripcion(pkm.getDescripcion());
 		actual.setPeso(pkm.getPeso());
 		actual.setAltura(pkm.getAltura());
-		actual.setEvoluciones(pkm.getEvoluciones());
+		actual.setEvoluciones(FXCollections.observableArrayList(pkm.getEvoluciones()));
 		actual.setTipos(FXCollections.observableArrayList(pkm.getTipos()));
 		actual.setEvoluciones(FXCollections.observableArrayList(pkm.getEvoluciones()));
 		// todo agregar los otros atributos al campo

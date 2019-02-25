@@ -45,9 +45,9 @@
                   <Separator layoutY="164.0" prefHeight="0.0" prefWidth="172.0" />
                   <HBox fx:id="evolutionView" alignment="CENTER" layoutY="164.0" prefHeight="136.0" prefWidth="325.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                        <VBox />
+                        <VBox />
+                        <VBox />
                      </children></HBox>
                </children>
                <styleClass>

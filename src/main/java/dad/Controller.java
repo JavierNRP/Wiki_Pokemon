@@ -153,7 +153,6 @@ public class Controller implements Initializable {
             try {
                 search = new Search();
                 TextFields.bindAutoCompletion(searchBar, search.getResultadosBusquedaPokemon(nv));
-                System.out.println();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -265,6 +264,7 @@ public class Controller implements Initializable {
                 for (Evolucion e : m.getActual().getEvoluciones()) {
                     if (e.getPokemons().get(0).getId() != m.getActual().getId()) {
                         //Es una preevolucion
+
                     } else {
                         //Es una evolucion
                     }
@@ -343,7 +343,7 @@ public class Controller implements Initializable {
             session.getTransaction().commit();
             m.setActual(pkm);
             refreshTypes();
-            makeEvolutionChain();
+//            makeEvolutionChain();
         }
     }
 
@@ -355,7 +355,7 @@ public class Controller implements Initializable {
             session.getTransaction().commit();
             m.setActual(pkm);
             refreshTypes();
-            makeEvolutionChain();
+//            makeEvolutionChain();
         }
     }
 
@@ -369,11 +369,6 @@ public class Controller implements Initializable {
     public void onDownArrow() {
         greenConsole.setScrollTop(greenConsole.getScrollTop() + SCROLL_SPACE);
         scrollScreen.setVvalue(scrollScreen.getVvalue() + 0.08);
-    }
-
-    @FXML
-    public void onCancelTextFocus() {
-        view.requestFocus();
     }
 
     //Getters & Setters

@@ -47,10 +47,6 @@ public class Tipo implements Serializable {
 	@JoinColumn(name = "tipos")
 	private List<Pokemon> pokemons = new ArrayList<Pokemon>();
 	
-	@OneToMany(mappedBy="tipoAtaque")
-	@Column(name="movimientos")
-	private List<Movimiento> movimientos;
-
 	public Tipo() {
 
 	}

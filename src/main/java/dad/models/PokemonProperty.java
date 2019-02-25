@@ -1,7 +1,6 @@
 package dad.models;
 
 import dad.models.estructura.Evolucion;
-import dad.models.estructura.Movimiento;
 import dad.models.estructura.Pokemon;
 import dad.models.estructura.Tipo;
 import javafx.beans.property.*;
@@ -18,13 +17,8 @@ public class PokemonProperty {
     private StringProperty descripcion;
     private StringProperty peso;
     private StringProperty altura;
-
-    //todo agregar movimientos y evoluciones a las properties
     private ListProperty<Tipo> tipos;
-
-    private List<Evolucion> evoluciones = new ArrayList<>();
-
-    private List<Movimiento> movimientos = new ArrayList<>();
+    private ListProperty<Evolucion> evoluciones;
 
 
     //Constructores
@@ -34,8 +28,8 @@ public class PokemonProperty {
         this.peso = new SimpleStringProperty(this, "PESO POKEMON");
         this.altura = new SimpleStringProperty(this, "ALTURA POKEMON");
         this.descripcion = new SimpleStringProperty(this, "DESCRIPCION POKEMON");
-        this.tipos = new SimpleListProperty<Tipo>(this, "TIPOS", FXCollections.observableArrayList());
-        this.evoluciones = new SimpleListProperty<Evolucion>(this,"EVOLUCIONES",FXCollections.observableArrayList());
+        this.tipos = new SimpleListProperty<>(this, "TIPOS", FXCollections.observableArrayList());
+        this.evoluciones = new SimpleListProperty<>(this, "EVOLUCIONES", FXCollections.observableArrayList());
         //todo agregar los demas atributos
     }
 
@@ -45,8 +39,8 @@ public class PokemonProperty {
         this.peso = new SimpleStringProperty(this, "PESO POKEMON", pkm.getPeso());
         this.altura = new SimpleStringProperty(this, "ALTURA POKEMON", pkm.getAltura());
         this.descripcion = new SimpleStringProperty(this, "DESCRIPCION POKEMON", pkm.getDescripcion());
-        this.tipos = new SimpleListProperty<Tipo>(this, "TIPOS", FXCollections.observableArrayList(pkm.getTipos()));
-        this.evoluciones = new SimpleListProperty<Evolucion>(this,"EVOLUCIONES",FXCollections.observableArrayList(pkm.getEvoluciones()));
+        this.tipos = new SimpleListProperty<>(this, "TIPOS", FXCollections.observableArrayList(pkm.getTipos()));
+        this.evoluciones = new SimpleListProperty<>(this, "EVOLUCIONES", FXCollections.observableArrayList(pkm.getEvoluciones()));
         //todo agregar los demas atributos
     }
 
@@ -87,12 +81,16 @@ public class PokemonProperty {
         this.tipos.set(tipos);
     }
 
-    public List<Evolucion> getEvoluciones() {
+    public ObservableList<Evolucion> getEvoluciones() {
+        return evoluciones.get();
+    }
+
+    public ListProperty<Evolucion> evolucionesProperty() {
         return evoluciones;
     }
 
-    public void setEvoluciones(List<Evolucion> evoluciones) {
-        this.evoluciones = evoluciones;
+    public void setEvoluciones(ObservableList<Evolucion> evoluciones) {
+        this.evoluciones.set(evoluciones);
     }
 
     public String getDescripcion() {
@@ -129,5 +127,17 @@ public class PokemonProperty {
 
     public void setAltura(String altura) {
         this.altura.set(altura);
+    }
+
+    public Pokemon toPokemon() {
+        Pokemon pkm = new Pokemon();
+        pkm.setNombre(this.getNombre());
+        pkm.setAltura(this.getAltura());
+        pkm.setDescripcion(this.getDescripcion());
+        pkm.setEvoluciones(this.getEvoluciones());
+        pkm.setId(this.getId());
+        pkm.setPeso(this.getPeso());
+        pkm.setTipos(this.getTipos());
+        return pkm;
     }
 }

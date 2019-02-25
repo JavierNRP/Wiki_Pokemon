@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "POKEMON")
@@ -41,10 +42,6 @@ public class Pokemon implements Serializable {
     @ManyToMany(mappedBy = "pokemons", cascade = CascadeType.ALL)
     @Column(name = "evoluciones")
     private List<Evolucion> evoluciones = new ArrayList<>();
-
-    @ManyToMany(mappedBy = "pokemons")
-    @Column(name = "movimientos")
-    private List<Movimiento> movimientos = new ArrayList<>();
 
     public Pokemon() {
 
@@ -115,12 +112,15 @@ public class Pokemon implements Serializable {
         this.evoluciones = evoluciones;
     }
 
-    public List<Movimiento> getMovimientos() {
-        return movimientos;
+    @Override
+    public boolean equals(Object o) {
+        Pokemon pkm = (Pokemon) o;
+        return this.id == pkm.getId();
     }
 
-    public void setMovimientos(List<Movimiento> movimientos) {
-        this.movimientos = movimientos;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override
