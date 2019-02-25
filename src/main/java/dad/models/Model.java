@@ -5,11 +5,13 @@ import dad.models.estructura.Pokemon;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
 
 public class Model {
 	private PokemonProperty actual;
 	private ObjectProperty<Image> frame1;
 	private ObjectProperty<Image> frame2;
+	private ObjectProperty<Media> media;
 	private StringProperty busqueda;
 
 	public Model() {
@@ -37,6 +39,9 @@ public class Model {
 		setFrame1(new Image(PokeDexAPP.class.getResource("/image/pokemon/" + actual.getId() + ".png").toString()));
 		setFrame2(
 				new Image(PokeDexAPP.class.getResource("/image/pokemon/frame2/" + actual.getId() + ".png").toString()));
+
+		setMedia(new Media(PokeDexAPP.class.getResource("/sounds/cries" + actual.getId() + ".mp3").toString()));
+
 	}
 
 	public Image getFrame1() {
@@ -73,6 +78,18 @@ public class Model {
 
 	public final void setBusqueda(final String busqueda) {
 		this.busquedaProperty().set(busqueda);
+	}
+
+	public final ObjectProperty<Media> mediaProperty() {
+		return this.media;
+	}
+
+	public final Media getMedia() {
+		return this.mediaProperty().get();
+	}
+
+	public final void setMedia(final Media media) {
+		this.mediaProperty().set(media);
 	}
 
 }
