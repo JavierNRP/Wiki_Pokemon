@@ -627,7 +627,7 @@ public class Main {
 //		NidoranF Nidorina Nidoqueen
 
 		Pokemon nidoranFPokemon = new Pokemon();
-		nidoranFPokemon.setNombre("Nidoran♀");
+		nidoranFPokemon.setNombre("NidoranH");
 		nidoranFPokemon.getTipos().add(venenoTipo);
 
 		Pokemon nidorinaPokemon = new Pokemon();

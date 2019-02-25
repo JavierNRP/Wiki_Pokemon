@@ -101,11 +101,11 @@ public class Controller implements Initializable {
         pokeNumText.textProperty().bind(model.getActual().idProperty().asString());
         nameLabel.textProperty().bind(model.getActual().nombreProperty());
         greenConsole.textProperty().bind(Bindings.concat(
-                "PokÈmon: ", model.getActual().nombreProperty(),
+                "Pok√©mon: ", model.getActual().nombreProperty(),
                 "\nTipo: ", model.getActual().tiposProperty(),
                 "\nAltura: ", model.getActual().alturaProperty(),
                 "\nPeso: ", model.getActual().pesoProperty(),
-                "\nDescripciÛn: ", model.getActual().descripcionProperty())
+                "\nDescripci√≥n: ", model.getActual().descripcionProperty())
         );
         model.busquedaProperty().bindBidirectional(searchBar.textProperty());
         model.busquedaProperty().addListener((ob, ov, nv) -> {
@@ -184,7 +184,7 @@ public class Controller implements Initializable {
     }
 
     private void onKeyEventFilter(KeyEvent event) {
-        //Evento Tecla enter cuando no est· seleccionado el buscador
+        //Evento Tecla enter cuando no est√° seleccionado el buscador
         if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER && !searchBar.isFocused()) {
             redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
             event.consume();
@@ -250,11 +250,15 @@ public class Controller implements Initializable {
             nameLabel.setVisible(false);
             typesGrid.setDisable(true);
             typesGrid.setVisible(false);
+            evolutionView.setDisable(true);
+            evolutionView.setVisible(false);
         } else {
             nameLabel.setDisable(false);
             nameLabel.setVisible(true);
             typesGrid.setDisable(false);
             typesGrid.setVisible(true);
+            evolutionView.setDisable(false);
+            evolutionView.setVisible(true);
         }
     }
 
@@ -285,6 +289,7 @@ public class Controller implements Initializable {
                     ImageView pkmImgView = new ImageView(pkmImg);
                     evos.getChildren().add(pkmImgView);
                 }
+                evolutionView.getChildren().add(evos);
             } else {
                 // UNA PREEVOLUCION Y UNA EVOLUCION
                 //Obtener la preevolucion y la evolucion
@@ -373,6 +378,10 @@ public class Controller implements Initializable {
         player.play();
     }
 
+    private ImageView makeEvolutionElementView (Pokemon pkm) {
+        return null;
+    }
+
     //Funciones FXML
 
     @FXML
@@ -394,7 +403,7 @@ public class Controller implements Initializable {
                 moveTransition.setFromY(95);
                 moveTransition.setToY(40);
 
-                //Cambio de tamaÒo
+                //Cambio de tama√±o
                 scaleTransition.setByX(-1);
                 scaleTransition.setByY(-1);
 
@@ -412,7 +421,7 @@ public class Controller implements Initializable {
                 moveTransition.setFromY(40);
                 moveTransition.setToY(95);
 
-                //Cambio de tamaÒo
+                //Cambio de tama√±o
                 scaleTransition.setByX(1);
                 scaleTransition.setByY(1);
 

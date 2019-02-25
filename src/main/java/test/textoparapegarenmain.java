@@ -201,7 +201,7 @@
 //		session.save(plantaTipo);
 //
 //		Tipo electricoTipo = new Tipo();
-//		electricoTipo.setNombre("Eléctrico");
+//		electricoTipo.setNombre("ElÃ©ctrico");
 //		for (int i = 0; i < TypesData.typeDamage[0].length; i++) {
 //			if (TypesData.typeDamage[12][i] == 1) {
 //				electricoTipo.getEficacias().add(Eficacia.NORMAL);
@@ -216,7 +216,7 @@
 //		session.save(electricoTipo);
 //
 //		Tipo psiquicoTipo = new Tipo();
-//		psiquicoTipo.setNombre("Psíquico");
+//		psiquicoTipo.setNombre("PsÃ­quico");
 //		for (int i = 0; i < TypesData.typeDamage[0].length; i++) {
 //			if (TypesData.typeDamage[13][i] == 1) {
 //				psiquicoTipo.getEficacias().add(Eficacia.NORMAL);
@@ -246,7 +246,7 @@
 //		session.save(hieloTipo);
 //
 //		Tipo dragonTipo = new Tipo();
-//		dragonTipo.setNombre("Dragón");
+//		dragonTipo.setNombre("DragÃ³n");
 //		for (int i = 0; i < TypesData.typeDamage[0].length; i++) {
 //			if (TypesData.typeDamage[15][i] == 1) {
 //				dragonTipo.getEficacias().add(Eficacia.NORMAL);

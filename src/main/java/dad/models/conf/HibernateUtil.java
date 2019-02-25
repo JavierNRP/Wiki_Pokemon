@@ -22,7 +22,7 @@ public class HibernateUtil {
 
 		String url = "jdbc:hsqldb:file:data/pokewikidb;shutdown=true;hsqldb.write_delay=false";
 		conn = DriverManager.getConnection(url, "sa", "");
-		System.out.println("Conexión establecida.");
+		System.out.println("ConexiÃ³n establecida.");
 	}
 
 	public Session getSession() {

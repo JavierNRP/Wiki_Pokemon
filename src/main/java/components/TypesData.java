@@ -3,8 +3,8 @@ public class TypesData {
 	static public String[] typeNames = {
 			"Normal", "Lucha", "Volador", "Veneno",
 			"Tierra", "Roca", "Bicho", "Fantasma",
-			"Acero", "Fuego", "agua", "Planta",
-			"Eléctrico", "Psíquico", "Hielo","Dragón",
+			"Acero", "Fuego", "Agua", "Planta",
+			"ElÃ©ctrico", "PsÃ­quico", "Hielo","DragÃ³n",
 			"Siniestro","Hada"
 	};
 	static public String[] typeColors = {
