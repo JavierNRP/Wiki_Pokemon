@@ -1763,6 +1763,13 @@ public class Main {
 		evolucionEeveeFlareon.getPokemons().add(flareonPokemon);
 		evolucionEeveeFlareon.setMetodo(MetodoEvolucion.PIEDRA);
 
+		eeveePokemon.getEvoluciones().add(evolucionEeveeVaporeon);
+		session.save(evolucionEeveeVaporeon);
+		eeveePokemon.getEvoluciones().add(evolucionEeveeJolteon);
+		session.save(evolucionEeveeJolteon);
+		eeveePokemon.getEvoluciones().add(evolucionEeveeFlareon);
+		session.save(evolucionEeveeFlareon);
+		
 		session.save(eeveePokemon);
 		session.save(vaporeonPokemon);
 		session.save(jolteonPokemon);
