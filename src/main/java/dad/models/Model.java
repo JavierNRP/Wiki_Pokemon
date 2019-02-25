@@ -6,6 +6,10 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.scene.image.Image;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 public class Model {
 	private PokemonProperty actual;
 	private ObjectProperty<Image> frame1;

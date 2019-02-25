@@ -61,7 +61,7 @@
          <children>
             <Label fx:id="pokeNumText" alignment="CENTER" layoutX="23.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="75.0" styleClass="numPokedex" text="???" />
          </children></AnchorPane>
-      <Button layoutX="920.0" layoutY="121.0" mnemonicParsing="false" onAction="#onCloseButton" styleClass="closeButton" text="X" />
+      <Button layoutX="920.0" layoutY="121.0" mnemonicParsing="false" onAction="#onCloseButtonAction" styleClass="closeButton" text="X" />
       <TextArea fx:id="greenConsole" editable="false" layoutX="556.0" layoutY="200.0" prefHeight="236.0" prefWidth="385.0" styleClass="green-console" wrapText="true">
          <opaqueInsets>
             <Insets />
@@ -78,27 +78,27 @@
          <effect>
             <InnerShadow />
          </effect></Button>
-      <Button fx:id="redButton" layoutX="103.0" layoutY="500.0" mnemonicParsing="false" onAction="#onDetailsButton" prefHeight="35.0" prefWidth="35.0" styleClass="red-button">
+      <Button fx:id="redButton" layoutX="103.0" layoutY="500.0" mnemonicParsing="false" onAction="#onDetailsButtonAction" prefHeight="35.0" prefWidth="35.0" styleClass="red-button">
          <effect>
             <InnerShadow />
          </effect>
       </Button>
-      <ToggleButton fx:id="upArrow" layoutX="598.0" layoutY="451.0" mnemonicParsing="false" onAction="#onUpArrow" prefHeight="50.0" prefWidth="25.0" rotate="180.0" styleClass="v-cruceta">
+      <ToggleButton fx:id="upArrow" layoutX="598.0" layoutY="451.0" mnemonicParsing="false" onAction="#onUpArrowAction" prefHeight="50.0" prefWidth="25.0" rotate="180.0" styleClass="v-cruceta">
          <effect>
             <InnerShadow />
          </effect>
       </ToggleButton>
-      <ToggleButton fx:id="leftArrow" layoutX="558.0" layoutY="493.0" mnemonicParsing="false" onAction="#onPreviusPokemon" prefHeight="25.0" prefWidth="50.0" rotate="180.0" styleClass="h-cruceta">
+      <ToggleButton fx:id="leftArrow" layoutX="558.0" layoutY="493.0" mnemonicParsing="false" onAction="#onPreviousPokemonAction" prefHeight="25.0" prefWidth="50.0" rotate="180.0" styleClass="h-cruceta">
          <effect>
             <InnerShadow />
          </effect>
       </ToggleButton>
-      <ToggleButton fx:id="rightArrow" layoutX="613.0" layoutY="494.0" mnemonicParsing="false" onAction="#onNextPokemon" prefHeight="25.0" prefWidth="50.0" styleClass="h-cruceta">
+      <ToggleButton fx:id="rightArrow" layoutX="613.0" layoutY="494.0" mnemonicParsing="false" onAction="#onNextPokemonAction" prefHeight="25.0" prefWidth="50.0" styleClass="h-cruceta">
          <effect>
             <InnerShadow />
          </effect>
       </ToggleButton>
-      <ToggleButton fx:id="downArrow" layoutX="598.0" layoutY="510.0" mnemonicParsing="false" onAction="#onDownArrow" prefHeight="50.0" prefWidth="25.0" styleClass="v-cruceta">
+      <ToggleButton fx:id="downArrow" layoutX="598.0" layoutY="510.0" mnemonicParsing="false" onAction="#onDownArrowAction" prefHeight="50.0" prefWidth="25.0" styleClass="v-cruceta">
          <effect>
             <InnerShadow />
          </effect>

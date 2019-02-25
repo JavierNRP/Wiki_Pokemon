@@ -34,8 +34,8 @@ public class Pokemon implements Serializable {
     @Column(name = "altura")
     private String altura;
 
-    @IndexedEmbedded(depth = 1)
-    @ManyToMany(mappedBy = "pokemons", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pokemons")
     @Size(min = 1, max = 2)
     private List<Tipo> tipos = new ArrayList<>();
 

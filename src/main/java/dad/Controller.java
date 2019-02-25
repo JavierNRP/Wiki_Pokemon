@@ -38,7 +38,7 @@ public class Controller implements Initializable {
     public static final int TOTAL_POKEMON = 151;
     public static final int SCROLL_SPACE = 21;
     public static final int ELMENTOS_POR_DEFECTO_EVOLUTIONVIEW = 3;
-    private Model m = new Model();
+    private Model model = new Model();
     private ImageView img1;
     private ImageView img2;
     private Group animation;
@@ -103,7 +103,7 @@ public class Controller implements Initializable {
         //Cargar primer pokemon de la base de datos
         session.beginTransaction();
         Pokemon pkm = session.get(Pokemon.class, 1);
-        m.setActual(pkm);
+        model.setActual(pkm);
         session.getTransaction().commit();
 
         //Ocultar los campos de detalles
@@ -114,8 +114,8 @@ public class Controller implements Initializable {
         img2 = new ImageView();
 
         //Bindear las imagesproperty
-        img1.imageProperty().bind(m.frame1Property());
-        img2.imageProperty().bind(m.frame2Property());
+        img1.imageProperty().bind(model.frame1Property());
+        img2.imageProperty().bind(model.frame2Property());
 
         animation = new Group(img1);
         animation.setAutoSizeChildren(true);
@@ -138,17 +138,17 @@ public class Controller implements Initializable {
         makeEvolutionChain();
 
         //Bindeos
-        pokeNumText.textProperty().bind(m.getActual().idProperty().asString());
-        nameLabel.textProperty().bind(m.getActual().nombreProperty());
+        pokeNumText.textProperty().bind(model.getActual().idProperty().asString());
+        nameLabel.textProperty().bind(model.getActual().nombreProperty());
         greenConsole.textProperty().bind(Bindings.concat(
-                "Pokémon: ", m.getActual().nombreProperty(),
-                "\nTipo: ", m.getActual().tiposProperty(),
-                "\nAltura: ", m.getActual().alturaProperty(),
-                "\nPeso: ", m.getActual().pesoProperty(),
-                "\nDescripción: ", m.getActual().descripcionProperty())
+                "Pokémon: ", model.getActual().nombreProperty(),
+                "\nTipo: ", model.getActual().tiposProperty(),
+                "\nAltura: ", model.getActual().alturaProperty(),
+                "\nPeso: ", model.getActual().pesoProperty(),
+                "\nDescripción: ", model.getActual().descripcionProperty())
         );
-        m.busquedaProperty().bindBidirectional(searchBar.textProperty());
-        m.busquedaProperty().addListener((ob, ov, nv) -> {
+        model.busquedaProperty().bindBidirectional(searchBar.textProperty());
+        model.busquedaProperty().addListener((ob, ov, nv) -> {
             Search search;
             try {
                 search = new Search();
@@ -163,7 +163,7 @@ public class Controller implements Initializable {
 
     private void refreshTypes() {
         typesBox.getChildren().clear();
-        for (Tipo t : m.getActual().getTipos()) {
+        for (Tipo t : model.getActual().getTipos()) {
             typesBox.getChildren().add(makeTypeLabel(t.getId()));
         }
     }
@@ -256,15 +256,18 @@ public class Controller implements Initializable {
     }
 
     private void makeEvolutionChain() {
-        session.beginTransaction();
-        session.getTransaction().commit();
-        if (m.getActual().getEvoluciones().size() > 1) {
-            if (m.getActual().getEvoluciones().size() > 2) {
-                //EVEE
-                for (Evolucion e : m.getActual().getEvoluciones()) {
-                    if (e.getPokemons().get(0).getId() != m.getActual().getId()) {
+        if (model.getActual().getEvoluciones().size() > 1) {
+            if (model.getActual().getEvoluciones().size() > 2) {
+                //CASO EVEE
+                for (Evolucion e : model.getActual().getEvoluciones()) {
+                    if (e.getPokemons().get(0).getId() != model.getActual().getId()) {
                         //Es una preevolucion
+                        session.beginTransaction();
+                        Pokemon prevPkm = session.get(Pokemon.class, e.getPokemons().get(0).getId());
+                        session.getTransaction().commit();
+                        if (prevPkm.getEvoluciones().size() > 1) {
 
+                        }
                     } else {
                         //Es una evolucion
                     }
@@ -272,9 +275,9 @@ public class Controller implements Initializable {
             } else {
                 // PREEVOLUCION Y EVOLUCION
             }
-        } else if (m.getActual().getEvoluciones().get(0).getPokemons().get(0).getId() == m.getActual().getEvoluciones().get(0).getPokemons().get(0).getId()) {
+        } else if (model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId() == model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId()) {
             //CON UNA EVOLUCION
-        } else if (m.getActual().getEvoluciones().get(0).getPokemons().get(0).getId() != m.getActual().getEvoluciones().get(0).getPokemons().get(0).getId()) {
+        } else if (model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId() != model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId()) {
             //CON UNA PREEVOLUCION
         } else {
             //Si ha llegado aca y no se ha agregado ningun pokemon, no tiene evolucion
@@ -286,12 +289,12 @@ public class Controller implements Initializable {
 
     //Funciones FXML
     @FXML
-    public void onCloseButton() {
+    public void onCloseButtonAction() {
         System.exit(0);
     }
 
     @FXML
-    public void onDetailsButton() {
+    public void onDetailsButtonAction() {
         ScaleTransition scale = new ScaleTransition(Duration.millis(300), animation);
         TranslateTransition move = new TranslateTransition(Duration.millis(300), animation);
         move.setNode(animation);
@@ -336,37 +339,37 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void onNextPokemon() {
-        if (m.getActual().getId() < TOTAL_POKEMON) {
+    public void onNextPokemonAction() {
+        if (model.getActual().getId() < TOTAL_POKEMON) {
             session.beginTransaction();
-            Pokemon pkm = session.get(Pokemon.class, m.getActual().getId() + 1);
+            Pokemon pkm = session.get(Pokemon.class, model.getActual().getId() + 1);
             session.getTransaction().commit();
-            m.setActual(pkm);
+            model.setActual(pkm);
             refreshTypes();
-//            makeEvolutionChain();
+            makeEvolutionChain();
         }
     }
 
     @FXML
-    public void onPreviusPokemon() {
-        if (m.getActual().getId() > 1) {
+    public void onPreviousPokemonAction() {
+        if (model.getActual().getId() > 1) {
             session.beginTransaction();
-            Pokemon pkm = session.get(Pokemon.class, m.getActual().getId() - 1);
+            Pokemon pkm = session.get(Pokemon.class, model.getActual().getId() - 1);
             session.getTransaction().commit();
-            m.setActual(pkm);
+            model.setActual(pkm);
             refreshTypes();
-//            makeEvolutionChain();
+            makeEvolutionChain();
         }
     }
 
     @FXML
-    public void onUpArrow() {
+    public void onUpArrowAction() {
         greenConsole.setScrollTop(greenConsole.getScrollTop() - SCROLL_SPACE);
         scrollScreen.setVvalue(scrollScreen.getVvalue() - 0.08);
     }
 
     @FXML
-    public void onDownArrow() {
+    public void onDownArrowAction() {
         greenConsole.setScrollTop(greenConsole.getScrollTop() + SCROLL_SPACE);
         scrollScreen.setVvalue(scrollScreen.getVvalue() + 0.08);
     }

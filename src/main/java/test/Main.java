@@ -297,22 +297,22 @@ public class Main {
 		bulbasaurPokemon.setNombre("Bulbasaur");
 		bulbasaurPokemon.getTipos().add(plantaTipo);
 		bulbasaurPokemon.getTipos().add(venenoTipo);
-		plantaTipo.getPokemons().add(bulbasaurPokemon);
-		venenoTipo.getPokemons().add(bulbasaurPokemon);
+//		plantaTipo.getPokemons().add(bulbasaurPokemon);
+//		venenoTipo.getPokemons().add(bulbasaurPokemon);
 
 		Pokemon ivysaurPokemon = new Pokemon();
 		ivysaurPokemon.setNombre("Ivysaur");
 		ivysaurPokemon.getTipos().add(plantaTipo);
 		ivysaurPokemon.getTipos().add(venenoTipo);
-		plantaTipo.getPokemons().add(ivysaurPokemon);
-		venenoTipo.getPokemons().add(ivysaurPokemon);
+//		plantaTipo.getPokemons().add(ivysaurPokemon);
+//		venenoTipo.getPokemons().add(ivysaurPokemon);
 
 		Pokemon venusaurPokemon = new Pokemon();
 		venusaurPokemon.setNombre("Venusaur");
 		venusaurPokemon.getTipos().add(plantaTipo);
 		venusaurPokemon.getTipos().add(venenoTipo);
-		plantaTipo.getPokemons().add(venusaurPokemon);
-		venenoTipo.getPokemons().add(venusaurPokemon);
+//		plantaTipo.getPokemons().add(venusaurPokemon);
+//		venenoTipo.getPokemons().add(venusaurPokemon);
 
 		Evolucion evolucionBulbasaurIvysaur = new Evolucion();
 		evolucionBulbasaurIvysaur.getPokemons().add(bulbasaurPokemon);
@@ -359,23 +359,23 @@ public class Main {
 		evolucionCharmanderCharmeleon.getPokemons().add(charmanderPokemon);
 		evolucionCharmanderCharmeleon.getPokemons().add(charmeleonPokemon);
 		evolucionCharmanderCharmeleon.setMetodo(MetodoEvolucion.NIVEL);
-		
-		Evolucion evolucionCharmeleonCharizad = new Evolucion();
-		evolucionCharmeleonCharizad.getPokemons().add(charmeleonPokemon);
-		evolucionCharmeleonCharizad.getPokemons().add(charizardPokemon);
-		evolucionCharmeleonCharizad.setMetodo(MetodoEvolucion.NIVEL);
-		
+
+		Evolucion evolucionCharmeleonCharizard = new Evolucion();
+		evolucionCharmeleonCharizard.getPokemons().add(charmeleonPokemon);
+		evolucionCharmeleonCharizard.getPokemons().add(charizardPokemon);
+		evolucionCharmeleonCharizard.setMetodo(MetodoEvolucion.NIVEL);
+
 		charmanderPokemon.getEvoluciones().add(evolucionCharmanderCharmeleon);
-		charmeleonPokemon.getEvoluciones().add(evolucionCharmeleonCharizad);
+		charmeleonPokemon.getEvoluciones().add(evolucionCharmeleonCharizard);
 		session.save(evolucionCharmanderCharmeleon);
-		session.save(evolucionCharmeleonCharizad);
-		
+		session.save(evolucionCharmeleonCharizard);
+
 		session.save(charmanderPokemon);
 		session.save(charmeleonPokemon);
 		session.save(charizardPokemon);
 
 //		Squirtle Wartortle Blastoise
-		
+
 		Pokemon squirtlePokemon = new Pokemon();
 		squirtlePokemon.setNombre("Squirtle");
 		squirtlePokemon.getTipos().add(aguaTipo);
@@ -393,22 +393,22 @@ public class Main {
 		evolucionSquirtleWartortle.getPokemons().add(wartortlePokemon);
 		evolucionSquirtleWartortle.setMetodo(MetodoEvolucion.NIVEL);
 
-		Evolucion evolucionWartortleCharizad = new Evolucion();
-		evolucionWartortleCharizad.getPokemons().add(wartortlePokemon);
-		evolucionWartortleCharizad.getPokemons().add(blastoisePokemon);
-		evolucionWartortleCharizad.setMetodo(MetodoEvolucion.NIVEL);
+		Evolucion evolucionWartortleBlastoise = new Evolucion();
+		evolucionWartortleBlastoise.getPokemons().add(wartortlePokemon);
+		evolucionWartortleBlastoise.getPokemons().add(blastoisePokemon);
+		evolucionWartortleBlastoise.setMetodo(MetodoEvolucion.NIVEL);
 
 		squirtlePokemon.getEvoluciones().add(evolucionSquirtleWartortle);
-		wartortlePokemon.getEvoluciones().add(evolucionWartortleCharizad);
+		wartortlePokemon.getEvoluciones().add(evolucionWartortleBlastoise);
 		session.save(evolucionSquirtleWartortle);
-		session.save(evolucionWartortleCharizad);
+		session.save(evolucionWartortleBlastoise);
 
 		session.save(squirtlePokemon);
 		session.save(wartortlePokemon);
 		session.save(blastoisePokemon);
 
 //		Caterpie Metapod Butterfree
-		
+
 		Pokemon caterpiePokemon = new Pokemon();
 		caterpiePokemon.setNombre("Caterpie");
 		caterpiePokemon.getTipos().add(bichoTipo);
@@ -421,6 +421,8 @@ public class Main {
 		butterfreePokemon.setNombre("Butterfree");
 		butterfreePokemon.getTipos().add(bichoTipo);
 		butterfreePokemon.getTipos().add(voladorTipo);
+		bichoTipo.getPokemons().add(butterfreePokemon);
+		voladorTipo.getPokemons().add(butterfreePokemon);
 
 		Evolucion evolucionCaterpieMetapod = new Evolucion();
 		evolucionCaterpieMetapod.getPokemons().add(caterpiePokemon);
@@ -440,9 +442,9 @@ public class Main {
 		session.save(caterpiePokemon);
 		session.save(metapodPokemon);
 		session.save(butterfreePokemon);
-		
+
 //		Weedle Kakuna Beedrill
-		
+
 		Pokemon weedlePokemon = new Pokemon();
 		weedlePokemon.setNombre("Weedle");
 		weedlePokemon.getTipos().add(bichoTipo);
@@ -598,7 +600,7 @@ public class Main {
 
 		session.save(pikachuPokemon);
 		session.save(raichuPokemon);
-		
+
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
