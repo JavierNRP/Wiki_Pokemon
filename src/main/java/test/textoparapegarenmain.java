@@ -42,77 +42,75 @@ public class textoparapegarenmain {
 //		para pegar  |||  3 Pokemon
 //					VVV
 
-//		Gastly Haunter Gengar
+//		Dratini Dragonair Dragonite
 
-		Pokemon gastlyPokemon = new Pokemon();
-		gastlyPokemon.setNombre("Gastly");
-		gastlyPokemon.getTipos().add(fantasmaTipo);
-		gastlyPokemon.getTipos().add(venenoTipo);
+		Pokemon dratiniPokemon = new Pokemon();
+		dratiniPokemon.setNombre("Dratini");
+		dratiniPokemon.getTipos().add(dragonTipo);
 
-		Pokemon haunterPokemon = new Pokemon();
-		haunterPokemon.setNombre("Haunter");
-		haunterPokemon.getTipos().add(fantasmaTipo);
-		haunterPokemon.getTipos().add(venenoTipo);
+		Pokemon dragonairPokemon = new Pokemon();
+		dragonairPokemon.setNombre("Dragonair");
+		dragonairPokemon.getTipos().add(dragonTipo);
 
-		Pokemon gengarPokemon = new Pokemon();
-		gengarPokemon.setNombre("Gengar");
-		gengarPokemon.getTipos().add(fantasmaTipo);
-		gengarPokemon.getTipos().add(venenoTipo);
+		Pokemon dragonitePokemon = new Pokemon();
+		dragonitePokemon.setNombre("Dragonite");
+		dragonitePokemon.getTipos().add(dragonTipo);
+		dragonitePokemon.getTipos().add(voladorTipo);
 
-		Evolucion evolucionGastlyHaunter = new Evolucion();
-		evolucionGastlyHaunter.getPokemons().add(gastlyPokemon);
-		evolucionGastlyHaunter.getPokemons().add(haunterPokemon);
-		evolucionGastlyHaunter.setMetodo(MetodoEvolucion.NIVEL);
+		Evolucion evolucionDratiniDragonair = new Evolucion();
+		evolucionDratiniDragonair.getPokemons().add(dratiniPokemon);
+		evolucionDratiniDragonair.getPokemons().add(dragonairPokemon);
+		evolucionDratiniDragonair.setMetodo(MetodoEvolucion.NIVEL);
 
-		Evolucion evolucionHaunterGengar = new Evolucion();
-		evolucionHaunterGengar.getPokemons().add(haunterPokemon);
-		evolucionHaunterGengar.getPokemons().add(gengarPokemon);
-		evolucionHaunterGengar.setMetodo(MetodoEvolucion.INTERCAMBIO);
+		Evolucion evolucionDragonairDragonite = new Evolucion();
+		evolucionDragonairDragonite.getPokemons().add(dragonairPokemon);
+		evolucionDragonairDragonite.getPokemons().add(dragonitePokemon);
+		evolucionDragonairDragonite.setMetodo(MetodoEvolucion.NIVEL);
 
-		gastlyPokemon.getEvoluciones().add(evolucionGastlyHaunter);
-		haunterPokemon.getEvoluciones().add(evolucionHaunterGengar);
-		session.save(evolucionGastlyHaunter);
-		session.save(evolucionHaunterGengar);
+		dratiniPokemon.getEvoluciones().add(evolucionDratiniDragonair);
+		dragonairPokemon.getEvoluciones().add(evolucionDragonairDragonite);
+		session.save(evolucionDratiniDragonair);
+		session.save(evolucionDragonairDragonite);
 
-		session.save(gastlyPokemon);
-		session.save(haunterPokemon);
-		session.save(gengarPokemon);
+		session.save(dratiniPokemon);
+		session.save(dragonairPokemon);
+		session.save(dragonitePokemon);
 
 //		para pegar  |||  2 Pokemon
 //					VVV
 
-//		Rhyhorn Rhydon
+//		Kabuto Kabutops
 
-		Pokemon rhyhornPokemon = new Pokemon();
-		rhyhornPokemon.setNombre("Rhyhorn");
-		rhyhornPokemon.getTipos().add(tierraTipo);
-		rhyhornPokemon.getTipos().add(rocaTipo);
+		Pokemon kabutoPokemon = new Pokemon();
+		kabutoPokemon.setNombre("Kabuto");
+		kabutoPokemon.getTipos().add(rocaTipo);
+		kabutoPokemon.getTipos().add(aguaTipo);
 
-		Pokemon rhydonPokemon = new Pokemon();
-		rhydonPokemon.setNombre("Rhydon");
-		rhydonPokemon.getTipos().add(tierraTipo);
-		rhydonPokemon.getTipos().add(rocaTipo);
+		Pokemon kabutopsPokemon = new Pokemon();
+		kabutopsPokemon.setNombre("Kabutops");
+		kabutopsPokemon.getTipos().add(rocaTipo);
+		kabutopsPokemon.getTipos().add(aguaTipo);
 
-		Evolucion evolucionRhyhornRhydon = new Evolucion();
-		evolucionRhyhornRhydon.getPokemons().add(rhyhornPokemon);
-		evolucionRhyhornRhydon.getPokemons().add(rhydonPokemon);
-		evolucionRhyhornRhydon.setMetodo(MetodoEvolucion.NIVEL);
+		Evolucion evolucionKabutoKabutops = new Evolucion();
+		evolucionKabutoKabutops.getPokemons().add(kabutoPokemon);
+		evolucionKabutoKabutops.getPokemons().add(kabutopsPokemon);
+		evolucionKabutoKabutops.setMetodo(MetodoEvolucion.NIVEL);
 
-		rhyhornPokemon.getEvoluciones().add(evolucionRhyhornRhydon);
-		session.save(evolucionRhyhornRhydon);
+		kabutoPokemon.getEvoluciones().add(evolucionKabutoKabutops);
+		session.save(evolucionKabutoKabutops);
 
-		session.save(rhyhornPokemon);
-		session.save(rhydonPokemon);
+		session.save(kabutoPokemon);
+		session.save(kabutopsPokemon);
 
 //		para pegar  |||  1 Pokemon
 //					VVV
 
-//		Porygon
+//		Mew
 
-		Pokemon porygonPokemon = new Pokemon();
-		porygonPokemon.setNombre("Porygon");
-		porygonPokemon.getTipos().add(normalTipo);
+		Pokemon mewPokemon = new Pokemon();
+		mewPokemon.setNombre("Mew");
+		mewPokemon.getTipos().add(psiquicoTipo);
 
-		session.save(porygonPokemon);
+		session.save(mewPokemon);
 	}
 }

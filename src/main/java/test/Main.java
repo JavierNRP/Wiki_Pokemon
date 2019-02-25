@@ -1778,6 +1778,146 @@ public class Main {
 
 		session.save(porygonPokemon);
 
+//		Omanyte Omastar
+
+		Pokemon omanytePokemon = new Pokemon();
+		omanytePokemon.setNombre("Omanyte");
+		omanytePokemon.getTipos().add(rocaTipo);
+		omanytePokemon.getTipos().add(aguaTipo);
+
+		Pokemon omastarPokemon = new Pokemon();
+		omastarPokemon.setNombre("Omastar");
+		omastarPokemon.getTipos().add(rocaTipo);
+		omastarPokemon.getTipos().add(aguaTipo);
+
+		Evolucion evolucionOmanyteOmastar = new Evolucion();
+		evolucionOmanyteOmastar.getPokemons().add(omanytePokemon);
+		evolucionOmanyteOmastar.getPokemons().add(omastarPokemon);
+		evolucionOmanyteOmastar.setMetodo(MetodoEvolucion.NIVEL);
+
+		omanytePokemon.getEvoluciones().add(evolucionOmanyteOmastar);
+		session.save(evolucionOmanyteOmastar);
+
+		session.save(omanytePokemon);
+		session.save(omastarPokemon);
+
+//		Kabuto Kabutops
+
+		Pokemon kabutoPokemon = new Pokemon();
+		kabutoPokemon.setNombre("Kabuto");
+		kabutoPokemon.getTipos().add(rocaTipo);
+		kabutoPokemon.getTipos().add(aguaTipo);
+
+		Pokemon kabutopsPokemon = new Pokemon();
+		kabutopsPokemon.setNombre("Kabutops");
+		kabutopsPokemon.getTipos().add(rocaTipo);
+		kabutopsPokemon.getTipos().add(aguaTipo);
+
+		Evolucion evolucionKabutoKabutops = new Evolucion();
+		evolucionKabutoKabutops.getPokemons().add(kabutoPokemon);
+		evolucionKabutoKabutops.getPokemons().add(kabutopsPokemon);
+		evolucionKabutoKabutops.setMetodo(MetodoEvolucion.NIVEL);
+
+		kabutoPokemon.getEvoluciones().add(evolucionKabutoKabutops);
+		session.save(evolucionKabutoKabutops);
+
+		session.save(kabutoPokemon);
+		session.save(kabutopsPokemon);
+
+//		Aerodactyl
+
+		Pokemon aerodactylPokemon = new Pokemon();
+		aerodactylPokemon.setNombre("Aerodactyl");
+		aerodactylPokemon.getTipos().add(rocaTipo);
+		aerodactylPokemon.getTipos().add(voladorTipo);
+
+		session.save(aerodactylPokemon);
+
+//		Snorlax
+
+		Pokemon snorlaxPokemon = new Pokemon();
+		snorlaxPokemon.setNombre("Snorlax");
+		snorlaxPokemon.getTipos().add(normalTipo);
+
+		session.save(snorlaxPokemon);
+
+//		Articuno
+
+		Pokemon articunoPokemon = new Pokemon();
+		articunoPokemon.setNombre("Articuno");
+		articunoPokemon.getTipos().add(hieloTipo);
+		articunoPokemon.getTipos().add(voladorTipo);
+
+		session.save(articunoPokemon);
+
+//		Zapdos
+
+		Pokemon zapdosPokemon = new Pokemon();
+		zapdosPokemon.setNombre("Zapdos");
+		zapdosPokemon.getTipos().add(electricoTipo);
+		zapdosPokemon.getTipos().add(voladorTipo);
+
+		session.save(zapdosPokemon);
+
+//		Moltres
+
+		Pokemon moltresPokemon = new Pokemon();
+		moltresPokemon.setNombre("Moltres");
+		moltresPokemon.getTipos().add(fuegoTipo);
+		moltresPokemon.getTipos().add(voladorTipo);
+
+		session.save(moltresPokemon);
+
+//		Dratini Dragonair Dragonite
+
+		Pokemon dratiniPokemon = new Pokemon();
+		dratiniPokemon.setNombre("Dratini");
+		dratiniPokemon.getTipos().add(dragonTipo);
+
+		Pokemon dragonairPokemon = new Pokemon();
+		dragonairPokemon.setNombre("Dragonair");
+		dragonairPokemon.getTipos().add(dragonTipo);
+
+		Pokemon dragonitePokemon = new Pokemon();
+		dragonitePokemon.setNombre("Dragonite");
+		dragonitePokemon.getTipos().add(dragonTipo);
+		dragonitePokemon.getTipos().add(voladorTipo);
+
+		Evolucion evolucionDratiniDragonair = new Evolucion();
+		evolucionDratiniDragonair.getPokemons().add(dratiniPokemon);
+		evolucionDratiniDragonair.getPokemons().add(dragonairPokemon);
+		evolucionDratiniDragonair.setMetodo(MetodoEvolucion.NIVEL);
+
+		Evolucion evolucionDragonairDragonite = new Evolucion();
+		evolucionDragonairDragonite.getPokemons().add(dragonairPokemon);
+		evolucionDragonairDragonite.getPokemons().add(dragonitePokemon);
+		evolucionDragonairDragonite.setMetodo(MetodoEvolucion.NIVEL);
+
+		dratiniPokemon.getEvoluciones().add(evolucionDratiniDragonair);
+		dragonairPokemon.getEvoluciones().add(evolucionDragonairDragonite);
+		session.save(evolucionDratiniDragonair);
+		session.save(evolucionDragonairDragonite);
+
+		session.save(dratiniPokemon);
+		session.save(dragonairPokemon);
+		session.save(dragonitePokemon);
+
+//		Mewtwo
+
+		Pokemon mewtwoPokemon = new Pokemon();
+		mewtwoPokemon.setNombre("Mewtwo");
+		mewtwoPokemon.getTipos().add(psiquicoTipo);
+
+		session.save(mewtwoPokemon);
+
+//		Mew
+
+		Pokemon mewPokemon = new Pokemon();
+		mewPokemon.setNombre("Mew");
+		mewPokemon.getTipos().add(psiquicoTipo);
+
+		session.save(mewPokemon);
+
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
