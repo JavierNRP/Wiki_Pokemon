@@ -30,7 +30,6 @@ public class PokemonProperty {
         this.descripcion = new SimpleStringProperty(this, "DESCRIPCION POKEMON");
         this.tipos = new SimpleListProperty<>(this, "TIPOS", FXCollections.observableArrayList());
         this.evoluciones = new SimpleListProperty<>(this, "EVOLUCIONES", FXCollections.observableArrayList());
-        //todo agregar los demas atributos
     }
 
     public PokemonProperty(Pokemon pkm) {
@@ -41,7 +40,6 @@ public class PokemonProperty {
         this.descripcion = new SimpleStringProperty(this, "DESCRIPCION POKEMON", pkm.getDescripcion());
         this.tipos = new SimpleListProperty<>(this, "TIPOS", FXCollections.observableArrayList(pkm.getTipos()));
         this.evoluciones = new SimpleListProperty<>(this, "EVOLUCIONES", FXCollections.observableArrayList(pkm.getEvoluciones()));
-        //todo agregar los demas atributos
     }
 
     //Getters y setters
@@ -139,5 +137,10 @@ public class PokemonProperty {
         pkm.setPeso(this.getPeso());
         pkm.setTipos(this.getTipos());
         return pkm;
+    }
+
+    @Override
+    public String toString() {
+        return getNombre();
     }
 }

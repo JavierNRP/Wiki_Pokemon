@@ -7,10 +7,7 @@ import dad.models.estructura.Evolucion;
 import dad.models.estructura.Pokemon;
 import dad.models.estructura.Tipo;
 import dad.models.searches.Search;
-import javafx.animation.KeyFrame;
-import javafx.animation.ScaleTransition;
-import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.beans.binding.Bindings;
 import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
@@ -21,6 +18,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.effect.InnerShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -33,6 +31,8 @@ import org.hibernate.Session;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -45,7 +45,10 @@ public class Controller implements Initializable {
     private ImageView img2;
     private Group animation;
     private Boolean details = false;
+    private MediaPlayer criePlayer;
     private static Session session;
+    private ScaleTransition scaleTransition;
+    private TranslateTransition moveTransition;
 
     @FXML
     private Label pokeNumText;
@@ -92,8 +95,35 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //EventFilter
         EventHandler<KeyEvent> filter = event -> onKeyEventFilter(event);
         view.addEventFilter(KeyEvent.ANY, filter);
+
+        //Bindeos
+        pokeNumText.textProperty().bind(model.getActual().idProperty().asString());
+        nameLabel.textProperty().bind(model.getActual().nombreProperty());
+        greenConsole.textProperty().bind(Bindings.concat(
+                "Pokémon: ", model.getActual().nombreProperty(),
+                "\nTipo: ", model.getActual().tiposProperty(),
+                "\nAltura: ", model.getActual().alturaProperty(),
+                "\nPeso: ", model.getActual().pesoProperty(),
+                "\nDescripción: ", model.getActual().descripcionProperty())
+        );
+        model.busquedaProperty().bindBidirectional(searchBar.textProperty());
+        model.busquedaProperty().addListener((ob, ov, nv) -> {
+            Search search;
+            try {
+                search = new Search();
+                TextFields.bindAutoCompletion(searchBar, search.getResultadosBusquedaPokemon(nv));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        });
+        model.mediaProperty().addListener(e -> {
+            criePlayer = new MediaPlayer(model.getMedia());
+        });
+
 
         //Obtener la sesion de la base de datos;
         try {
@@ -134,32 +164,17 @@ public class Controller implements Initializable {
         tl.setAutoReverse(true);
         tl.play();
 
+        //Animaciones de detalles
+        moveTransition = new TranslateTransition(Duration.millis(300), animation);
+        moveTransition.setNode(animation);
+        scaleTransition = new ScaleTransition(Duration.millis(300), animation);
+
+
         //Agregar los elementos a la pantalla de la pokedex
         screen.getChildren().add(animation);
         refreshTypes();
         makeEvolutionChain();
 
-        //Bindeos
-        pokeNumText.textProperty().bind(model.getActual().idProperty().asString());
-        nameLabel.textProperty().bind(model.getActual().nombreProperty());
-        greenConsole.textProperty().bind(Bindings.concat(
-                "Pokï¿½mon: ", model.getActual().nombreProperty(),
-                "\nTipo: ", model.getActual().tiposProperty(),
-                "\nAltura: ", model.getActual().alturaProperty(),
-                "\nPeso: ", model.getActual().pesoProperty(),
-                "\nDescripciï¿½n: ", model.getActual().descripcionProperty())
-        );
-        model.busquedaProperty().bindBidirectional(searchBar.textProperty());
-        model.busquedaProperty().addListener((ob, ov, nv) -> {
-            Search search;
-            try {
-                search = new Search();
-                TextFields.bindAutoCompletion(searchBar, search.getResultadosBusquedaPokemon(nv));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        });
 
     }
 
@@ -171,7 +186,7 @@ public class Controller implements Initializable {
     }
 
     private void onKeyEventFilter(KeyEvent event) {
-        //Evento Tecla enter cuando no estï¿½ seleccionado el buscador
+        //Evento Tecla enter cuando no está seleccionado el buscador
         if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER && !searchBar.isFocused()) {
             redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
             event.consume();
@@ -260,7 +275,7 @@ public class Controller implements Initializable {
     private void makeEvolutionChain() {
         if (model.getActual().getEvoluciones().size() > 1) {
             if (model.getActual().getEvoluciones().size() > 2) {
-                //CASO EVEE
+                //MUCHAS EVOLUCIONES DISTINTAS (CASO EEVE)
                 for (Evolucion e : model.getActual().getEvoluciones()) {
                     if (e.getPokemons().get(0).getId() != model.getActual().getId()) {
                         //Es una preevolucion
@@ -272,25 +287,51 @@ public class Controller implements Initializable {
                         }
                     } else {
                         //Es una evolucion
+
                     }
                 }
             } else {
-                // PREEVOLUCION Y EVOLUCION
+                // UNA PREEVOLUCION Y UNA EVOLUCION
+                //Obtener la preevolucion y la evolucion
+                Evolucion preEvo = model.getActual().getEvoluciones().get(0);
+                Evolucion evo = model.getActual().getEvoluciones().get(1);
+
+                //Obtener los Pokemon de la clase Evolucion
+                Pokemon prePkm = preEvo.getPokemons().get(0);
+                Pokemon evoPkm = evo.getPokemons().get(1);
+
+                //Crear los ImageView con las evoluciones
+                Image preImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + prePkm.getId() + ".png").toString());
+                Image currentImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + model.getActual().getId() + ".png").toString());
+                Image evoImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + evoPkm.getId() + ".png").toString());
+
+                ImageView preView = new ImageView(preImg);
+                ImageView currentView = new ImageView(currentImg);
+                ImageView evoView = new ImageView(evoImg);
+
+                //Agregar las imagenes a la vista
+                evolutionView.getChildren().addAll(preView, currentView, evoView);
             }
         } else if (model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId() == model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId()) {
-            //CON UNA EVOLUCION
+            //CON AL MENOS UNA EVOLUCION
         } else if (model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId() != model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId()) {
-            //CON UNA PREEVOLUCION
+            //CON AL MENOS UNA PREEVOLUCION
         } else {
-            //Si ha llegado aca y no se ha agregado ningun pokemon, no tiene evolucion
+            //Sin Evolucion
             Label label = new Label("Sin Evoluciones");
             label.getStyleClass().add("nombre-pokemon");
             evolutionView.getChildren().add(2, label);
         }
     }
 
+    private void playSoundEffect(String soundFile) {
+        Media media = new Media(soundFile);
+        MediaPlayer player = new MediaPlayer(media);
+        player.play();
+    }
 
     //Funciones FXML
+
     @FXML
     public void onCloseButtonAction() {
         System.exit(0);
@@ -298,47 +339,48 @@ public class Controller implements Initializable {
 
     @FXML
     public void onDetailsButtonAction() {
-        ScaleTransition scale = new ScaleTransition(Duration.millis(300), animation);
-        TranslateTransition move = new TranslateTransition(Duration.millis(300), animation);
-        move.setNode(animation);
-        if (!details) {
-            details = true;
+        if (moveTransition.getStatus() != Animation.Status.RUNNING && scaleTransition.getStatus() != Animation.Status.RUNNING)
+            if (!details) {
+                details = true;
 
-            //Transiciones
+                //Transiciones
 
-            //Movimiento
-            move.setFromX(130);
-            move.setToX(48);
-            move.setFromY(95);
-            move.setToY(40);
+                //Movimiento
+                moveTransition.setFromX(130);
+                moveTransition.setToX(48);
+                moveTransition.setFromY(95);
+                moveTransition.setToY(40);
 
-            //Cambio de tamaï¿½o
-            scale.setByX(-1);
-            scale.setByY(-1);
+                //Cambio de tamaño
+                scaleTransition.setByX(-1);
+                scaleTransition.setByY(-1);
 
-            //Habilitar datos ocultos
-            hideDetails(false);
-        } else {
-            details = false;
+                //Habilitar datos ocultos
+                hideDetails(false);
+            } else {
+                details = false;
 
-            //Transiciones
+                //Transiciones
 
-            //Movimiento
-            move.setToY(130);
-            move.setFromX(48);
-            move.setToX(130);
-            move.setFromY(40);
-            move.setToY(95);
+                //Movimiento
+                moveTransition.setToY(130);
+                moveTransition.setFromX(48);
+                moveTransition.setToX(130);
+                moveTransition.setFromY(40);
+                moveTransition.setToY(95);
 
-            //Cambio de tamaï¿½o
-            scale.setByX(1);
-            scale.setByY(1);
+                //Cambio de tamaño
+                scaleTransition.setByX(1);
+                scaleTransition.setByY(1);
 
-            //Ocultar datos
-            hideDetails(true);
-        }
-        move.play();
-        scale.play();
+                //Ocultar datos
+                hideDetails(true);
+            }
+        moveTransition.play();
+        scaleTransition.play();
+        criePlayer.play();
+        criePlayer.setStartTime(Duration.ZERO);
+        criePlayer.seek(Duration.ZERO);
     }
 
     @FXML
@@ -350,6 +392,7 @@ public class Controller implements Initializable {
             model.setActual(pkm);
             refreshTypes();
             makeEvolutionChain();
+            playSoundEffect(PokeDexAPP.class.getResource("/sounds/effect1.mp3").toString());
         }
 
     }
@@ -363,6 +406,7 @@ public class Controller implements Initializable {
             model.setActual(pkm);
             refreshTypes();
             makeEvolutionChain();
+            playSoundEffect(PokeDexAPP.class.getResource("/sounds/effect1.mp3").toString());
         }
     }
 
@@ -381,12 +425,6 @@ public class Controller implements Initializable {
     public void onDownArrowAction() {
         greenConsole.setScrollTop(greenConsole.getScrollTop() + SCROLL_SPACE);
         scrollScreen.setVvalue(scrollScreen.getVvalue() + 0.08);
-    }
-
-    private void playSoundEffect(String soundFile) {
-        Media media = new Media(soundFile);
-        MediaPlayer player = new MediaPlayer(media);
-        player.play();
     }
 
     //Getters & Setters
