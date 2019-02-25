@@ -31,8 +31,6 @@ import org.hibernate.Session;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -273,22 +271,19 @@ public class Controller implements Initializable {
     }
 
     private void makeEvolutionChain() {
+        evolutionView.getChildren().clear();
         if (model.getActual().getEvoluciones().size() > 1) {
             if (model.getActual().getEvoluciones().size() > 2) {
                 //MUCHAS EVOLUCIONES DISTINTAS (CASO EEVE)
+                Image currentImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + model.getActual().getId() + ".png").toString());
+                ImageView currentView = new ImageView(currentImg);
+                evolutionView.getChildren().add(currentView);
+                VBox evos = new VBox(5);
                 for (Evolucion e : model.getActual().getEvoluciones()) {
-                    if (e.getPokemons().get(0).getId() != model.getActual().getId()) {
-                        //Es una preevolucion
-                        session.beginTransaction();
-                        Pokemon prevPkm = session.get(Pokemon.class, e.getPokemons().get(0).getId());
-                        session.getTransaction().commit();
-                        if (prevPkm.getEvoluciones().size() > 1) {
-
-                        }
-                    } else {
-                        //Es una evolucion
-
-                    }
+                    Pokemon pkm = e.getPokemons().get(1);
+                    Image pkmImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + pkm.getId() + ".png").toString());
+                    ImageView pkmImgView = new ImageView(pkmImg);
+                    evos.getChildren().add(pkmImgView);
                 }
             } else {
                 // UNA PREEVOLUCION Y UNA EVOLUCION
@@ -312,10 +307,58 @@ public class Controller implements Initializable {
                 //Agregar las imagenes a la vista
                 evolutionView.getChildren().addAll(preView, currentView, evoView);
             }
-        } else if (model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId() == model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId()) {
+        } else if (model.getActual().getEvoluciones().get(0).getPokemons().get(0).equals(model.getActual().toPokemon())) {
             //CON AL MENOS UNA EVOLUCION
-        } else if (model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId() != model.getActual().getEvoluciones().get(0).getPokemons().get(0).getId()) {
-            //CON AL MENOS UNA PREEVOLUCION
+            Evolucion evo = model.getActual().getEvoluciones().get(0);
+            Pokemon evoPkm = evo.getPokemons().get(1);
+
+            //Agregar el imageView
+            Image evoImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + evoPkm.getId() + ".png").toString());
+            Image currentImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + model.getActual().getId() + ".png").toString());
+
+            ImageView currentView = new ImageView(currentImg);
+            ImageView evoView = new ImageView(evoImg);
+
+            evolutionView.getChildren().addAll(currentView, evoView);
+
+            //Comprobar si el pokemon al que evoluciona tambien tiene otra evolucion
+            if (evoPkm.getEvoluciones().size() > 1) {
+                //Tiene una evolucion
+                Evolucion posEvo = evoPkm.getEvoluciones().get(1);
+                Pokemon posEvoPkm = posEvo.getPokemons().get(1);
+
+                Image posEvoImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + posEvoPkm.getId() + ".png").toString());
+                ImageView posEvoView = new ImageView(posEvoImg);
+
+                evolutionView.getChildren().add(posEvoView);
+            }
+
+
+        } else if (!model.getActual().getEvoluciones().get(0).getPokemons().get(0).equals(model.getActual().toPokemon())) {
+            //TIENE AL MENOS UNA PREEVOLUCION
+            Evolucion pre = model.getActual().getEvoluciones().get(0);
+            Pokemon prePkm = pre.getPokemons().get(0);
+
+            //Agregar el imageView
+            Image preImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + prePkm.getId() + ".png").toString());
+            Image currentImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + model.getActual().getId() + ".png").toString());
+
+            ImageView currentView = new ImageView(currentImg);
+            ImageView preEvoView = new ImageView(preImg);
+
+            evolutionView.getChildren().addAll(preEvoView,currentView);
+
+            //Comprobar si el pokemon al que evoluciona tambien tiene otra evolucion
+            if (prePkm.getEvoluciones().size() > 1) {
+                //Tiene otra preevolucion
+                Evolucion prePreEvo = prePkm.getEvoluciones().get(0);
+                Pokemon prePrePkm = prePreEvo.getPokemons().get(0);
+
+                Image prePreImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + prePrePkm.getId() + ".png").toString());
+                ImageView prePreView = new ImageView(prePreImg);
+
+                evolutionView.getChildren().add(0,prePreView);
+            }
         } else {
             //Sin Evolucion
             Label label = new Label("Sin Evoluciones");

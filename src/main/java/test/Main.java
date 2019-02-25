@@ -601,6 +601,408 @@ public class Main {
 		session.save(pikachuPokemon);
 		session.save(raichuPokemon);
 
+
+
+//		Sandshrew Sandshlash
+
+		Pokemon sandshrewPokemon = new Pokemon();
+		sandshrewPokemon.setNombre("Sandshrew");
+		sandshrewPokemon.getTipos().add(tierraTipo);
+
+		Pokemon sandshlashPokemon = new Pokemon();
+		sandshlashPokemon.setNombre("Sandshlash");
+		sandshlashPokemon.getTipos().add(tierraTipo);
+
+		Evolucion evolucionSandshrewSandshlash = new Evolucion();
+		evolucionSandshrewSandshlash.getPokemons().add(sandshrewPokemon);
+		evolucionSandshrewSandshlash.getPokemons().add(sandshlashPokemon);
+		evolucionSandshrewSandshlash.setMetodo(MetodoEvolucion.NIVEL);
+
+		sandshrewPokemon.getEvoluciones().add(evolucionSandshrewSandshlash);
+		session.save(evolucionSandshrewSandshlash);
+
+		session.save(sandshrewPokemon);
+		session.save(sandshlashPokemon);
+
+//		NidoranF Nidorina Nidoqueen
+
+		Pokemon nidoranFPokemon = new Pokemon();
+		nidoranFPokemon.setNombre("Nidoran♀");
+		nidoranFPokemon.getTipos().add(venenoTipo);
+
+		Pokemon nidorinaPokemon = new Pokemon();
+		nidorinaPokemon.setNombre("Nidorina");
+		nidorinaPokemon.getTipos().add(venenoTipo);
+
+		Pokemon nidoqueenPokemon = new Pokemon();
+		nidoqueenPokemon.setNombre("Nidoqueen");
+		nidoqueenPokemon.getTipos().add(venenoTipo);
+		nidoqueenPokemon.getTipos().add(tierraTipo);
+
+		Evolucion evolucionNidoranFNidorina = new Evolucion();
+		evolucionNidoranFNidorina.getPokemons().add(nidoranFPokemon);
+		evolucionNidoranFNidorina.getPokemons().add(nidorinaPokemon);
+		evolucionNidoranFNidorina.setMetodo(MetodoEvolucion.NIVEL);
+
+		Evolucion evolucionNidorinaNidoqueen = new Evolucion();
+		evolucionNidorinaNidoqueen.getPokemons().add(nidorinaPokemon);
+		evolucionNidorinaNidoqueen.getPokemons().add(nidoqueenPokemon);
+		evolucionNidorinaNidoqueen.setMetodo(MetodoEvolucion.NIVEL);
+
+		nidoranFPokemon.getEvoluciones().add(evolucionNidoranFNidorina);
+		nidorinaPokemon.getEvoluciones().add(evolucionNidorinaNidoqueen);
+		session.save(evolucionNidoranFNidorina);
+		session.save(evolucionNidorinaNidoqueen);
+
+		session.save(nidoranFPokemon);
+		session.save(nidorinaPokemon);
+		session.save(nidoqueenPokemon);
+
+//		NidoranM Nidorino Nidoking
+
+		Pokemon nidoranMPokemon = new Pokemon();
+		nidoranMPokemon.setNombre("Nidoran♀");
+		nidoranMPokemon.getTipos().add(venenoTipo);
+
+		Pokemon nidorinoPokemon = new Pokemon();
+		nidorinoPokemon.setNombre("Nidorino");
+		nidorinoPokemon.getTipos().add(venenoTipo);
+
+		Pokemon nidokingPokemon = new Pokemon();
+		nidokingPokemon.setNombre("Nidoking");
+		nidokingPokemon.getTipos().add(venenoTipo);
+		nidokingPokemon.getTipos().add(tierraTipo);
+
+		Evolucion evolucionNidoranMNidorino = new Evolucion();
+		evolucionNidoranMNidorino.getPokemons().add(nidoranMPokemon);
+		evolucionNidoranMNidorino.getPokemons().add(nidorinoPokemon);
+		evolucionNidoranMNidorino.setMetodo(MetodoEvolucion.NIVEL);
+
+		Evolucion evolucionNidorinoNidoking = new Evolucion();
+		evolucionNidorinoNidoking.getPokemons().add(nidorinoPokemon);
+		evolucionNidorinoNidoking.getPokemons().add(nidokingPokemon);
+		evolucionNidorinoNidoking.setMetodo(MetodoEvolucion.NIVEL);
+
+		nidoranMPokemon.getEvoluciones().add(evolucionNidoranMNidorino);
+		nidorinoPokemon.getEvoluciones().add(evolucionNidorinoNidoking);
+		session.save(evolucionNidoranMNidorino);
+		session.save(evolucionNidorinoNidoking);
+
+		session.save(nidoranMPokemon);
+		session.save(nidorinoPokemon);
+		session.save(nidokingPokemon);
+
+//		Clefairy Clefable
+
+		Pokemon clefairyPokemon = new Pokemon();
+		clefairyPokemon.setNombre("Clefairy");
+		clefairyPokemon.getTipos().add(hadaTipo);
+
+		Pokemon clefablePokemon = new Pokemon();
+		clefablePokemon.setNombre("Clefable");
+		clefablePokemon.getTipos().add(hadaTipo);
+
+		Evolucion evolucionClefairyClefable = new Evolucion();
+		evolucionClefairyClefable.getPokemons().add(clefairyPokemon);
+		evolucionClefairyClefable.getPokemons().add(clefablePokemon);
+		evolucionClefairyClefable.setMetodo(MetodoEvolucion.NIVEL);
+
+		clefairyPokemon.getEvoluciones().add(evolucionClefairyClefable);
+		session.save(evolucionClefairyClefable);
+
+		session.save(clefairyPokemon);
+		session.save(clefablePokemon);
+
+//		Vulpix Ninetales
+
+		Pokemon vulpixPokemon = new Pokemon();
+		vulpixPokemon.setNombre("Vulpix");
+		vulpixPokemon.getTipos().add(fuegoTipo);
+
+		Pokemon ninetalesPokemon = new Pokemon();
+		ninetalesPokemon.setNombre("Ninetales");
+		ninetalesPokemon.getTipos().add(fuegoTipo);
+
+		Evolucion evolucionVulpixNinetales = new Evolucion();
+		evolucionVulpixNinetales.getPokemons().add(vulpixPokemon);
+		evolucionVulpixNinetales.getPokemons().add(ninetalesPokemon);
+		evolucionVulpixNinetales.setMetodo(MetodoEvolucion.NIVEL);
+
+		vulpixPokemon.getEvoluciones().add(evolucionVulpixNinetales);
+		session.save(evolucionVulpixNinetales);
+
+		session.save(vulpixPokemon);
+		session.save(ninetalesPokemon);
+
+//		Jigglypuff Wigglytuff
+
+		Pokemon jigglypuffPokemon = new Pokemon();
+		jigglypuffPokemon.setNombre("Jigglypuff");
+		jigglypuffPokemon.getTipos().add(normalTipo);
+		jigglypuffPokemon.getTipos().add(hadaTipo);
+
+		Pokemon wigglytuffPokemon = new Pokemon();
+		wigglytuffPokemon.setNombre("Wigglytuff");
+		wigglytuffPokemon.getTipos().add(normalTipo);
+		wigglytuffPokemon.getTipos().add(hadaTipo);
+
+		Evolucion evolucionJigglypuffWigglytuff = new Evolucion();
+		evolucionJigglypuffWigglytuff.getPokemons().add(jigglypuffPokemon);
+		evolucionJigglypuffWigglytuff.getPokemons().add(wigglytuffPokemon);
+		evolucionJigglypuffWigglytuff.setMetodo(MetodoEvolucion.NIVEL);
+
+		jigglypuffPokemon.getEvoluciones().add(evolucionJigglypuffWigglytuff);
+		session.save(evolucionJigglypuffWigglytuff);
+
+		session.save(jigglypuffPokemon);
+		session.save(wigglytuffPokemon);
+
+//		Zubat Golbat
+
+		Pokemon zubatPokemon = new Pokemon();
+		zubatPokemon.setNombre("Zubat");
+		zubatPokemon.getTipos().add(venenoTipo);
+		zubatPokemon.getTipos().add(voladorTipo);
+
+		Pokemon golbatPokemon = new Pokemon();
+		golbatPokemon.setNombre("Golbat");
+		golbatPokemon.getTipos().add(venenoTipo);
+		golbatPokemon.getTipos().add(voladorTipo);
+
+		Evolucion evolucionZubatGolbat = new Evolucion();
+		evolucionZubatGolbat.getPokemons().add(zubatPokemon);
+		evolucionZubatGolbat.getPokemons().add(golbatPokemon);
+		evolucionZubatGolbat.setMetodo(MetodoEvolucion.NIVEL);
+
+		zubatPokemon.getEvoluciones().add(evolucionZubatGolbat);
+		session.save(evolucionZubatGolbat);
+
+		session.save(zubatPokemon);
+		session.save(golbatPokemon);
+
+//		Oddish Gloom Vileplume
+
+		Pokemon oddishPokemon = new Pokemon();
+		oddishPokemon.setNombre("Oddish");
+		oddishPokemon.getTipos().add(plantaTipo);
+		oddishPokemon.getTipos().add(venenoTipo);
+
+		Pokemon gloomPokemon = new Pokemon();
+		gloomPokemon.setNombre("Gloom");
+		gloomPokemon.getTipos().add(plantaTipo);
+		gloomPokemon.getTipos().add(venenoTipo);
+
+		Pokemon vileplumePokemon = new Pokemon();
+		vileplumePokemon.setNombre("Vileplume");
+		vileplumePokemon.getTipos().add(plantaTipo);
+		vileplumePokemon.getTipos().add(venenoTipo);
+
+		Evolucion evolucionOddishGloom = new Evolucion();
+		evolucionOddishGloom.getPokemons().add(oddishPokemon);
+		evolucionOddishGloom.getPokemons().add(gloomPokemon);
+		evolucionOddishGloom.setMetodo(MetodoEvolucion.NIVEL);
+
+		Evolucion evolucionGloomVileplume = new Evolucion();
+		evolucionGloomVileplume.getPokemons().add(gloomPokemon);
+		evolucionGloomVileplume.getPokemons().add(vileplumePokemon);
+		evolucionGloomVileplume.setMetodo(MetodoEvolucion.NIVEL);
+
+		oddishPokemon.getEvoluciones().add(evolucionOddishGloom);
+		gloomPokemon.getEvoluciones().add(evolucionGloomVileplume);
+		session.save(evolucionOddishGloom);
+		session.save(evolucionGloomVileplume);
+
+		session.save(oddishPokemon);
+		session.save(gloomPokemon);
+		session.save(vileplumePokemon);
+
+//		Paras Parasect
+
+		Pokemon parasPokemon = new Pokemon();
+		parasPokemon.setNombre("Paras");
+		parasPokemon.getTipos().add(bichoTipo);
+		parasPokemon.getTipos().add(plantaTipo);
+
+		Pokemon parasectPokemon = new Pokemon();
+		parasectPokemon.setNombre("Parasect");
+		parasectPokemon.getTipos().add(bichoTipo);
+		parasectPokemon.getTipos().add(plantaTipo);
+
+		Evolucion evolucionParasParasect = new Evolucion();
+		evolucionParasParasect.getPokemons().add(parasPokemon);
+		evolucionParasParasect.getPokemons().add(parasectPokemon);
+		evolucionParasParasect.setMetodo(MetodoEvolucion.NIVEL);
+
+		parasPokemon.getEvoluciones().add(evolucionParasParasect);
+		session.save(evolucionParasParasect);
+
+		session.save(parasPokemon);
+		session.save(parasectPokemon);
+
+//		Venonat Venomoth
+
+		Pokemon venonatPokemon = new Pokemon();
+		venonatPokemon.setNombre("Venonat");
+		venonatPokemon.getTipos().add(bichoTipo);
+		venonatPokemon.getTipos().add(venenoTipo);
+
+		Pokemon venomothPokemon = new Pokemon();
+		venomothPokemon.setNombre("Venomoth");
+		venomothPokemon.getTipos().add(bichoTipo);
+		venomothPokemon.getTipos().add(venenoTipo);
+
+		Evolucion evolucionVenonatVenomoth = new Evolucion();
+		evolucionVenonatVenomoth.getPokemons().add(venonatPokemon);
+		evolucionVenonatVenomoth.getPokemons().add(venomothPokemon);
+		evolucionVenonatVenomoth.setMetodo(MetodoEvolucion.NIVEL);
+
+		venonatPokemon.getEvoluciones().add(evolucionVenonatVenomoth);
+		session.save(evolucionVenonatVenomoth);
+
+		session.save(venonatPokemon);
+		session.save(venomothPokemon);
+
+//		Diglett Dugtrio
+
+		Pokemon diglettPokemon = new Pokemon();
+		diglettPokemon.setNombre("Diglett");
+		diglettPokemon.getTipos().add(tierraTipo);
+
+		Pokemon dugtrioPokemon = new Pokemon();
+		dugtrioPokemon.setNombre("Dugtrio");
+		dugtrioPokemon.getTipos().add(tierraTipo);
+
+		Evolucion evolucionDiglettDugtrio = new Evolucion();
+		evolucionDiglettDugtrio.getPokemons().add(diglettPokemon);
+		evolucionDiglettDugtrio.getPokemons().add(dugtrioPokemon);
+		evolucionDiglettDugtrio.setMetodo(MetodoEvolucion.NIVEL);
+
+		diglettPokemon.getEvoluciones().add(evolucionDiglettDugtrio);
+		session.save(evolucionDiglettDugtrio);
+
+		session.save(diglettPokemon);
+		session.save(dugtrioPokemon);
+
+//		Meowth Persian
+
+		Pokemon meowthPokemon = new Pokemon();
+		meowthPokemon.setNombre("Meowth");
+		meowthPokemon.getTipos().add(normalTipo);
+
+		Pokemon persianPokemon = new Pokemon();
+		persianPokemon.setNombre("Persian");
+		persianPokemon.getTipos().add(normalTipo);
+
+		Evolucion evolucionMeowthPersian = new Evolucion();
+		evolucionMeowthPersian.getPokemons().add(meowthPokemon);
+		evolucionMeowthPersian.getPokemons().add(persianPokemon);
+		evolucionMeowthPersian.setMetodo(MetodoEvolucion.NIVEL);
+
+		meowthPokemon.getEvoluciones().add(evolucionMeowthPersian);
+		session.save(evolucionMeowthPersian);
+
+		session.save(meowthPokemon);
+		session.save(persianPokemon);
+
+//		Psyduck Goldduck
+
+		Pokemon psyduckPokemon = new Pokemon();
+		psyduckPokemon.setNombre("Psyduck");
+		psyduckPokemon.getTipos().add(aguaTipo);
+
+		Pokemon goldduckPokemon = new Pokemon();
+		goldduckPokemon.setNombre("Goldduck");
+		goldduckPokemon.getTipos().add(aguaTipo);
+
+		Evolucion evolucionPsyduckGoldduck = new Evolucion();
+		evolucionPsyduckGoldduck.getPokemons().add(psyduckPokemon);
+		evolucionPsyduckGoldduck.getPokemons().add(goldduckPokemon);
+		evolucionPsyduckGoldduck.setMetodo(MetodoEvolucion.NIVEL);
+
+		psyduckPokemon.getEvoluciones().add(evolucionPsyduckGoldduck);
+		session.save(evolucionPsyduckGoldduck);
+
+		session.save(psyduckPokemon);
+		session.save(goldduckPokemon);
+
+//		Mankey Primeape
+
+		Pokemon mankeyPokemon = new Pokemon();
+		mankeyPokemon.setNombre("Mankey");
+		mankeyPokemon.getTipos().add(luchaTipo);
+
+		Pokemon primeapePokemon = new Pokemon();
+		primeapePokemon.setNombre("Primeape");
+		primeapePokemon.getTipos().add(luchaTipo);
+
+		Evolucion evolucionMankeyPrimeape = new Evolucion();
+		evolucionMankeyPrimeape.getPokemons().add(mankeyPokemon);
+		evolucionMankeyPrimeape.getPokemons().add(primeapePokemon);
+		evolucionMankeyPrimeape.setMetodo(MetodoEvolucion.NIVEL);
+
+		mankeyPokemon.getEvoluciones().add(evolucionMankeyPrimeape);
+		session.save(evolucionMankeyPrimeape);
+
+		session.save(mankeyPokemon);
+		session.save(primeapePokemon);
+
+//		Growlithe Arcanine
+
+		Pokemon growlithePokemon = new Pokemon();
+		growlithePokemon.setNombre("Growlithe");
+		growlithePokemon.getTipos().add(fuegoTipo);
+
+		Pokemon arcaninePokemon = new Pokemon();
+		arcaninePokemon.setNombre("Arcanine");
+		arcaninePokemon.getTipos().add(fuegoTipo);
+
+		Evolucion evolucionGrowlitheArcanine = new Evolucion();
+		evolucionGrowlitheArcanine.getPokemons().add(growlithePokemon);
+		evolucionGrowlitheArcanine.getPokemons().add(arcaninePokemon);
+		evolucionGrowlitheArcanine.setMetodo(MetodoEvolucion.NIVEL);
+
+		growlithePokemon.getEvoluciones().add(evolucionGrowlitheArcanine);
+		session.save(evolucionGrowlitheArcanine);
+
+		session.save(growlithePokemon);
+		session.save(arcaninePokemon);
+
+//		Poliwag Poliwhirl Poliwrath
+
+		Pokemon poliwagPokemon = new Pokemon();
+		poliwagPokemon.setNombre("Poliwag");
+		poliwagPokemon.getTipos().add(plantaTipo);
+		poliwagPokemon.getTipos().add(venenoTipo);
+
+		Pokemon poliwhirlPokemon = new Pokemon();
+		poliwhirlPokemon.setNombre("Poliwhirl");
+		poliwhirlPokemon.getTipos().add(plantaTipo);
+		poliwhirlPokemon.getTipos().add(venenoTipo);
+
+		Pokemon poliwrathPokemon = new Pokemon();
+		poliwrathPokemon.setNombre("Poliwrath");
+		poliwrathPokemon.getTipos().add(plantaTipo);
+		poliwrathPokemon.getTipos().add(venenoTipo);
+
+		Evolucion evolucionPoliwagPoliwhirl = new Evolucion();
+		evolucionPoliwagPoliwhirl.getPokemons().add(poliwagPokemon);
+		evolucionPoliwagPoliwhirl.getPokemons().add(poliwhirlPokemon);
+		evolucionPoliwagPoliwhirl.setMetodo(MetodoEvolucion.NIVEL);
+
+		Evolucion evolucionPoliwhirlPoliwrath = new Evolucion();
+		evolucionPoliwhirlPoliwrath.getPokemons().add(poliwhirlPokemon);
+		evolucionPoliwhirlPoliwrath.getPokemons().add(poliwrathPokemon);
+		evolucionPoliwhirlPoliwrath.setMetodo(MetodoEvolucion.NIVEL);
+
+		poliwagPokemon.getEvoluciones().add(evolucionPoliwagPoliwhirl);
+		poliwhirlPokemon.getEvoluciones().add(evolucionPoliwhirlPoliwrath);
+		session.save(evolucionPoliwagPoliwhirl);
+		session.save(evolucionPoliwhirlPoliwrath);
+
+		session.save(poliwagPokemon);
+		session.save(poliwhirlPokemon);
+		session.save(poliwrathPokemon);
+
 		session.flush();
 		session.getTransaction().commit();
 		session.close();
