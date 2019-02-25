@@ -4,7 +4,7 @@ public class TypesData {
 			"Normal", "Lucha", "Volador", "Veneno",
 			"Tierra", "Roca", "Bicho", "Fantasma",
 			"Acero", "Fuego", "agua", "Planta",
-			"ElÃ©ctrico", "PsÃ­quico", "Hielo","DragÃ³n",
+			"Eléctrico", "Psíquico", "Hielo","Dragón",
 			"Siniestro","Hada"
 	};
 	static public String[] typeColors = {

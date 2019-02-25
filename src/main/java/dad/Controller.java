@@ -144,11 +144,11 @@ public class Controller implements Initializable {
         pokeNumText.textProperty().bind(model.getActual().idProperty().asString());
         nameLabel.textProperty().bind(model.getActual().nombreProperty());
         greenConsole.textProperty().bind(Bindings.concat(
-                "Pokémon: ", model.getActual().nombreProperty(),
+                "Pokï¿½mon: ", model.getActual().nombreProperty(),
                 "\nTipo: ", model.getActual().tiposProperty(),
                 "\nAltura: ", model.getActual().alturaProperty(),
                 "\nPeso: ", model.getActual().pesoProperty(),
-                "\nDescripción: ", model.getActual().descripcionProperty())
+                "\nDescripciï¿½n: ", model.getActual().descripcionProperty())
         );
         model.busquedaProperty().bindBidirectional(searchBar.textProperty());
         model.busquedaProperty().addListener((ob, ov, nv) -> {
@@ -172,7 +172,7 @@ public class Controller implements Initializable {
     }
 
     private void onKeyEventFilter(KeyEvent event) {
-        //Evento Tecla enter cuando no está seleccionado el buscador
+        //Evento Tecla enter cuando no estï¿½ seleccionado el buscador
         if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER && !searchBar.isFocused()) {
             redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
             event.consume();
@@ -259,15 +259,14 @@ public class Controller implements Initializable {
     }
 
     private void makeEvolutionChain() {
-        session.beginTransaction();
-        session.getTransaction().commit();
-        if (model.getActual().getEvoluciones().size() > 1) {
-            if (model.getActual().getEvoluciones().size() > 2) {
-                //EVEE
-                for (Evolucion e : model.getActual().getEvoluciones()) {
-                    if (e.getPokemons().get(0).getId() != model.getActual().getId()) {
+                //CASO EVEE
                         //Es una preevolucion
+                        session.beginTransaction();
+                        Pokemon prevPkm = session.get(Pokemon.class, e.getPokemons().get(0).getId());
+                        session.getTransaction().commit();
+                        if (prevPkm.getEvoluciones().size() > 1) {
 
+                        }
                     } else {
                         //Es una evolucion
                     }
@@ -309,7 +308,7 @@ public class Controller implements Initializable {
             move.setFromY(95);
             move.setToY(40);
 
-            //Cambio de tamaño
+            //Cambio de tamaï¿½o
             scale.setByX(-1);
             scale.setByY(-1);
 
@@ -327,7 +326,7 @@ public class Controller implements Initializable {
             move.setFromY(40);
             move.setToY(95);
 
-            //Cambio de tamaño
+            //Cambio de tamaï¿½o
             scale.setByX(1);
             scale.setByY(1);
 
@@ -339,16 +338,13 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void onNextPokemonAction() {
-    	System.out.println(model.getFrame1().getUrl());
         if (model.getActual().getId() < TOTAL_POKEMON) {
-        	playSoundEffect(PokeDexAPP.class.getResource("/sounds/effect1.ogg").toString());
             session.beginTransaction();
             Pokemon pkm = session.get(Pokemon.class, model.getActual().getId() + 1);
             session.getTransaction().commit();
             model.setActual(pkm);
             refreshTypes();
-//            makeEvolutionChain();
+            makeEvolutionChain();
         }
     }
 
@@ -360,7 +356,7 @@ public class Controller implements Initializable {
             session.getTransaction().commit();
             model.setActual(pkm);
             refreshTypes();
-//            makeEvolutionChain();
+            makeEvolutionChain();
         }
     }
     
