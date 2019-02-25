@@ -1525,6 +1525,29 @@ public class Main {
 		session.save(koffingPokemon);
 		session.save(weezingPokemon);
 
+//		Rhyhorn Rhydon
+
+		Pokemon rhyhornPokemon = new Pokemon();
+		rhyhornPokemon.setNombre("Rhyhorn");
+		rhyhornPokemon.getTipos().add(tierraTipo);
+		rhyhornPokemon.getTipos().add(rocaTipo);
+
+		Pokemon rhydonPokemon = new Pokemon();
+		rhydonPokemon.setNombre("Rhydon");
+		rhydonPokemon.getTipos().add(tierraTipo);
+		rhydonPokemon.getTipos().add(rocaTipo);
+
+		Evolucion evolucionRhyhornRhydon = new Evolucion();
+		evolucionRhyhornRhydon.getPokemons().add(rhyhornPokemon);
+		evolucionRhyhornRhydon.getPokemons().add(rhydonPokemon);
+		evolucionRhyhornRhydon.setMetodo(MetodoEvolucion.NIVEL);
+
+		rhyhornPokemon.getEvoluciones().add(evolucionRhyhornRhydon);
+		session.save(evolucionRhyhornRhydon);
+
+		session.save(rhyhornPokemon);
+		session.save(rhydonPokemon);
+
 //		Chansey
 
 		Pokemon chanseyPokemon = new Pokemon();
