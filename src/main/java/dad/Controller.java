@@ -31,7 +31,6 @@ import javafx.util.Duration;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -259,7 +258,11 @@ public class Controller implements Initializable {
     }
 
     private void makeEvolutionChain() {
+        if (model.getActual().getEvoluciones().size() > 1) {
+            if (model.getActual().getEvoluciones().size() > 2) {
                 //CASO EVEE
+                for (Evolucion e : model.getActual().getEvoluciones()) {
+                    if (e.getPokemons().get(0).getId() != model.getActual().getId()) {
                         //Es una preevolucion
                         session.beginTransaction();
                         Pokemon prevPkm = session.get(Pokemon.class, e.getPokemons().get(0).getId());
@@ -285,6 +288,7 @@ public class Controller implements Initializable {
             evolutionView.getChildren().add(2, label);
         }
     }
+
 
     //Funciones FXML
     @FXML
@@ -338,6 +342,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    public void onNextPokemonAction() {
         if (model.getActual().getId() < TOTAL_POKEMON) {
             session.beginTransaction();
             Pokemon pkm = session.get(Pokemon.class, model.getActual().getId() + 1);
@@ -346,6 +351,7 @@ public class Controller implements Initializable {
             refreshTypes();
             makeEvolutionChain();
         }
+
     }
 
     @FXML
@@ -359,10 +365,10 @@ public class Controller implements Initializable {
             makeEvolutionChain();
         }
     }
-    
+
     @FXML
     public void onSearchButtonAction() {
-    	
+
     }
 
     @FXML
@@ -376,11 +382,11 @@ public class Controller implements Initializable {
         greenConsole.setScrollTop(greenConsole.getScrollTop() + SCROLL_SPACE);
         scrollScreen.setVvalue(scrollScreen.getVvalue() + 0.08);
     }
-    
+
     private void playSoundEffect(String soundFile) {
-    	Media media = new Media(soundFile);
-    	MediaPlayer player = new MediaPlayer(media);
-    	player.play();
+        Media media = new Media(soundFile);
+        MediaPlayer player = new MediaPlayer(media);
+        player.play();
     }
 
     //Getters & Setters
