@@ -593,15 +593,13 @@ public class Main {
 		Evolucion evolucionPikachuRaichu = new Evolucion();
 		evolucionPikachuRaichu.getPokemons().add(pikachuPokemon);
 		evolucionPikachuRaichu.getPokemons().add(raichuPokemon);
-		evolucionPikachuRaichu.setMetodo(MetodoEvolucion.NIVEL);
+		evolucionPikachuRaichu.setMetodo(MetodoEvolucion.PIEDRA);
 
 		pikachuPokemon.getEvoluciones().add(evolucionPikachuRaichu);
 		session.save(evolucionPikachuRaichu);
 
 		session.save(pikachuPokemon);
 		session.save(raichuPokemon);
-
-
 
 //		Sandshrew Sandshlash
 
@@ -647,7 +645,7 @@ public class Main {
 		Evolucion evolucionNidorinaNidoqueen = new Evolucion();
 		evolucionNidorinaNidoqueen.getPokemons().add(nidorinaPokemon);
 		evolucionNidorinaNidoqueen.getPokemons().add(nidoqueenPokemon);
-		evolucionNidorinaNidoqueen.setMetodo(MetodoEvolucion.NIVEL);
+		evolucionNidorinaNidoqueen.setMetodo(MetodoEvolucion.PIEDRA);
 
 		nidoranFPokemon.getEvoluciones().add(evolucionNidoranFNidorina);
 		nidorinaPokemon.getEvoluciones().add(evolucionNidorinaNidoqueen);
@@ -681,7 +679,7 @@ public class Main {
 		Evolucion evolucionNidorinoNidoking = new Evolucion();
 		evolucionNidorinoNidoking.getPokemons().add(nidorinoPokemon);
 		evolucionNidorinoNidoking.getPokemons().add(nidokingPokemon);
-		evolucionNidorinoNidoking.setMetodo(MetodoEvolucion.NIVEL);
+		evolucionNidorinoNidoking.setMetodo(MetodoEvolucion.PIEDRA);
 
 		nidoranMPokemon.getEvoluciones().add(evolucionNidoranMNidorino);
 		nidorinoPokemon.getEvoluciones().add(evolucionNidorinoNidoking);
@@ -705,7 +703,7 @@ public class Main {
 		Evolucion evolucionClefairyClefable = new Evolucion();
 		evolucionClefairyClefable.getPokemons().add(clefairyPokemon);
 		evolucionClefairyClefable.getPokemons().add(clefablePokemon);
-		evolucionClefairyClefable.setMetodo(MetodoEvolucion.NIVEL);
+		evolucionClefairyClefable.setMetodo(MetodoEvolucion.PIEDRA);
 
 		clefairyPokemon.getEvoluciones().add(evolucionClefairyClefable);
 		session.save(evolucionClefairyClefable);
@@ -726,7 +724,7 @@ public class Main {
 		Evolucion evolucionVulpixNinetales = new Evolucion();
 		evolucionVulpixNinetales.getPokemons().add(vulpixPokemon);
 		evolucionVulpixNinetales.getPokemons().add(ninetalesPokemon);
-		evolucionVulpixNinetales.setMetodo(MetodoEvolucion.NIVEL);
+		evolucionVulpixNinetales.setMetodo(MetodoEvolucion.PIEDRA);
 
 		vulpixPokemon.getEvoluciones().add(evolucionVulpixNinetales);
 		session.save(evolucionVulpixNinetales);
@@ -749,7 +747,7 @@ public class Main {
 		Evolucion evolucionJigglypuffWigglytuff = new Evolucion();
 		evolucionJigglypuffWigglytuff.getPokemons().add(jigglypuffPokemon);
 		evolucionJigglypuffWigglytuff.getPokemons().add(wigglytuffPokemon);
-		evolucionJigglypuffWigglytuff.setMetodo(MetodoEvolucion.NIVEL);
+		evolucionJigglypuffWigglytuff.setMetodo(MetodoEvolucion.PIEDRA);
 
 		jigglypuffPokemon.getEvoluciones().add(evolucionJigglypuffWigglytuff);
 		session.save(evolucionJigglypuffWigglytuff);
@@ -805,7 +803,7 @@ public class Main {
 		Evolucion evolucionGloomVileplume = new Evolucion();
 		evolucionGloomVileplume.getPokemons().add(gloomPokemon);
 		evolucionGloomVileplume.getPokemons().add(vileplumePokemon);
-		evolucionGloomVileplume.setMetodo(MetodoEvolucion.NIVEL);
+		evolucionGloomVileplume.setMetodo(MetodoEvolucion.PIEDRA);
 
 		oddishPokemon.getEvoluciones().add(evolucionOddishGloom);
 		gloomPokemon.getEvoluciones().add(evolucionGloomVileplume);
@@ -959,7 +957,7 @@ public class Main {
 		Evolucion evolucionGrowlitheArcanine = new Evolucion();
 		evolucionGrowlitheArcanine.getPokemons().add(growlithePokemon);
 		evolucionGrowlitheArcanine.getPokemons().add(arcaninePokemon);
-		evolucionGrowlitheArcanine.setMetodo(MetodoEvolucion.NIVEL);
+		evolucionGrowlitheArcanine.setMetodo(MetodoEvolucion.PIEDRA);
 
 		growlithePokemon.getEvoluciones().add(evolucionGrowlitheArcanine);
 		session.save(evolucionGrowlitheArcanine);
@@ -992,7 +990,7 @@ public class Main {
 		Evolucion evolucionPoliwhirlPoliwrath = new Evolucion();
 		evolucionPoliwhirlPoliwrath.getPokemons().add(poliwhirlPokemon);
 		evolucionPoliwhirlPoliwrath.getPokemons().add(poliwrathPokemon);
-		evolucionPoliwhirlPoliwrath.setMetodo(MetodoEvolucion.NIVEL);
+		evolucionPoliwhirlPoliwrath.setMetodo(MetodoEvolucion.PIEDRA);
 
 		poliwagPokemon.getEvoluciones().add(evolucionPoliwagPoliwhirl);
 		poliwhirlPokemon.getEvoluciones().add(evolucionPoliwhirlPoliwrath);
