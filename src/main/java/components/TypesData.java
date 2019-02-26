@@ -3,8 +3,8 @@ public class TypesData {
 	static public String[] typeNames = {
 			"Normal", "Lucha", "Volador", "Veneno",
 			"Tierra", "Roca", "Bicho", "Fantasma",
-			"Eléctrico", "Psíquico", "Hielo","Dragón",
 			"Acero", "Fuego", "Agua", "Planta",
+			"Eléctrico", "Psíquico", "Hielo","Dragón",
 			"Siniestro","Hada"
 	};
 	static public String[] typeColors = {
@@ -27,24 +27,24 @@ public class TypesData {
 			"-fx-background-color: #705848; ",
 			"-fx-background-color: #EE99AC; ",
 	};
-	static public float[][] typeDamage = { 
-		{ 1, 1, 1, 1, 1, (float) 0.5, 1, 0, (float) 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-		{ 2, 1, (float) 0.5, (float) 0.5, 1, 2, (float) 0.5, 0, 2, 1, 1, 1, 1, (float) 0.5, 2, 1, 2, (float) 0.5 },
-		{ 1, 2, 1, 1, 1, (float) 0.5, 2, 1, (float) 0.5, 1, 1, 2, (float) 0.5, 1, 1, 1, 1, 1 },
-		{ 1, 1, 1, (float) 0.5, (float) 0.5, (float) 0.5, 1, (float) 0.5, 0, 1, 1, 2, 1, 1, 1, 1, 1, 2 },
-		{ 1, 1, 0, 2, 1, 2, (float) 0.5, 1, 2, 2, 1, (float) 0.5, 2, 1, 1, 1, 1, 1 },
-		{ 1, (float) 0.5, 2, 1, (float) 0.5, 1, 2, 1, (float) 0.5, 2, 1, 1, 1, 1, 2, 1, 1, 1 },
-		{ 1, (float) 0.5, (float) 0.5, (float) 0.5, 1, 1, 1, (float) 0.5, (float) 0.5, (float) 0.5, 1, 2, 1, 2, 1, 1, 2, (float) 0.5 },
-		{ 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, (float) 0.5, 1 },
-		{ 1, 1, 1, 1, 1, 2, 1, 1, (float) 0.5, (float) 0.5, (float) 0.5, 1, (float) 0.5, 1, 2, 1, 1, 2 },
-		{ 1, 1, 1, 1, 1, (float) 0.5, 2, 1, 2, (float) 0.5, (float) 0.5, 2, 1, 1, 2, (float) 0.5, 1, 1 },
-		{ 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, (float) 0.5, (float) 0.5, 1, 1, 1, (float) 0.5, 1, 1 },
-		{ 1, 1, (float) 0.5, (float) 0.5, 2, 2, (float) 0.5, 1, (float) 0.5, (float) 0.5, 2, (float) 0.5, 1, 1, 1, (float) 0.5, 1, 1 },
-		{ 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 2, (float) 0.5, (float) 0.5, 1, 1, (float) 0.5, 1, 1 },
-		{ 1, 2, 1, 2, 1, 1, 1, 1, (float) 0.5, 1, 1, 1, 1, (float) 0.5, 1, 1, 0, 1 },
-		{ 1, 1, 2, 1, 2, 1, 1, 1, (float) 0.5, (float) 0.5, (float) 0.5, 2, 1, 1, (float) 0.5, 2, 1, 1 },
-		{ 1, 1, 1, 1, 1, 1, 1, 1, (float) 0.5, 1, 1, 1, 1, 1, 1, 2, 1, 0 },
-		{ 1, (float) 0.5, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, (float) 0.5, (float) 0.5 },
-		{ 1, 2, 1, (float) 0.5, 1, 1, 1, 1, (float) 0.5, (float) 0.5, 1, 1, 1, 1, 1, 2, 2, 1 } 
+	static public float[][] typeDamage = {
+			{ 1, 1, 1, 1, 1, (float) 0.5, 1, 0, (float) 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+			{ 2, 1, (float) 0.5, (float) 0.5, 1, 2, (float) 0.5, 0, 2, 1, 1, 1, 1, (float) 0.5, 2, 1, 2, (float) 0.5 },
+			{ 1, 2, 1, 1, 1, (float) 0.5, 2, 1, (float) 0.5, 1, 1, 2, (float) 0.5, 1, 1, 1, 1, 1 },
+			{ 1, 1, 1, (float) 0.5, (float) 0.5, (float) 0.5, 1, (float) 0.5, 0, 1, 1, 2, 1, 1, 1, 1, 1, 2 },
+			{ 1, 1, 0, 2, 1, 2, (float) 0.5, 1, 2, 2, 1, (float) 0.5, 2, 1, 1, 1, 1, 1 },
+			{ 1, (float) 0.5, 2, 1, (float) 0.5, 1, 2, 1, (float) 0.5, 2, 1, 1, 1, 1, 2, 1, 1, 1 },
+			{ 1, (float) 0.5, (float) 0.5, (float) 0.5, 1, 1, 1, (float) 0.5, (float) 0.5, (float) 0.5, 1, 2, 1, 2, 1, 1, 2, (float) 0.5 },
+			{ 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, (float) 0.5, 1 },
+			{ 1, 1, 1, 1, 1, 2, 1, 1, (float) 0.5, (float) 0.5, (float) 0.5, 1, (float) 0.5, 1, 2, 1, 1, 2 },
+			{ 1, 1, 1, 1, 1, (float) 0.5, 2, 1, 2, (float) 0.5, (float) 0.5, 2, 1, 1, 2, (float) 0.5, 1, 1 },
+			{ 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, (float) 0.5, (float) 0.5, 1, 1, 1, (float) 0.5, 1, 1 },
+			{ 1, 1, (float) 0.5, (float) 0.5, 2, 2, (float) 0.5, 1, (float) 0.5, (float) 0.5, 2, (float) 0.5, 1, 1, 1, (float) 0.5, 1, 1 },
+			{ 1, 1, 2, 1, 0, 1, 1, 1, 1, 1, 2, (float) 0.5, (float) 0.5, 1, 1, (float) 0.5, 1, 1 },
+			{ 1, 2, 1, 2, 1, 1, 1, 1, (float) 0.5, 1, 1, 1, 1, (float) 0.5, 1, 1, 0, 1 },
+			{ 1, 1, 2, 1, 2, 1, 1, 1, (float) 0.5, (float) 0.5, (float) 0.5, 2, 1, 1, (float) 0.5, 2, 1, 1 },
+			{ 1, 1, 1, 1, 1, 1, 1, 1, (float) 0.5, 1, 1, 1, 1, 1, 1, 2, 1, 0 },
+			{ 1, (float) 0.5, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, (float) 0.5, (float) 0.5 },
+			{ 1, 2, 1, (float) 0.5, 1, 1, 1, 1, (float) 0.5, (float) 0.5, 1, 1, 1, 1, 1, 2, 2, 1 }
 	};
 }

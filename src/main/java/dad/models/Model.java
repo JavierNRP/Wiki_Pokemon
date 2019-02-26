@@ -44,7 +44,8 @@ public class Model {
         setFrame1(new Image(PokeDexAPP.class.getResource("/image/pokemon/" + actual.getId() + ".png").toString()));
         setFrame2(new Image(PokeDexAPP.class.getResource("/image/pokemon/frame2/" + actual.getId() + ".png").toString()));
 
-		setMedia(new Media(PokeDexAPP.class.getResource("/sounds/cries/" + actual.getId() + ".mp3").toString()));
+        setMedia(new Media(PokeDexAPP.class.getResource("/sounds/cries/" + actual.getId() + ".mp3").toString()));
+    }
 
     public Image getFrame1() {
         return frame1.get();

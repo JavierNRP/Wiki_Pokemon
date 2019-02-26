@@ -112,15 +112,14 @@ public class Pokemon implements Serializable {
         this.evoluciones = evoluciones;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        Pokemon pkm = (Pokemon) o;
-//        return this.id == pkm.getId();
-//    }
 
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public boolean sameId(Pokemon pkm) {
+        return this.id == pkm.getId();
     }
 
     @Override

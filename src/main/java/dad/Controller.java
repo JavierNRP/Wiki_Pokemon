@@ -26,10 +26,8 @@ import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,65 +35,93 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
+    public static final int TOTAL_POKEMON = 151;
+    public static final int SCROLL_SPACE = 21;
+    public static final int ELMENTOS_POR_DEFECTO_EVOLUTIONVIEW = 3;
+    private Model model = new Model();
+    private ImageView img1;
+    private ImageView img2;
+    private Group animation;
+    private Boolean details = false;
+    private MediaPlayer criePlayer;
+    private static Session session;
     private ScaleTransition scaleTransition;
     private TranslateTransition moveTransition;
-	public static final int TOTAL_POKEMON = 151;
-	public static final int SCROLL_SPACE = 21;
-	public static final int ELMENTOS_POR_DEFECTO_EVOLUTIONVIEW = 3;
-	private Model model = new Model();
-	private ImageView img1;
-	private ImageView img2;
-	private Group animation;
-	private Boolean details = false;
-	private static Session session;
 
-	@FXML
-	private Label pokeNumText;
-	@FXML
-	private Pane screen;
-	@FXML
-	private AnchorPane view;
-	@FXML
-	private Button redButton;
-	@FXML
-	private TextArea greenConsole;
-	@FXML
-	private TextField searchBar;
-	@FXML
-	private Button searchButton;
-	@FXML
-	private ToggleButton rightArrow;
-	@FXML
-	private ToggleButton leftArrow;
-	@FXML
-	private ToggleButton upArrow;
-	@FXML
-	private ToggleButton downArrow;
-	@FXML
-	private Label nameLabel;
-	@FXML
-	private ScrollPane scrollScreen;
-	@FXML
-	private GridPane typesGrid;
-	@FXML
-	private VBox typesBox;
-	@FXML
-	private HBox evolutionView;
+    @FXML
+    private Label pokeNumText;
+    @FXML
+    private Pane screen;
+    @FXML
+    private AnchorPane view;
+    @FXML
+    private Button redButton;
+    @FXML
+    private TextArea greenConsole;
+    @FXML
+    private TextField searchBar;
+    @FXML
+    private Button searchButton;
+    @FXML
+    private ToggleButton rightArrow;
+    @FXML
+    private ToggleButton leftArrow;
+    @FXML
+    private ToggleButton upArrow;
+    @FXML
+    private ToggleButton downArrow;
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private ScrollPane scrollScreen;
+    @FXML
+    private GridPane typesGrid;
+    @FXML
+    private VBox typesBox;
+    @FXML
+    private HBox evolutionView;
 
-	public Controller() {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main.fxml"));
-			loader.setController(this);
-			loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    public Controller() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main.fxml"));
+            loader.setController(this);
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //EventFilter
         EventHandler<KeyEvent> filter = event -> onKeyEventFilter(event);
         view.addEventFilter(KeyEvent.ANY, filter);
+
+        //Bindeos
+        pokeNumText.textProperty().bind(model.getActual().idProperty().asString());
+        nameLabel.textProperty().bind(model.getActual().nombreProperty());
+        greenConsole.textProperty().bind(Bindings.concat(
+                "Pokémon: ", model.getActual().nombreProperty(),
+                "\nTipo: ", model.getActual().tiposProperty(),
+                "\nAltura: ", model.getActual().alturaProperty(),
+                "\nPeso: ", model.getActual().pesoProperty(),
+                "\nDescripción: ", model.getActual().descripcionProperty())
+        );
+        model.busquedaProperty().bindBidirectional(searchBar.textProperty());
+        model.busquedaProperty().addListener((ob, ov, nv) -> {
+            Search search;
+            try {
+                search = new Search();
+                TextFields.bindAutoCompletion(searchBar, search.getResultadosBusquedaPokemon(nv));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        });
+        model.mediaProperty().addListener(e -> {
+            criePlayer = new MediaPlayer(model.getMedia());
+        });
+
 
         //Obtener la sesion de la base de datos;
         try {
@@ -104,77 +130,61 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
 
-		// Cargar primer pokemon de la base de datos
-		session.beginTransaction();
-		Pokemon pkm = session.get(Pokemon.class, 1);
-		model.setActual(pkm);
-		session.getTransaction().commit();
+        //Cargar primer pokemon de la base de datos
+        session.beginTransaction();
+        Pokemon pkm = session.get(Pokemon.class, 1);
+        model.setActual(pkm);
+        session.getTransaction().commit();
 
-		// Ocultar los campos de detalles
-		hideDetails(true);
+        //Ocultar los campos de detalles
+        hideDetails(true);
 
-		// Crear transicion con la animacion del pokemon
-		img1 = new ImageView();
-		img2 = new ImageView();
+        //Crear transicion con la animacion del pokemon
+        img1 = new ImageView();
+        img2 = new ImageView();
 
-		// Bindear las imagesproperty
-		img1.imageProperty().bind(model.frame1Property());
-		img2.imageProperty().bind(model.frame2Property());
+        //Bindear las imagesproperty
+        img1.imageProperty().bind(model.frame1Property());
+        img2.imageProperty().bind(model.frame2Property());
 
-		animation = new Group(img1);
-		animation.setAutoSizeChildren(true);
-		animation.setScaleX(3);
-		animation.setScaleY(3);
-		animation.setTranslateX(130);
-		animation.setTranslateY(95);
+        animation = new Group(img1);
+        animation.setAutoSizeChildren(true);
+        animation.setScaleX(3);
+        animation.setScaleY(3);
+        animation.setTranslateX(130);
+        animation.setTranslateY(95);
 
-		Timeline tl = new Timeline(new KeyFrame(Duration.millis(100), t -> animation.getChildren().setAll(img1)),
-				new KeyFrame(Duration.millis(500), t -> animation.getChildren().setAll(img2)));
-		tl.setCycleCount(Timeline.INDEFINITE);
-		tl.setAutoReverse(true);
-		tl.play();
+        Timeline tl = new Timeline(
+                new KeyFrame(Duration.millis(100), t -> animation.getChildren().setAll(img1)),
+                new KeyFrame(Duration.millis(500), t -> animation.getChildren().setAll(img2))
+        );
+        tl.setCycleCount(Timeline.INDEFINITE);
+        tl.setAutoReverse(true);
+        tl.play();
 
+        //Animaciones de detalles
+        moveTransition = new TranslateTransition(Duration.millis(300), animation);
         moveTransition.setNode(animation);
         scaleTransition = new ScaleTransition(Duration.millis(300), animation);
-        moveTransition = new TranslateTransition(Duration.millis(300), animation);
-        //Animaciones de detalles
+
+
         //Agregar los elementos a la pantalla de la pokedex
         screen.getChildren().add(animation);
         refreshTypes();
         makeEvolutionChain();
 
-		// Reproducir sonido del primer pokemon al iniciar
-		Media media = new Media(
-				PokeDexAPP.class.getResource("/sounds/cries/" + model.getActual().getId() + ".mp3").toString());
-		MediaPlayer reproductor = new MediaPlayer(media);
-		reproductor.play();
 
-		// Bindeos
-		pokeNumText.textProperty().bind(model.getActual().idProperty().asString());
-		nameLabel.textProperty().bind(model.getActual().nombreProperty());
-		greenConsole.textProperty()
-				.bind(Bindings.concat("Pok�mon: ", model.getActual().nombreProperty(), "\nTipo: ",
-						model.getActual().tiposProperty(), "\nAltura: ", model.getActual().alturaProperty(), "\nPeso: ",
-						model.getActual().pesoProperty(), "\nDescripci�n: ", model.getActual().descripcionProperty()));
-		model.busquedaProperty().bindBidirectional(searchBar.textProperty());
-		model.busquedaProperty().addListener((ob, ov, nv) -> {
-			Search search;
-			try {
-				search = new Search();
-				TextFields.bindAutoCompletion(searchBar, search.getResultadosBusquedaPokemon(nv));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
+    }
 
-
-		model.mediaProperty().addListener((ob, ov, nv) -> {
-			MediaPlayer player = new MediaPlayer(nv);
-			player.play();
-		});
+    private void refreshTypes() {
+        typesBox.getChildren().clear();
+        for (Tipo t : model.getActual().getTipos()) {
+            typesBox.getChildren().add(makeTypeLabel(t.getId()));
+        }
+    }
 
     private void onKeyEventFilter(KeyEvent event) {
-        //Evento Tecla enter cuando no est� seleccionado el buscador
+        //Evento Tecla enter cuando no está seleccionado el buscador
         if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER && !searchBar.isFocused()) {
             redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
             event.consume();
@@ -183,93 +193,68 @@ public class Controller implements Initializable {
             redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
         }
 
-	private void refreshTypes() {
-		typesBox.getChildren().clear();
-		for (Tipo t : model.getActual().getTipos()) {
-			typesBox.getChildren().add(makeTypeLabel(t.getId()));
-		}
-	}
+        //Evento Tecla enter cuando el buscador esta seleccionado
+        if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER && searchBar.isFocused()) {
+            searchButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+            event.consume();
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.ENTER && searchBar.isFocused()) {
+            searchButton.fire();
+            searchButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+        }
 
-	private void onKeyEventFilter(KeyEvent event) {
-		// Evento Tecla enter cuando no est� seleccionado el buscador
-		if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER
-				&& !searchBar.isFocused()) {
-			redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
-			event.consume();
-		} else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.ENTER
-				&& !searchBar.isFocused()) {
-			redButton.fire();
-			redButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
-		}
+        //Derecha
+        else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.RIGHT && !searchBar.isFocused()) {
+            rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+            event.consume();
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.RIGHT && !searchBar.isFocused()) {
+            rightArrow.fire();
+            rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+            event.consume();
+        }
 
-		// Evento Tecla enter cuando el buscador esta seleccionado
-		if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.ENTER && searchBar.isFocused()) {
-			searchButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
-			event.consume();
-		} else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.ENTER
-				&& searchBar.isFocused()) {
-			searchButton.fire();
-			searchButton.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
-		}
+        //Izquierda
+        else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.LEFT && !searchBar.isFocused()) {
+            leftArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+            event.consume();
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.LEFT && !searchBar.isFocused()) {
+            leftArrow.fire();
+            leftArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+            event.consume();
+        }
 
-		// Derecha
-		else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.RIGHT
-				&& !searchBar.isFocused()) {
-			rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
-			event.consume();
-		} else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.RIGHT
-				&& !searchBar.isFocused()) {
-			rightArrow.fire();
-			rightArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
-			event.consume();
-		}
+        //Arriba
+        else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.UP) {
+            upArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+            upArrow.fire();
+            event.consume();
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.UP) {
+            upArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+            event.consume();
+        }
 
-		// Izquierda
-		else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.LEFT
-				&& !searchBar.isFocused()) {
-			leftArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
-			event.consume();
-		} else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.LEFT
-				&& !searchBar.isFocused()) {
-			leftArrow.fire();
-			leftArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
-			event.consume();
-		}
+        //Abajo
+        else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.DOWN) {
+            downArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
+            downArrow.fire();
+            event.consume();
+        } else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.DOWN) {
+            downArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
+            event.consume();
+        }
 
-		// Arriba
-		else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.UP
-				&& !searchBar.isFocused()) {
-			upArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
-			upArrow.fire();
-			event.consume();
-		} else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.UP
-				&& !searchBar.isFocused()) {
-			upArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
-			event.consume();
-		}
+    }
 
-		// Abajo
-		else if (event.getEventType() == KeyEvent.KEY_PRESSED && event.getCode() == KeyCode.DOWN
-			downArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), true);
-				&& !searchBar.isFocused()) {
-			downArrow.fire();
-			event.consume();
-		} else if (event.getEventType() == KeyEvent.KEY_RELEASED && event.getCode() == KeyCode.DOWN
-				&& !searchBar.isFocused()) {
-			downArrow.pseudoClassStateChanged(PseudoClass.getPseudoClass("pressed"), false);
-			event.consume();
-		}
     private void hideDetails(Boolean b) {
         if (b) {
             nameLabel.setDisable(true);
-            typesGrid.setDisable(true);
             nameLabel.setVisible(false);
+            typesGrid.setDisable(true);
             typesGrid.setVisible(false);
             evolutionView.setDisable(true);
             evolutionView.setVisible(false);
-            nameLabel.setVisible(true);
-            nameLabel.setDisable(false);
         } else {
+            nameLabel.setDisable(false);
+            nameLabel.setVisible(true);
             typesGrid.setDisable(false);
             typesGrid.setVisible(true);
             evolutionView.setDisable(false);
@@ -277,28 +262,48 @@ public class Controller implements Initializable {
         }
     }
 
-	}
+    private Label makeTypeLabel(Integer id) {
+        Label typelabel = new Label();
+        typelabel.setText(TypesData.typeNames[id - 1]);
+        typelabel.setStyle(TypesData.typeColors[id - 1]);
+        typelabel.setAlignment(Pos.CENTER);
+        typelabel.setMinWidth(100);
+        typelabel.setEffect(new InnerShadow());
+        typelabel.getStyleClass().add("screen-text");
+        typelabel.getStyleClass().add("type-label");
+        return typelabel;
+    }
+
+
+
+    private void playSoundEffect(String soundFile) {
+        Media media = new Media(soundFile);
+        MediaPlayer player = new MediaPlayer(media);
+        player.play();
+    }
+
 
     private void makeEvolutionChain() {
         evolutionView.getChildren().clear();
-        if (model.getActual().getEvoluciones().size() > 1) {
+        if (model.getActual().getEvoluciones().isEmpty()) {
+            //Sin Evolucion
+            Label label = new Label("Sin Evoluciones");
+            label.getStyleClass().add("nombre-pokemon");
+            evolutionView.getChildren().add(label);
+        } else if (model.getActual().getEvoluciones().size() > 1) {
             if (model.getActual().getEvoluciones().size() > 2) {
                 //MUCHAS EVOLUCIONES DISTINTAS (CASO EEVE)
-                Image currentImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + model.getActual().getId() + ".png").toString());
-                ImageView currentView = new ImageView(currentImg);
-                evolutionView.getChildren().add(currentView);
+                evolutionView.getChildren().add(makeEvolutionElementView(model.getActual().toPokemon()));
                 VBox evos = new VBox(5);
                 for (Evolucion e : model.getActual().getEvoluciones()) {
                     Pokemon pkm = e.getPokemons().get(1);
-                    Image pkmImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + pkm.getId() + ".png").toString());
-                    ImageView pkmImgView = new ImageView(pkmImg);
-                    evos.getChildren().add(pkmImgView);
+                    evos.getChildren().add(makeEvolutionElementView(pkm));
                 }
                 evolutionView.getChildren().add(evos);
             } else {
                 // UNA PREEVOLUCION Y UNA EVOLUCION
-                Evolucion preEvo = model.getActual().getEvoluciones().get(0);
                 //Obtener la preevolucion y la evolucion
+                Evolucion preEvo = model.getActual().getEvoluciones().get(0);
                 Evolucion evo = model.getActual().getEvoluciones().get(1);
 
                 //Obtener los Pokemon de la clase Evolucion
@@ -312,24 +317,18 @@ public class Controller implements Initializable {
 
                 ImageView preView = new ImageView(preImg);
                 ImageView currentView = new ImageView(currentImg);
-
                 ImageView evoView = new ImageView(evoImg);
+
                 //Agregar las imagenes a la vista
-                evolutionView.getChildren().addAll(preView, currentView, evoView);
+                evolutionView.getChildren().addAll(makeEvolutionElementView(prePkm), makeEvolutionElementView(model.getActual().toPokemon()), makeEvolutionElementView(evoPkm));
+
             }
-        } else if (model.getActual().getEvoluciones().get(0).getPokemons().get(0).equals(model.getActual().toPokemon())) {
+        } else if (model.getActual().getEvoluciones().get(0).getPokemons().get(0).sameId(model.getActual().toPokemon())) {
             //CON AL MENOS UNA EVOLUCION
             Evolucion evo = model.getActual().getEvoluciones().get(0);
             Pokemon evoPkm = evo.getPokemons().get(1);
 
-            //Agregar el imageView
-            Image evoImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + evoPkm.getId() + ".png").toString());
-            Image currentImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + model.getActual().getId() + ".png").toString());
-
-            ImageView currentView = new ImageView(currentImg);
-            ImageView evoView = new ImageView(evoImg);
-
-            evolutionView.getChildren().addAll(currentView, evoView);
+            evolutionView.getChildren().addAll(makeEvolutionElementView(model.getActual().toPokemon()), makeEvolutionElementView(evoPkm));
 
             //Comprobar si el pokemon al que evoluciona tambien tiene otra evolucion
             if (evoPkm.getEvoluciones().size() > 1) {
@@ -337,50 +336,83 @@ public class Controller implements Initializable {
                 Evolucion posEvo = evoPkm.getEvoluciones().get(1);
                 Pokemon posEvoPkm = posEvo.getPokemons().get(1);
 
-                Image posEvoImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + posEvoPkm.getId() + ".png").toString());
-                ImageView posEvoView = new ImageView(posEvoImg);
-
-                evolutionView.getChildren().add(posEvoView);
+                evolutionView.getChildren().add(makeEvolutionElementView(posEvoPkm));
             }
 
 
-        } else if (!model.getActual().getEvoluciones().get(0).getPokemons().get(0).equals(model.getActual().toPokemon())) {
+        } else if (!model.getActual().getEvoluciones().get(0).getPokemons().get(0).sameId(model.getActual().toPokemon())) {
             //TIENE AL MENOS UNA PREEVOLUCION
             Evolucion pre = model.getActual().getEvoluciones().get(0);
             Pokemon prePkm = pre.getPokemons().get(0);
 
-            //Agregar el imageView
-            Image preImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + prePkm.getId() + ".png").toString());
-            Image currentImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + model.getActual().getId() + ".png").toString());
+            evolutionView.getChildren().addAll(makeEvolutionElementView(prePkm), makeEvolutionElementView(model.getActual().toPokemon()));
 
-            ImageView currentView = new ImageView(currentImg);
-            ImageView preEvoView = new ImageView(preImg);
-
-            evolutionView.getChildren().addAll(preEvoView,currentView);
             //Comprobar si el pokemon al que evoluciona tambien tiene otra evolucion
-
             if (prePkm.getEvoluciones().size() > 1) {
-                Evolucion prePreEvo = prePkm.getEvoluciones().get(0);
                 //Tiene otra preevolucion
+                Evolucion prePreEvo = prePkm.getEvoluciones().get(0);
                 Pokemon prePrePkm = prePreEvo.getPokemons().get(0);
 
-                Image prePreImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + prePrePkm.getId() + ".png").toString());
-                ImageView prePreView = new ImageView(prePreImg);
-
-                evolutionView.getChildren().add(0,prePreView);
+                evolutionView.getChildren().add(0, makeEvolutionElementView(prePrePkm));
             }
-        } else {
-            //Sin Evolucion
-            Label label = new Label("Sin Evoluciones");
-            label.getStyleClass().add("nombre-pokemon");
         }
-            evolutionView.getChildren().add(2, label);
+
+    }
+
+    private HBox makeEvolutionElementView(Pokemon pkm, String metodo) {
+        HBox element = new HBox(15);
+        element.setAlignment(Pos.CENTER);
+        VBox pkmView = new VBox(5);
+
+        Image img = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + pkm.getId() + ".png").toString());
+        ImageView imgView = new ImageView(img);
+        Label name = new Label(pkm.getNombre());
+        name.getStyleClass().add("screen-text");
+        pkmView.getChildren().addAll(imgView, name);
+
+        Label arrowMetodo = new Label(metodo);
+        arrowMetodo.getStyleClass().add("evolution-arrow");
+
+        element.getChildren().addAll(pkmView, arrowMetodo);
+        return element;
+    }
+
+    private HBox makeEvolutionElementView(Pokemon pkm) {
+        HBox element = new HBox(15);
+        element.setAlignment(Pos.CENTER);
+        VBox pkmView = new VBox(5);
+
+        Image img = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + pkm.getId() + ".png").toString());
+        ImageView imgView = new ImageView(img);
+        Label name = new Label(pkm.getNombre());
+        name.getStyleClass().add("screen-text");
+        pkmView.getChildren().addAll(imgView, name);
+
+
+        element.getChildren().addAll(pkmView);
+        return element;
     }
 
 
-    private ImageView makeEvolutionElementView (Pokemon pkm) {
-        return null;
+    private HBox makeEvolutionElementView(String metodo, Pokemon pkm) {
+        HBox element = new HBox(15);
+        element.setAlignment(Pos.CENTER);
+        VBox pkmView = new VBox(5);
+
+        Image img = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + pkm.getId() + ".png").toString());
+        ImageView imgView = new ImageView(img);
+        Label name = new Label(pkm.getNombre());
+        name.getStyleClass().add("screen-text");
+        pkmView.getChildren().addAll(imgView, name);
+
+        Label arrowMetodo = new Label(metodo);
+        arrowMetodo.getStyleClass().add("evolution-arrow");
+
+        element.getChildren().addAll(pkmView, arrowMetodo);
+        return element;
     }
+
+
     //Funciones FXML
 
     @FXML
@@ -397,8 +429,8 @@ public class Controller implements Initializable {
                 //Transiciones
 
                 //Movimiento
-                moveTransition.setToX(48);
                 moveTransition.setFromX(130);
+                moveTransition.setToX(48);
                 moveTransition.setFromY(95);
                 moveTransition.setToY(40);
 
@@ -429,6 +461,9 @@ public class Controller implements Initializable {
             }
         moveTransition.play();
         scaleTransition.play();
+        criePlayer.play();
+        criePlayer.setStartTime(Duration.ZERO);
+        criePlayer.seek(Duration.ZERO);
     }
 
     @FXML
@@ -440,20 +475,10 @@ public class Controller implements Initializable {
             model.setActual(pkm);
             refreshTypes();
             makeEvolutionChain();
+            playSoundEffect(PokeDexAPP.class.getResource("/sounds/scroll.mp3").toString());
         }
 
-	@FXML
-	public void onNextPokemonAction() {
-		if (model.getActual().getId() < TOTAL_POKEMON) {
-			session.beginTransaction();
-			Pokemon pkm = session.get(Pokemon.class, model.getActual().getId() + 1);
-			session.getTransaction().commit();
-			model.setActual(pkm);
-			refreshTypes();
-			makeEvolutionChain();
-		} else {
-			playSoundEffect(PokeDexAPP.class.getResource("/sounds/notallowed.mp3").toString());
-		}
+    }
 
     @FXML
     public void onPreviousPokemonAction() {
@@ -464,46 +489,25 @@ public class Controller implements Initializable {
             model.setActual(pkm);
             refreshTypes();
             makeEvolutionChain();
+            playSoundEffect(PokeDexAPP.class.getResource("/sounds/scroll.mp3").toString());
         }
     }
 
-	@FXML
-	public void onPreviousPokemonAction() {
-		if (model.getActual().getId() > 1) {
-			session.beginTransaction();
-			Pokemon pkm = session.get(Pokemon.class, model.getActual().getId() - 1);
-			session.getTransaction().commit();
-			model.setActual(pkm);
-			refreshTypes();
-			makeEvolutionChain();
-		} else {
-			playSoundEffect(PokeDexAPP.class.getResource("/sounds/notallowed.mp3").toString());
-		}
-	}
+    @FXML
+    public void onSearchButtonAction() {
 
-	@FXML
-	public void onSearchButtonAction() {
-		Query<Pokemon> query = session.createQuery("from Pokemon pkm where pkm.nombre=?1", Pokemon.class);
-		query.setParameter(1, model.getBusqueda());
-		for (Pokemon pokemon : query.getResultList()) {
-			model.setActual(pokemon);
-		}
-		model.busquedaProperty().set("");
-		refreshTypes();
+    }
 
-	}
+    @FXML
+    public void onUpArrowAction() {
+        greenConsole.setScrollTop(greenConsole.getScrollTop() - SCROLL_SPACE);
+        scrollScreen.setVvalue(scrollScreen.getVvalue() - 0.08);
+    }
 
-	@FXML
-	public void onUpArrowAction() {
-		playSoundEffect(PokeDexAPP.class.getResource("/sounds/scroll.mp3").toString());
-		greenConsole.setScrollTop(greenConsole.getScrollTop() - SCROLL_SPACE);
-		scrollScreen.setVvalue(scrollScreen.getVvalue() - 0.08);
-	}
-
-    private void playSoundEffect(String soundFile) {
-        Media media = new Media(soundFile);
-        MediaPlayer player = new MediaPlayer(media);
-        player.play();
+    @FXML
+    public void onDownArrowAction() {
+        greenConsole.setScrollTop(greenConsole.getScrollTop() + SCROLL_SPACE);
+        scrollScreen.setVvalue(scrollScreen.getVvalue() + 0.08);
     }
 
     //Getters & Setters
@@ -511,16 +515,11 @@ public class Controller implements Initializable {
         return view;
     }
 
-	// Getters & Setters
-	public AnchorPane getView() {
-		return view;
-	}
+    public Pane getScreen() {
+        return screen;
+    }
 
-	public Pane getScreen() {
-		return screen;
-	}
-
-	public static Session getSession() {
-		return session;
-	}
+    public static Session getSession() {
+        return session;
+    }
 }
