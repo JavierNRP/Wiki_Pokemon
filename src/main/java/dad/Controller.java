@@ -131,7 +131,7 @@ public class Controller implements Initializable {
         model.busquedaProperty().addListener((ob, ov, nv) -> {
             try {
                 suggestionElements = new Search().getResultadosBusquedaPokemon(nv);
-                if (suggestionElements.size() > 0 || suggestionElements.isEmpty()) {
+                if (suggestionTextList.isEmpty() && !suggestionElements.isEmpty()) {
                     model.setActual(suggestionElements.get(0));
                 }
             } catch (Exception e) {
@@ -476,7 +476,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void onSearchButtonAction() {
-
+    	
     }
 
     @FXML
