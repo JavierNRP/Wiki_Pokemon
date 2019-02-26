@@ -40,7 +40,11 @@
                         <VBox fx:id="typesBox" spacing="1.0" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
-                  <HBox fx:id="evolutionView" alignment="CENTER" layoutY="164.0" prefHeight="136.0" prefWidth="325.0" />
+                  <VBox alignment="CENTER" layoutY="164.0">
+                     <children>
+                        <HBox fx:id="evolutionView" alignment="CENTER" prefHeight="136.0" prefWidth="325.0" />
+                     </children>
+                  </VBox>
                </children>
                <styleClass>
                   <String fx:value="screen" />
