@@ -20,7 +20,7 @@ public class Model {
     private StringProperty busqueda;
 
 	public Model() {
-		actual = new PokemonProperty();
+		actual = new PokemonProperty(this);
 		frame1 = new SimpleObjectProperty<>(this, "FRAME 1");
 		frame2 = new SimpleObjectProperty<>(this, "FRAME 2");
 		media = new SimpleObjectProperty<>(this,"MEDIA");

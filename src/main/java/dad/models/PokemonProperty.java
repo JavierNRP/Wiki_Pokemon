@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PokemonProperty {
+public class PokemonProperty extends SimpleObjectProperty<PokemonProperty> {
     private IntegerProperty id;
 
     private StringProperty nombre;
@@ -22,7 +22,8 @@ public class PokemonProperty {
 
 
     //Constructores
-    public PokemonProperty() {
+    public PokemonProperty(Object b) {
+        super(b,"POKEMON PARA BINDEAR");
         this.id = new SimpleIntegerProperty(this, "NUMERO POKEDEX");
         this.nombre = new SimpleStringProperty(this, "NOMBRE POKEMON");
         this.peso = new SimpleStringProperty(this, "PESO POKEMON");
