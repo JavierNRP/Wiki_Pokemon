@@ -1,168 +1,175 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>PokeDex</groupId>
-    <artifactId>PokeDexKanto</artifactId>
-    <version>9.9.9.9</version>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>PokeDex</groupId>
+	<artifactId>PokeDexKanto</artifactId>
+	<version>9.9.9.9</version>
 
-    <properties>
-        <maven.compiler.source>10</maven.compiler.source>
-        <maven.compiler.target>10</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jre.path>C:\Program Files\Java\jre-10.0.2</jre.path>
-        <mainClass>dad.PokeDexAPP</mainClass>
-    </properties>
+	<properties>
+		<maven.compiler.source>10</maven.compiler.source>
+		<maven.compiler.target>10</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jre.path>C:\Program Files\Java\jre-10.0.2</jre.path>
+		<mainClass>dad.PokeDexAPP</mainClass>
+	</properties>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <!-- directorio relativo al jar con las librerías (dependencias) -->
-                            <classpathPrefix>libs/</classpathPrefix>
-                            <!-- clase principal del proyecto (método main) -->
-                            <mainClass>${mainClass}</mainClass>
-                        </manifest>
-                    </archive>
-                    <!-- directorio donde se genera el jar (por defecto es 'target') -->
-                    <outputDirectory>${project.build.directory}/app</outputDirectory>
-                </configuration>
-            </plugin>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<!-- directorio relativo al jar con las librerías (dependencias) -->
+							<classpathPrefix>libs/</classpathPrefix>
+							<!-- clase principal del proyecto (método main) -->
+							<mainClass>${mainClass}</mainClass>
+						</manifest>
+					</archive>
+					<!-- directorio donde se genera el jar (por defecto es 'target') -->
+					<outputDirectory>${project.build.directory}/app</outputDirectory>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- directorio de destino de las librerías (target/app/libs) -->
-                    <outputDirectory>${project.build.directory}/app/libs</outputDirectory>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- directorio de destino de las librerías (target/app/libs) -->
+					<outputDirectory>${project.build.directory}/app/libs</outputDirectory>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-jre</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/target/app/jre</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${jre.path}</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>copy-jre</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/target/app/jre</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${jre.path}</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-            <plugin>
-                <groupId>com.akathist.maven.plugins.launch4j</groupId>
-                <artifactId>launch4j-maven-plugin</artifactId>
-                <version>1.7.25</version>
-                <executions>
-                    <execution>
-                        <id>generate-windows-executable</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>launch4j</goal>
-                        </goals>
-                        <configuration>
-                            <headerType>gui</headerType>
-                            <!-- directorio donde se encuentra el JAR ejecutable -->
-                            <jar>${project.build.directory}/${project.name}-${project.version}.jar</jar>
-                            <!-- ruta del ejecutable generado -->
-                            <outfile>${project.build.directory}/app/${project.name}.exe</outfile>
-                            <!-- ruta del icono de la aplicación -->
-                            <icon>assets/windows/poke.ico</icon>
-                            <classPath>
-                                <!-- clase principal del jar (la que contiene el main) -->
-                                <mainClass>dad.holamundo.fxml.HolaMundoApp</mainClass>
-                            </classPath>
-                            <jre>
-                                <bundledJre64Bit>true</bundledJre64Bit>
-                                <!-- versión del jre -->
-                                <minVersion>10.0.2</minVersion>
-                                <runtimeBits>64</runtimeBits>
-                                <path>jre</path>
-                            </jre>
-                            <versionInfo>
-                                <!-- información adicional del fichero EXE generado -->
-                                <fileVersion>1.0.0.0</fileVersion>
-                                <txtFileVersion>1.0.0.0</txtFileVersion>
-                                <copyright>Desarrollo de Interfaces</copyright>
-                                <fileDescription>${project.description}</fileDescription>
-                                <productVersion>${project.version}.0</productVersion>
-                                <txtProductVersion>${project.version}.0</txtProductVersion>
-                                <productName>${project.name}</productName>
-                                <internalName>${project.name}</internalName>
-                                <originalFilename>${project.name}.exe</originalFilename>
-                            </versionInfo>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+			<plugin>
+				<groupId>com.akathist.maven.plugins.launch4j</groupId>
+				<artifactId>launch4j-maven-plugin</artifactId>
+				<version>1.7.25</version>
+				<executions>
+					<execution>
+						<id>generate-windows-executable</id>
+						<phase>package</phase>
+						<goals>
+							<goal>launch4j</goal>
+						</goals>
+						<configuration>
+							<headerType>gui</headerType>
+							<!-- directorio donde se encuentra el JAR ejecutable -->
+							<jar>${project.build.directory}/${project.name}-${project.version}.jar</jar>
+							<!-- ruta del ejecutable generado -->
+							<outfile>${project.build.directory}/app/${project.name}.exe</outfile>
+							<!-- ruta del icono de la aplicación -->
+							<icon>assets/windows/poke.ico</icon>
+							<classPath>
+								<!-- clase principal del jar (la que contiene el main) -->
+								<mainClass>dad.holamundo.fxml.HolaMundoApp</mainClass>
+							</classPath>
+							<jre>
+								<bundledJre64Bit>true</bundledJre64Bit>
+								<!-- versión del jre -->
+								<minVersion>10.0.2</minVersion>
+								<runtimeBits>64</runtimeBits>
+								<path>jre</path>
+							</jre>
+							<versionInfo>
+								<!-- información adicional del fichero EXE generado -->
+								<fileVersion>1.0.0.0</fileVersion>
+								<txtFileVersion>1.0.0.0</txtFileVersion>
+								<copyright>Desarrollo de Interfaces</copyright>
+								<fileDescription>${project.description}</fileDescription>
+								<productVersion>${project.version}.0</productVersion>
+								<txtProductVersion>${project.version}.0</txtProductVersion>
+								<productName>${project.name}</productName>
+								<internalName>${project.name}</internalName>
+								<originalFilename>${project.name}.exe</originalFilename>
+							</versionInfo>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-        </plugins>
-    </build>
+		</plugins>
+	</build>
 
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.4.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.4.1.Final</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search-orm -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-search-orm</artifactId>
-            <version>5.11.0.Final</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search-engine -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-search-engine</artifactId>
-            <version>5.11.0.Final</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
-        </dependency>
-        <!-- https://search.maven.org/artifact/org.controlsfx/controlsfx/9.0.0/jar -->
-        <dependency>
-            <groupId>org.controlsfx</groupId>
-            <artifactId>controlsfx</artifactId>
-            <version>9.0.0</version>
-        </dependency>
-    </dependencies>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.4.1.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search-orm -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-orm</artifactId>
+			<version>5.11.0.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search-engine -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-engine</artifactId>
+			<version>5.11.0.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version>
+		</dependency>
+		<!-- https://search.maven.org/artifact/org.controlsfx/controlsfx/9.0.0/jar -->
+		<dependency>
+			<groupId>org.controlsfx</groupId>
+			<artifactId>controlsfx</artifactId>
+			<version>9.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.7.0</version>
+		</dependency>
+
+	</dependencies>
 </project>
