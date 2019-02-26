@@ -297,22 +297,26 @@ public class Main {
 		bulbasaurPokemon.setNombre("Bulbasaur");
 		bulbasaurPokemon.getTipos().add(plantaTipo);
 		bulbasaurPokemon.getTipos().add(venenoTipo);
-//		plantaTipo.getPokemons().add(bulbasaurPokemon);
-//		venenoTipo.getPokemons().add(bulbasaurPokemon);
+		bulbasaurPokemon.setAltura("0,7 m");
+		bulbasaurPokemon.setPeso("6,9 Kg");
+		bulbasaurPokemon.setDescripcion("La semilla de su lomo está llena de nutrientes. La semilla brota a medida que el Pokémon crece.");
+		
 
 		Pokemon ivysaurPokemon = new Pokemon();
 		ivysaurPokemon.setNombre("Ivysaur");
 		ivysaurPokemon.getTipos().add(plantaTipo);
 		ivysaurPokemon.getTipos().add(venenoTipo);
-//		plantaTipo.getPokemons().add(ivysaurPokemon);
-//		venenoTipo.getPokemons().add(ivysaurPokemon);
+		ivysaurPokemon.setAltura("1,0 m");
+		ivysaurPokemon.setPeso("13,0 Kg");
+		ivysaurPokemon.setDescripcion("Puede aumentar su fuerza con energía solar. Esta también hace que crezca el capullo de su lomo.");
 
 		Pokemon venusaurPokemon = new Pokemon();
 		venusaurPokemon.setNombre("Venusaur");
 		venusaurPokemon.getTipos().add(plantaTipo);
 		venusaurPokemon.getTipos().add(venenoTipo);
-//		plantaTipo.getPokemons().add(venusaurPokemon);
-//		venenoTipo.getPokemons().add(venusaurPokemon);
+		venusaurPokemon.setAltura("2,0 m");
+		venusaurPokemon.setPeso("100,0 Kg");
+		venusaurPokemon.setDescripcion("Llena su cuerpo de energía con los rayos solares que captan los anchos pétalos de su flor.");
 
 		Evolucion evolucionBulbasaurIvysaur = new Evolucion();
 		evolucionBulbasaurIvysaur.getPokemons().add(bulbasaurPokemon);
@@ -341,19 +345,24 @@ public class Main {
 		Pokemon charmanderPokemon = new Pokemon();
 		charmanderPokemon.setNombre("Charmander");
 		charmanderPokemon.getTipos().add(fuegoTipo);
-		fuegoTipo.getPokemons().add(charmanderPokemon);
+		charmanderPokemon.setAltura("0,6 m");
+		charmanderPokemon.setPeso("8,5 Kg");
+		charmanderPokemon.setDescripcion("La llama de su cola indica su fuerza vital. Si está débil, la llama arderá más tenue.");
 
 		Pokemon charmeleonPokemon = new Pokemon();
 		charmeleonPokemon.setNombre("Charmeleon");
 		charmeleonPokemon.getTipos().add(fuegoTipo);
-		fuegoTipo.getPokemons().add(charmeleonPokemon);
+		charmeleonPokemon.setAltura("1,1 m");
+		charmeleonPokemon.setPeso("19,0 Kg");
+		charmeleonPokemon.setDescripcion("Por naturaleza, se acalora con facilidad; siempre está buscando enemigos. Solo se calma cuando gana.");
 
 		Pokemon charizardPokemon = new Pokemon();
 		charizardPokemon.setNombre("Charizard");
 		charizardPokemon.getTipos().add(fuegoTipo);
 		charizardPokemon.getTipos().add(voladorTipo);
-		fuegoTipo.getPokemons().add(charizardPokemon);
-		voladorTipo.getPokemons().add(charizardPokemon);
+		charizardPokemon.setAltura("1,7 m");
+		charizardPokemon.setPeso("90,5 Kg");
+		charizardPokemon.setDescripcion("Si Charizard se enfurece, la llama de la punta de su cola producirá destellos de color azul claro.");
 
 		Evolucion evolucionCharmanderCharmeleon = new Evolucion();
 		evolucionCharmanderCharmeleon.getPokemons().add(charmanderPokemon);
@@ -379,14 +388,23 @@ public class Main {
 		Pokemon squirtlePokemon = new Pokemon();
 		squirtlePokemon.setNombre("Squirtle");
 		squirtlePokemon.getTipos().add(aguaTipo);
+		squirtlePokemon.setAltura("0,5 m");
+		squirtlePokemon.setPeso("9,0 Kg");
+		squirtlePokemon.setDescripcion("Su caparazón es blando al nacer. Pero pronto se endurecerá y será capaz de resistir cualquier amenaza.");
 
 		Pokemon wartortlePokemon = new Pokemon();
 		wartortlePokemon.setNombre("Wartortle");
 		wartortlePokemon.getTipos().add(aguaTipo);
+		squirtlePokemon.setAltura("1,0 m");
+		squirtlePokemon.setPeso("22,5 Kg");
+		squirtlePokemon.setDescripcion("Es reconocido como símbolo de longevidad. Los Wartortle ancianos tienen algas sobre el caparazón.");
 
 		Pokemon blastoisePokemon = new Pokemon();
 		blastoisePokemon.setNombre("Blastoise");
 		blastoisePokemon.getTipos().add(aguaTipo);
+		squirtlePokemon.setAltura("16, m");
+		squirtlePokemon.setPeso("85,5 Kg");
+		squirtlePokemon.setDescripcion("Deliberadamente se hace más pesado para contrarrestar la fuerza de los chorros de agua que dispara.");
 
 		Evolucion evolucionSquirtleWartortle = new Evolucion();
 		evolucionSquirtleWartortle.getPokemons().add(squirtlePokemon);
@@ -412,17 +430,24 @@ public class Main {
 		Pokemon caterpiePokemon = new Pokemon();
 		caterpiePokemon.setNombre("Caterpie");
 		caterpiePokemon.getTipos().add(bichoTipo);
+		caterpiePokemon.setAltura("0,3 m");
+		caterpiePokemon.setPeso("2,9 Kg");
+		caterpiePokemon.setDescripcion("Para protegerse despide un hedor horrible de sus antenas, con el que repele a sus enemigos.");
 
 		Pokemon metapodPokemon = new Pokemon();
 		metapodPokemon.setNombre("Metapod");
 		metapodPokemon.getTipos().add(bichoTipo);
+		metapodPokemon.setAltura("0,7 m");
+		metapodPokemon.setPeso("9,9 Kg");
+		metapodPokemon.setDescripcion("En el caparazón, mientras se prepara para evolucionar, está blando y débil, en estado catatónico.");
 
 		Pokemon butterfreePokemon = new Pokemon();
 		butterfreePokemon.setNombre("Butterfree");
 		butterfreePokemon.getTipos().add(bichoTipo);
 		butterfreePokemon.getTipos().add(voladorTipo);
-		bichoTipo.getPokemons().add(butterfreePokemon);
-		voladorTipo.getPokemons().add(butterfreePokemon);
+		butterfreePokemon.setAltura("1,1 m");
+		butterfreePokemon.setPeso("32,0 Kg");
+		butterfreePokemon.setDescripcion("Recoge miel a diario y la adhiere al pelo de sus patas para llevarla a su colmena.");
 
 		Evolucion evolucionCaterpieMetapod = new Evolucion();
 		evolucionCaterpieMetapod.getPokemons().add(caterpiePokemon);
