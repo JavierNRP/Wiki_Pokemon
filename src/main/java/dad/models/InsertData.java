@@ -480,16 +480,25 @@ public class InsertData {
 		weedlePokemon.setNombre("Weedle");
 		weedlePokemon.getTipos().add(bichoTipo);
 		weedlePokemon.getTipos().add(venenoTipo);
+		weedlePokemon.setAltura("0,3 m");
+		weedlePokemon.setPeso("3,2 Kg");
+		weedlePokemon.setDescripcion("Su venenoso aguijón es muy potente y su colorido cuerpo hace que los enemigos huyan.");
 
 		Pokemon kakunaPokemon = new Pokemon();
 		kakunaPokemon.setNombre("Kakuna");
 		kakunaPokemon.getTipos().add(bichoTipo);
 		kakunaPokemon.getTipos().add(venenoTipo);
+		kakunaPokemon.setAltura("0,6 m");
+		kakunaPokemon.setPeso("10,0 Kg");
+		kakunaPokemon.setDescripcion("Aunque sea un capullo, es capaz de moverse. Extenderá su púa venenosa si es atacado.");
 
 		Pokemon beedrillPokemon = new Pokemon();
 		beedrillPokemon.setNombre("Beedrill");
 		beedrillPokemon.getTipos().add(bichoTipo);
 		beedrillPokemon.getTipos().add(venenoTipo);
+		beedrillPokemon.setAltura("1,0 m");
+		beedrillPokemon.setPeso("29,5 Kg");
+		beedrillPokemon.setDescripcion("Puede vencer a cualquier rival con sus potentes aguijones venenosos. Puede atacar en grupo.");
 
 		Evolucion evolucionWeedleKakuna = new Evolucion();
 		evolucionWeedleKakuna.getPokemons().add(weedlePokemon);
@@ -516,16 +525,25 @@ public class InsertData {
 		pidgeyPokemon.setNombre("Pidgey");
 		pidgeyPokemon.getTipos().add(normalTipo);
 		pidgeyPokemon.getTipos().add(voladorTipo);
+		pidgeyPokemon.setAltura("0,3 m");
+		pidgeyPokemon.setPeso("1,8 Kg");
+		pidgeyPokemon.setDescripcion("Suele ocultarse entre altas hierbas. Como no le gusta luchar, se defiende pateando arena.");
 
 		Pokemon pidgeottoPokemon = new Pokemon();
 		pidgeottoPokemon.setNombre("Pidgeotto");
 		pidgeottoPokemon.getTipos().add(normalTipo);
 		pidgeottoPokemon.getTipos().add(voladorTipo);
+		pidgeottoPokemon.setAltura("1,1 m");
+		pidgeottoPokemon.setPeso("30,0 Kg");
+		pidgeottoPokemon.setDescripcion("Su visión es extraordinaria. Aunque vuele muy alto, detectará todo movimiento de su presa.");
 
 		Pokemon pidgeotPokemon = new Pokemon();
 		pidgeotPokemon.setNombre("Pidgeot");
 		pidgeotPokemon.getTipos().add(normalTipo);
 		pidgeotPokemon.getTipos().add(voladorTipo);
+		pidgeotPokemon.setAltura("1,5 m");
+		pidgeotPokemon.setPeso("39,5 Kg");
+		pidgeotPokemon.setDescripcion("Sus músculos pectorales son tan fuertes que podría parar una ventisca con unos cuantos aleteos.");
 
 		Evolucion evolucionPidgeyPidgeotto = new Evolucion();
 		evolucionPidgeyPidgeotto.getPokemons().add(pidgeyPokemon);
@@ -551,10 +569,16 @@ public class InsertData {
 		Pokemon rattataPokemon = new Pokemon();
 		rattataPokemon.setNombre("Rattata");
 		rattataPokemon.getTipos().add(normalTipo);
+		rattataPokemon.setAltura("0,3 m");
+		rattataPokemon.setPeso("3,5 Kg");
+		rattataPokemon.setDescripcion("Come de todo. Se establece donde quiera que haya comida, y se reproduce continuamente.");
 
 		Pokemon raticatePokemon = new Pokemon();
 		raticatePokemon.setNombre("Raticate");
 		raticatePokemon.getTipos().add(normalTipo);
+		raticatePokemon.setAltura(", m");
+		raticatePokemon.setPeso(", Kg");
+		raticatePokemon.setDescripcion("");
 
 		Evolucion evolucionRattataRaticate = new Evolucion();
 		evolucionRattataRaticate.getPokemons().add(rattataPokemon);
@@ -573,11 +597,17 @@ public class InsertData {
 		spearowPokemon.setNombre("Spearow");
 		spearowPokemon.getTipos().add(normalTipo);
 		spearowPokemon.getTipos().add(voladorTipo);
+		spearowPokemon.setAltura(", m");
+		spearowPokemon.setPeso(", Kg");
+		spearowPokemon.setDescripcion("");
 
 		Pokemon fearowPokemon = new Pokemon();
 		fearowPokemon.setNombre("Fearow");
 		fearowPokemon.getTipos().add(normalTipo);
 		fearowPokemon.getTipos().add(voladorTipo);
+		fearowPokemon.setAltura(", m");
+		fearowPokemon.setPeso(", Kg");
+		fearowPokemon.setDescripcion("");
 
 		Evolucion evolucionSpearowFearow = new Evolucion();
 		evolucionSpearowFearow.getPokemons().add(spearowPokemon);
@@ -595,10 +625,16 @@ public class InsertData {
 		Pokemon ekansPokemon = new Pokemon();
 		ekansPokemon.setNombre("Ekans");
 		ekansPokemon.getTipos().add(venenoTipo);
+		ekansPokemon.setAltura(", m");
+		ekansPokemon.setPeso(", Kg");
+		ekansPokemon.setDescripcion("");
 
 		Pokemon arbokPokemon = new Pokemon();
 		arbokPokemon.setNombre("Arbok");
 		arbokPokemon.getTipos().add(venenoTipo);
+		arbokPokemon.setAltura(", m");
+		arbokPokemon.setPeso(", Kg");
+		arbokPokemon.setDescripcion("");
 
 		Evolucion evolucionEkansArbok = new Evolucion();
 		evolucionEkansArbok.getPokemons().add(ekansPokemon);
@@ -616,10 +652,16 @@ public class InsertData {
 		Pokemon pikachuPokemon = new Pokemon();
 		pikachuPokemon.setNombre("Pikachu");
 		pikachuPokemon.getTipos().add(electricoTipo);
+		pikachuPokemon.setAltura(", m");
+		pikachuPokemon.setPeso(", Kg");
+		pikachuPokemon.setDescripcion("");
 
 		Pokemon raichuPokemon = new Pokemon();
 		raichuPokemon.setNombre("Raichu");
 		raichuPokemon.getTipos().add(electricoTipo);
+		raichuPokemon.setAltura(", m");
+		raichuPokemon.setPeso(", Kg");
+		raichuPokemon.setDescripcion("");
 
 		Evolucion evolucionPikachuRaichu = new Evolucion();
 		evolucionPikachuRaichu.getPokemons().add(pikachuPokemon);
@@ -637,10 +679,16 @@ public class InsertData {
 		Pokemon sandshrewPokemon = new Pokemon();
 		sandshrewPokemon.setNombre("Sandshrew");
 		sandshrewPokemon.getTipos().add(tierraTipo);
+		sandshrewPokemon.setAltura(", m");
+		sandshrewPokemon.setPeso(", Kg");
+		sandshrewPokemon.setDescripcion("");
 
 		Pokemon sandshlashPokemon = new Pokemon();
 		sandshlashPokemon.setNombre("Sandshlash");
 		sandshlashPokemon.getTipos().add(tierraTipo);
+		sandshlashPokemon.setAltura(", m");
+		sandshlashPokemon.setPeso(", Kg");
+		sandshlashPokemon.setDescripcion("");
 
 		Evolucion evolucionSandshrewSandshlash = new Evolucion();
 		evolucionSandshrewSandshlash.getPokemons().add(sandshrewPokemon);
@@ -658,15 +706,24 @@ public class InsertData {
 		Pokemon nidoranFPokemon = new Pokemon();
 		nidoranFPokemon.setNombre("NidoranH");
 		nidoranFPokemon.getTipos().add(venenoTipo);
+		nidoranFPokemon.setAltura(", m");
+		nidoranFPokemon.setPeso(", Kg");
+		nidoranFPokemon.setDescripcion("");
 
 		Pokemon nidorinaPokemon = new Pokemon();
 		nidorinaPokemon.setNombre("Nidorina");
 		nidorinaPokemon.getTipos().add(venenoTipo);
+		nidorinaPokemon.setAltura(", m");
+		nidorinaPokemon.setPeso(", Kg");
+		nidorinaPokemon.setDescripcion("");
 
 		Pokemon nidoqueenPokemon = new Pokemon();
 		nidoqueenPokemon.setNombre("Nidoqueen");
 		nidoqueenPokemon.getTipos().add(venenoTipo);
 		nidoqueenPokemon.getTipos().add(tierraTipo);
+		nidoqueenPokemon.setAltura(", m");
+		nidoqueenPokemon.setPeso(", Kg");
+		nidoqueenPokemon.setDescripcion("");
 
 		Evolucion evolucionNidoranFNidorina = new Evolucion();
 		evolucionNidoranFNidorina.getPokemons().add(nidoranFPokemon);
@@ -692,15 +749,24 @@ public class InsertData {
 		Pokemon nidoranMPokemon = new Pokemon();
 		nidoranMPokemon.setNombre("Nidoranâ™‚");
 		nidoranMPokemon.getTipos().add(venenoTipo);
+		nidoranMPokemon.setAltura(", m");
+		nidoranMPokemon.setPeso(", Kg");
+		nidoranMPokemon.setDescripcion("");
 
 		Pokemon nidorinoPokemon = new Pokemon();
 		nidorinoPokemon.setNombre("Nidorino");
 		nidorinoPokemon.getTipos().add(venenoTipo);
+		nidorinoPokemon.setAltura(", m");
+		nidorinoPokemon.setPeso(", Kg");
+		nidorinoPokemon.setDescripcion("");
 
 		Pokemon nidokingPokemon = new Pokemon();
 		nidokingPokemon.setNombre("Nidoking");
 		nidokingPokemon.getTipos().add(venenoTipo);
 		nidokingPokemon.getTipos().add(tierraTipo);
+		nidokingPokemon.setAltura(", m");
+		nidokingPokemon.setPeso(", Kg");
+		nidokingPokemon.setDescripcion("");
 
 		Evolucion evolucionNidoranMNidorino = new Evolucion();
 		evolucionNidoranMNidorino.getPokemons().add(nidoranMPokemon);
@@ -726,10 +792,16 @@ public class InsertData {
 		Pokemon clefairyPokemon = new Pokemon();
 		clefairyPokemon.setNombre("Clefairy");
 		clefairyPokemon.getTipos().add(hadaTipo);
+		clefairyPokemon.setAltura(", m");
+		clefairyPokemon.setPeso(", Kg");
+		clefairyPokemon.setDescripcion("");
 
 		Pokemon clefablePokemon = new Pokemon();
 		clefablePokemon.setNombre("Clefable");
 		clefablePokemon.getTipos().add(hadaTipo);
+		clefablePokemon.setAltura(", m");
+		clefablePokemon.setPeso(", Kg");
+		clefablePokemon.setDescripcion("");
 
 		Evolucion evolucionClefairyClefable = new Evolucion();
 		evolucionClefairyClefable.getPokemons().add(clefairyPokemon);
@@ -747,10 +819,16 @@ public class InsertData {
 		Pokemon vulpixPokemon = new Pokemon();
 		vulpixPokemon.setNombre("Vulpix");
 		vulpixPokemon.getTipos().add(fuegoTipo);
+		vulpixPokemon.setAltura(", m");
+		vulpixPokemon.setPeso(", Kg");
+		vulpixPokemon.setDescripcion("");
 
 		Pokemon ninetalesPokemon = new Pokemon();
 		ninetalesPokemon.setNombre("Ninetales");
 		ninetalesPokemon.getTipos().add(fuegoTipo);
+		ninetalesPokemon.setAltura(", m");
+		ninetalesPokemon.setPeso(", Kg");
+		ninetalesPokemon.setDescripcion("");
 
 		Evolucion evolucionVulpixNinetales = new Evolucion();
 		evolucionVulpixNinetales.getPokemons().add(vulpixPokemon);
@@ -769,11 +847,17 @@ public class InsertData {
 		jigglypuffPokemon.setNombre("Jigglypuff");
 		jigglypuffPokemon.getTipos().add(normalTipo);
 		jigglypuffPokemon.getTipos().add(hadaTipo);
+		jigglypuffPokemon.setAltura(", m");
+		jigglypuffPokemon.setPeso(", Kg");
+		jigglypuffPokemon.setDescripcion("");
 
 		Pokemon wigglytuffPokemon = new Pokemon();
 		wigglytuffPokemon.setNombre("Wigglytuff");
 		wigglytuffPokemon.getTipos().add(normalTipo);
 		wigglytuffPokemon.getTipos().add(hadaTipo);
+		wigglytuffPokemon.setAltura(", m");
+		wigglytuffPokemon.setPeso(", Kg");
+		wigglytuffPokemon.setDescripcion("");
 
 		Evolucion evolucionJigglypuffWigglytuff = new Evolucion();
 		evolucionJigglypuffWigglytuff.getPokemons().add(jigglypuffPokemon);
@@ -792,11 +876,17 @@ public class InsertData {
 		zubatPokemon.setNombre("Zubat");
 		zubatPokemon.getTipos().add(venenoTipo);
 		zubatPokemon.getTipos().add(voladorTipo);
+		zubatPokemon.setAltura(", m");
+		zubatPokemon.setPeso(", Kg");
+		zubatPokemon.setDescripcion("");
 
 		Pokemon golbatPokemon = new Pokemon();
 		golbatPokemon.setNombre("Golbat");
 		golbatPokemon.getTipos().add(venenoTipo);
 		golbatPokemon.getTipos().add(voladorTipo);
+		golbatPokemon.setAltura(", m");
+		golbatPokemon.setPeso(", Kg");
+		golbatPokemon.setDescripcion("");
 
 		Evolucion evolucionZubatGolbat = new Evolucion();
 		evolucionZubatGolbat.getPokemons().add(zubatPokemon);
@@ -815,16 +905,25 @@ public class InsertData {
 		oddishPokemon.setNombre("Oddish");
 		oddishPokemon.getTipos().add(plantaTipo);
 		oddishPokemon.getTipos().add(venenoTipo);
+		oddishPokemon.setAltura(", m");
+		oddishPokemon.setPeso(", Kg");
+		oddishPokemon.setDescripcion("");
 
 		Pokemon gloomPokemon = new Pokemon();
 		gloomPokemon.setNombre("Gloom");
 		gloomPokemon.getTipos().add(plantaTipo);
 		gloomPokemon.getTipos().add(venenoTipo);
+		gloomPokemon.setAltura(", m");
+		gloomPokemon.setPeso(", Kg");
+		gloomPokemon.setDescripcion("");
 
 		Pokemon vileplumePokemon = new Pokemon();
 		vileplumePokemon.setNombre("Vileplume");
 		vileplumePokemon.getTipos().add(plantaTipo);
 		vileplumePokemon.getTipos().add(venenoTipo);
+		vileplumePokemon.setAltura(", m");
+		vileplumePokemon.setPeso(", Kg");
+		vileplumePokemon.setDescripcion("");
 
 		Evolucion evolucionOddishGloom = new Evolucion();
 		evolucionOddishGloom.getPokemons().add(oddishPokemon);
@@ -851,11 +950,17 @@ public class InsertData {
 		parasPokemon.setNombre("Paras");
 		parasPokemon.getTipos().add(bichoTipo);
 		parasPokemon.getTipos().add(plantaTipo);
+		parasPokemon.setAltura(", m");
+		parasPokemon.setPeso(", Kg");
+		parasPokemon.setDescripcion("");
 
 		Pokemon parasectPokemon = new Pokemon();
 		parasectPokemon.setNombre("Parasect");
 		parasectPokemon.getTipos().add(bichoTipo);
 		parasectPokemon.getTipos().add(plantaTipo);
+		parasectPokemon.setAltura(", m");
+		parasectPokemon.setPeso(", Kg");
+		parasectPokemon.setDescripcion("");
 
 		Evolucion evolucionParasParasect = new Evolucion();
 		evolucionParasParasect.getPokemons().add(parasPokemon);
@@ -874,11 +979,17 @@ public class InsertData {
 		venonatPokemon.setNombre("Venonat");
 		venonatPokemon.getTipos().add(bichoTipo);
 		venonatPokemon.getTipos().add(venenoTipo);
+		venonatPokemon.setAltura(", m");
+		venonatPokemon.setPeso(", Kg");
+		venonatPokemon.setDescripcion("");
 
 		Pokemon venomothPokemon = new Pokemon();
 		venomothPokemon.setNombre("Venomoth");
 		venomothPokemon.getTipos().add(bichoTipo);
 		venomothPokemon.getTipos().add(venenoTipo);
+		venomothPokemon.setAltura(", m");
+		venomothPokemon.setPeso(", Kg");
+		venomothPokemon.setDescripcion("");
 
 		Evolucion evolucionVenonatVenomoth = new Evolucion();
 		evolucionVenonatVenomoth.getPokemons().add(venonatPokemon);
@@ -896,10 +1007,16 @@ public class InsertData {
 		Pokemon diglettPokemon = new Pokemon();
 		diglettPokemon.setNombre("Diglett");
 		diglettPokemon.getTipos().add(tierraTipo);
+		diglettPokemon.setAltura(", m");
+		diglettPokemon.setPeso(", Kg");
+		diglettPokemon.setDescripcion("");
 
 		Pokemon dugtrioPokemon = new Pokemon();
 		dugtrioPokemon.setNombre("Dugtrio");
 		dugtrioPokemon.getTipos().add(tierraTipo);
+		dugtrioPokemon.setAltura(", m");
+		dugtrioPokemon.setPeso(", Kg");
+		dugtrioPokemon.setDescripcion("");
 
 		Evolucion evolucionDiglettDugtrio = new Evolucion();
 		evolucionDiglettDugtrio.getPokemons().add(diglettPokemon);
@@ -917,10 +1034,16 @@ public class InsertData {
 		Pokemon meowthPokemon = new Pokemon();
 		meowthPokemon.setNombre("Meowth");
 		meowthPokemon.getTipos().add(normalTipo);
+		meowthPokemon.setAltura(", m");
+		meowthPokemon.setPeso(", Kg");
+		meowthPokemon.setDescripcion("");
 
 		Pokemon persianPokemon = new Pokemon();
 		persianPokemon.setNombre("Persian");
 		persianPokemon.getTipos().add(normalTipo);
+		persianPokemon.setAltura(", m");
+		persianPokemon.setPeso(", Kg");
+		persianPokemon.setDescripcion("");
 
 		Evolucion evolucionMeowthPersian = new Evolucion();
 		evolucionMeowthPersian.getPokemons().add(meowthPokemon);
@@ -938,10 +1061,16 @@ public class InsertData {
 		Pokemon psyduckPokemon = new Pokemon();
 		psyduckPokemon.setNombre("Psyduck");
 		psyduckPokemon.getTipos().add(aguaTipo);
+		psyduckPokemon.setAltura(", m");
+		psyduckPokemon.setPeso(", Kg");
+		psyduckPokemon.setDescripcion("");
 
 		Pokemon goldduckPokemon = new Pokemon();
 		goldduckPokemon.setNombre("Goldduck");
 		goldduckPokemon.getTipos().add(aguaTipo);
+		goldduckPokemon.setAltura(", m");
+		goldduckPokemon.setPeso(", Kg");
+		goldduckPokemon.setDescripcion("");
 
 		Evolucion evolucionPsyduckGoldduck = new Evolucion();
 		evolucionPsyduckGoldduck.getPokemons().add(psyduckPokemon);
@@ -959,10 +1088,16 @@ public class InsertData {
 		Pokemon mankeyPokemon = new Pokemon();
 		mankeyPokemon.setNombre("Mankey");
 		mankeyPokemon.getTipos().add(luchaTipo);
+		mankeyPokemon.setAltura(", m");
+		mankeyPokemon.setPeso(", Kg");
+		mankeyPokemon.setDescripcion("");
 
 		Pokemon primeapePokemon = new Pokemon();
 		primeapePokemon.setNombre("Primeape");
 		primeapePokemon.getTipos().add(luchaTipo);
+		primeapePokemon.setAltura(", m");
+		primeapePokemon.setPeso(", Kg");
+		primeapePokemon.setDescripcion("");
 
 		Evolucion evolucionMankeyPrimeape = new Evolucion();
 		evolucionMankeyPrimeape.getPokemons().add(mankeyPokemon);
@@ -980,10 +1115,16 @@ public class InsertData {
 		Pokemon growlithePokemon = new Pokemon();
 		growlithePokemon.setNombre("Growlithe");
 		growlithePokemon.getTipos().add(fuegoTipo);
+		growlithePokemon.setAltura(", m");
+		growlithePokemon.setPeso(", Kg");
+		growlithePokemon.setDescripcion("");
 
 		Pokemon arcaninePokemon = new Pokemon();
 		arcaninePokemon.setNombre("Arcanine");
 		arcaninePokemon.getTipos().add(fuegoTipo);
+		arcaninePokemon.setAltura(", m");
+		arcaninePokemon.setPeso(", Kg");
+		arcaninePokemon.setDescripcion("");
 
 		Evolucion evolucionGrowlitheArcanine = new Evolucion();
 		evolucionGrowlitheArcanine.getPokemons().add(growlithePokemon);
@@ -1001,15 +1142,24 @@ public class InsertData {
 		Pokemon poliwagPokemon = new Pokemon();
 		poliwagPokemon.setNombre("Poliwag");
 		poliwagPokemon.getTipos().add(aguaTipo);
+		poliwagPokemon.setAltura(", m");
+		poliwagPokemon.setPeso(", Kg");
+		poliwagPokemon.setDescripcion("");
 
 		Pokemon poliwhirlPokemon = new Pokemon();
 		poliwhirlPokemon.setNombre("Poliwhirl");
 		poliwhirlPokemon.getTipos().add(aguaTipo);
+		poliwhirlPokemon.setAltura(", m");
+		poliwhirlPokemon.setPeso(", Kg");
+		poliwhirlPokemon.setDescripcion("");
 
 		Pokemon poliwrathPokemon = new Pokemon();
 		poliwrathPokemon.setNombre("Poliwrath");
 		poliwrathPokemon.getTipos().add(aguaTipo);
 		poliwrathPokemon.getTipos().add(luchaTipo);
+		poliwrathPokemon.setAltura(", m");
+		poliwrathPokemon.setPeso(", Kg");
+		poliwrathPokemon.setDescripcion("");
 
 		Evolucion evolucionPoliwagPoliwhirl = new Evolucion();
 		evolucionPoliwagPoliwhirl.getPokemons().add(poliwagPokemon);
@@ -1035,14 +1185,23 @@ public class InsertData {
 		Pokemon abraPokemon = new Pokemon();
 		abraPokemon.setNombre("Abra");
 		abraPokemon.getTipos().add(psiquicoTipo);
+		abraPokemon.setAltura(", m");
+		abraPokemon.setPeso(", Kg");
+		abraPokemon.setDescripcion("");
 
 		Pokemon kadabraPokemon = new Pokemon();
 		kadabraPokemon.setNombre("Kadabra");
 		kadabraPokemon.getTipos().add(psiquicoTipo);
+		kadabraPokemon.setAltura(", m");
+		kadabraPokemon.setPeso(", Kg");
+		kadabraPokemon.setDescripcion("");
 
 		Pokemon alakazamPokemon = new Pokemon();
 		alakazamPokemon.setNombre("Alakazam");
 		alakazamPokemon.getTipos().add(psiquicoTipo);
+		alakazamPokemon.setAltura(", m");
+		alakazamPokemon.setPeso(", Kg");
+		alakazamPokemon.setDescripcion("");
 
 		Evolucion evolucionAbraKadabra = new Evolucion();
 		evolucionAbraKadabra.getPokemons().add(abraPokemon);
@@ -1068,14 +1227,23 @@ public class InsertData {
 		Pokemon machopPokemon = new Pokemon();
 		machopPokemon.setNombre("Machop");
 		machopPokemon.getTipos().add(luchaTipo);
+		machopPokemon.setAltura(", m");
+		machopPokemon.setPeso(", Kg");
+		machopPokemon.setDescripcion("");
 
 		Pokemon machokePokemon = new Pokemon();
 		machokePokemon.setNombre("Machoke");
 		machokePokemon.getTipos().add(luchaTipo);
+		machokePokemon.setAltura(", m");
+		machokePokemon.setPeso(", Kg");
+		machokePokemon.setDescripcion("");
 
 		Pokemon machampPokemon = new Pokemon();
 		machampPokemon.setNombre("Machamp");
 		machampPokemon.getTipos().add(luchaTipo);
+		machampPokemon.setAltura(", m");
+		machampPokemon.setPeso(", Kg");
+		machampPokemon.setDescripcion("");
 
 		Evolucion evolucionMachopMachoke = new Evolucion();
 		evolucionMachopMachoke.getPokemons().add(machopPokemon);
@@ -1102,16 +1270,25 @@ public class InsertData {
 		bellsproutPokemon.setNombre("Bellsprout");
 		bellsproutPokemon.getTipos().add(plantaTipo);
 		bellsproutPokemon.getTipos().add(venenoTipo);
+		bellsproutPokemon.setAltura(", m");
+		bellsproutPokemon.setPeso(", Kg");
+		bellsproutPokemon.setDescripcion("");
 
 		Pokemon weepinbellPokemon = new Pokemon();
 		weepinbellPokemon.setNombre("Weepinbell");
 		weepinbellPokemon.getTipos().add(plantaTipo);
 		weepinbellPokemon.getTipos().add(venenoTipo);
+		weepinbellPokemon.setAltura(", m");
+		weepinbellPokemon.setPeso(", Kg");
+		weepinbellPokemon.setDescripcion("");
 
 		Pokemon victreebelPokemon = new Pokemon();
 		victreebelPokemon.setNombre("Victreebel");
 		victreebelPokemon.getTipos().add(plantaTipo);
 		victreebelPokemon.getTipos().add(venenoTipo);
+		victreebelPokemon.setAltura(", m");
+		victreebelPokemon.setPeso(", Kg");
+		victreebelPokemon.setDescripcion("");
 
 		Evolucion evolucionBellsproutWeepinbell = new Evolucion();
 		evolucionBellsproutWeepinbell.getPokemons().add(bellsproutPokemon);
@@ -1138,11 +1315,17 @@ public class InsertData {
 		tentacoolPokemon.setNombre("Tentacool");
 		tentacoolPokemon.getTipos().add(aguaTipo);
 		tentacoolPokemon.getTipos().add(venenoTipo);
+		tentacoolPokemon.setAltura(", m");
+		tentacoolPokemon.setPeso(", Kg");
+		tentacoolPokemon.setDescripcion("");
 
 		Pokemon tentacruelPokemon = new Pokemon();
 		tentacruelPokemon.setNombre("Tentacruel");
 		tentacruelPokemon.getTipos().add(aguaTipo);
 		tentacruelPokemon.getTipos().add(venenoTipo);
+		tentacruelPokemon.setAltura(", m");
+		tentacruelPokemon.setPeso(", Kg");
+		tentacruelPokemon.setDescripcion("");
 
 		Evolucion evolucionTentacoolTentacruel = new Evolucion();
 		evolucionTentacoolTentacruel.getPokemons().add(tentacoolPokemon);
@@ -1161,16 +1344,25 @@ public class InsertData {
 		geodudePokemon.setNombre("Geodude");
 		geodudePokemon.getTipos().add(rocaTipo);
 		geodudePokemon.getTipos().add(tierraTipo);
+		geodudePokemon.setAltura(", m");
+		geodudePokemon.setPeso(", Kg");
+		geodudePokemon.setDescripcion("");
 
 		Pokemon gravelerPokemon = new Pokemon();
 		gravelerPokemon.setNombre("Graveler");
 		gravelerPokemon.getTipos().add(rocaTipo);
 		gravelerPokemon.getTipos().add(tierraTipo);
+		gravelerPokemon.setAltura(", m");
+		gravelerPokemon.setPeso(", Kg");
+		gravelerPokemon.setDescripcion("");
 
 		Pokemon golemPokemon = new Pokemon();
 		golemPokemon.setNombre("Golem");
 		golemPokemon.getTipos().add(rocaTipo);
 		golemPokemon.getTipos().add(tierraTipo);
+		golemPokemon.setAltura(", m");
+		golemPokemon.setPeso(", Kg");
+		golemPokemon.setDescripcion("");
 
 		Evolucion evolucionGeodudeGraveler = new Evolucion();
 		evolucionGeodudeGraveler.getPokemons().add(geodudePokemon);
@@ -1196,10 +1388,16 @@ public class InsertData {
 		Pokemon ponytaPokemon = new Pokemon();
 		ponytaPokemon.setNombre("Ponyta");
 		ponytaPokemon.getTipos().add(fuegoTipo);
+		ponytaPokemon.setAltura(", m");
+		ponytaPokemon.setPeso(", Kg");
+		ponytaPokemon.setDescripcion("");
 
 		Pokemon rapidashPokemon = new Pokemon();
 		rapidashPokemon.setNombre("Rapidash");
 		rapidashPokemon.getTipos().add(fuegoTipo);
+		rapidashPokemon.setAltura(", m");
+		rapidashPokemon.setPeso(", Kg");
+		rapidashPokemon.setDescripcion("");
 
 		Evolucion evolucionPonytaRapidash = new Evolucion();
 		evolucionPonytaRapidash.getPokemons().add(ponytaPokemon);
@@ -1218,11 +1416,17 @@ public class InsertData {
 		slowpokePokemon.setNombre("Slowpoke");
 		slowpokePokemon.getTipos().add(aguaTipo);
 		slowpokePokemon.getTipos().add(psiquicoTipo);
+		slowpokePokemon.setAltura(", m");
+		slowpokePokemon.setPeso(", Kg");
+		slowpokePokemon.setDescripcion("");
 
 		Pokemon slowbroPokemon = new Pokemon();
 		slowbroPokemon.setNombre("Slowbro");
 		slowbroPokemon.getTipos().add(aguaTipo);
 		slowbroPokemon.getTipos().add(psiquicoTipo);
+		slowbroPokemon.setAltura(", m");
+		slowbroPokemon.setPeso(", Kg");
+		slowbroPokemon.setDescripcion("");
 
 		Evolucion evolucionSlowpokeSlowbro = new Evolucion();
 		evolucionSlowpokeSlowbro.getPokemons().add(slowpokePokemon);
@@ -1241,11 +1445,17 @@ public class InsertData {
 		magnemitePokemon.setNombre("Magnemite");
 		magnemitePokemon.getTipos().add(electricoTipo);
 		magnemitePokemon.getTipos().add(aceroTipo);
+		magnemitePokemon.setAltura(", m");
+		magnemitePokemon.setPeso(", Kg");
+		magnemitePokemon.setDescripcion("");
 
 		Pokemon magnetonPokemon = new Pokemon();
 		magnetonPokemon.setNombre("Magneton");
 		magnetonPokemon.getTipos().add(electricoTipo);
 		magnetonPokemon.getTipos().add(aceroTipo);
+		magnetonPokemon.setAltura(", m");
+		magnetonPokemon.setPeso(", Kg");
+		magnetonPokemon.setDescripcion("");
 
 		Evolucion evolucionMagnemiteMagneton = new Evolucion();
 		evolucionMagnemiteMagneton.getPokemons().add(magnemitePokemon);
@@ -1264,6 +1474,9 @@ public class InsertData {
 		farfetchdPokemon.setNombre("Farfetch'd");
 		farfetchdPokemon.getTipos().add(normalTipo);
 		farfetchdPokemon.getTipos().add(voladorTipo);
+		farfetchdPokemon.setAltura(", m");
+		farfetchdPokemon.setPeso(", Kg");
+		farfetchdPokemon.setDescripcion("");
 
 		session.save(farfetchdPokemon);
 
@@ -1273,11 +1486,17 @@ public class InsertData {
 		doduoPokemon.setNombre("Doduo");
 		doduoPokemon.getTipos().add(normalTipo);
 		doduoPokemon.getTipos().add(voladorTipo);
+		doduoPokemon.setAltura(", m");
+		doduoPokemon.setPeso(", Kg");
+		doduoPokemon.setDescripcion("");
 
 		Pokemon dodrioPokemon = new Pokemon();
 		dodrioPokemon.setNombre("Dodrio");
 		dodrioPokemon.getTipos().add(normalTipo);
 		dodrioPokemon.getTipos().add(voladorTipo);
+		dodrioPokemon.setAltura(", m");
+		dodrioPokemon.setPeso(", Kg");
+		dodrioPokemon.setDescripcion("");
 
 		Evolucion evolucionDoduoDodrio = new Evolucion();
 		evolucionDoduoDodrio.getPokemons().add(doduoPokemon);
@@ -1295,11 +1514,17 @@ public class InsertData {
 		Pokemon seelPokemon = new Pokemon();
 		seelPokemon.setNombre("Seel");
 		seelPokemon.getTipos().add(aguaTipo);
+		seelPokemon.setAltura(", m");
+		seelPokemon.setPeso(", Kg");
+		seelPokemon.setDescripcion("");
 
 		Pokemon dewgongPokemon = new Pokemon();
 		dewgongPokemon.setNombre("Dewgong");
 		dewgongPokemon.getTipos().add(aguaTipo);
 		dewgongPokemon.getTipos().add(hieloTipo);
+		dewgongPokemon.setAltura(", m");
+		dewgongPokemon.setPeso(", Kg");
+		dewgongPokemon.setDescripcion("");
 
 		Evolucion evolucionSeelDewgong = new Evolucion();
 		evolucionSeelDewgong.getPokemons().add(seelPokemon);
@@ -1317,10 +1542,16 @@ public class InsertData {
 		Pokemon grimerPokemon = new Pokemon();
 		grimerPokemon.setNombre("Grimer");
 		grimerPokemon.getTipos().add(venenoTipo);
+		grimerPokemon.setAltura(", m");
+		grimerPokemon.setPeso(", Kg");
+		grimerPokemon.setDescripcion("");
 
 		Pokemon mukPokemon = new Pokemon();
 		mukPokemon.setNombre("Muk");
 		mukPokemon.getTipos().add(venenoTipo);
+		mukPokemon.setAltura(", m");
+		mukPokemon.setPeso(", Kg");
+		mukPokemon.setDescripcion("");
 
 		Evolucion evolucionGrimerMuk = new Evolucion();
 		evolucionGrimerMuk.getPokemons().add(grimerPokemon);
@@ -1338,11 +1569,17 @@ public class InsertData {
 		Pokemon shellderPokemon = new Pokemon();
 		shellderPokemon.setNombre("Shellder");
 		shellderPokemon.getTipos().add(aguaTipo);
+		shellderPokemon.setAltura(", m");
+		shellderPokemon.setPeso(", Kg");
+		shellderPokemon.setDescripcion("");
 
 		Pokemon cloysterPokemon = new Pokemon();
 		cloysterPokemon.setNombre("Cloyster");
 		cloysterPokemon.getTipos().add(aguaTipo);
 		cloysterPokemon.getTipos().add(hieloTipo);
+		cloysterPokemon.setAltura(", m");
+		cloysterPokemon.setPeso(", Kg");
+		cloysterPokemon.setDescripcion("");
 
 		Evolucion evolucionShellderCloyster = new Evolucion();
 		evolucionShellderCloyster.getPokemons().add(shellderPokemon);
@@ -1361,16 +1598,25 @@ public class InsertData {
 		gastlyPokemon.setNombre("Gastly");
 		gastlyPokemon.getTipos().add(fantasmaTipo);
 		gastlyPokemon.getTipos().add(venenoTipo);
+		gastlyPokemon.setAltura(", m");
+		gastlyPokemon.setPeso(", Kg");
+		gastlyPokemon.setDescripcion("");
 
 		Pokemon haunterPokemon = new Pokemon();
 		haunterPokemon.setNombre("Haunter");
 		haunterPokemon.getTipos().add(fantasmaTipo);
 		haunterPokemon.getTipos().add(venenoTipo);
+		haunterPokemon.setAltura(", m");
+		haunterPokemon.setPeso(", Kg");
+		haunterPokemon.setDescripcion("");
 
 		Pokemon gengarPokemon = new Pokemon();
 		gengarPokemon.setNombre("Gengar");
 		gengarPokemon.getTipos().add(fantasmaTipo);
 		gengarPokemon.getTipos().add(venenoTipo);
+		gengarPokemon.setAltura(", m");
+		gengarPokemon.setPeso(", Kg");
+		gengarPokemon.setDescripcion("");
 
 		Evolucion evolucionGastlyHaunter = new Evolucion();
 		evolucionGastlyHaunter.getPokemons().add(gastlyPokemon);
@@ -1397,6 +1643,9 @@ public class InsertData {
 		onixPokemon.setNombre("Onix");
 		onixPokemon.getTipos().add(rocaTipo);
 		onixPokemon.getTipos().add(tierraTipo);
+		onixPokemon.setAltura(", m");
+		onixPokemon.setPeso(", Kg");
+		onixPokemon.setDescripcion("");
 
 		session.save(onixPokemon);
 
@@ -1405,10 +1654,16 @@ public class InsertData {
 		Pokemon drowzeePokemon = new Pokemon();
 		drowzeePokemon.setNombre("Drowzee");
 		drowzeePokemon.getTipos().add(psiquicoTipo);
-
+		drowzeePokemon.setAltura(", m");
+		drowzeePokemon.setPeso(", Kg");
+		drowzeePokemon.setDescripcion("");
+		
 		Pokemon hypnoPokemon = new Pokemon();
 		hypnoPokemon.setNombre("Hypno");
 		hypnoPokemon.getTipos().add(psiquicoTipo);
+		hypnoPokemon.setAltura(", m");
+		hypnoPokemon.setPeso(", Kg");
+		hypnoPokemon.setDescripcion("");
 
 		Evolucion evolucionDrowzeeHypno = new Evolucion();
 		evolucionDrowzeeHypno.getPokemons().add(drowzeePokemon);
@@ -1426,10 +1681,16 @@ public class InsertData {
 		Pokemon krabbyPokemon = new Pokemon();
 		krabbyPokemon.setNombre("Krabby");
 		krabbyPokemon.getTipos().add(aguaTipo);
+		krabbyPokemon.setAltura(", m");
+		krabbyPokemon.setPeso(", Kg");
+		krabbyPokemon.setDescripcion("");
 
 		Pokemon kinglerPokemon = new Pokemon();
 		kinglerPokemon.setNombre("Kingler");
 		kinglerPokemon.getTipos().add(aguaTipo);
+		kinglerPokemon.setAltura(", m");
+		kinglerPokemon.setPeso(", Kg");
+		kinglerPokemon.setDescripcion("");
 
 		Evolucion evolucionKrabbyKingler = new Evolucion();
 		evolucionKrabbyKingler.getPokemons().add(krabbyPokemon);
@@ -1447,10 +1708,16 @@ public class InsertData {
 		Pokemon voltorbPokemon = new Pokemon();
 		voltorbPokemon.setNombre("Voltorb");
 		voltorbPokemon.getTipos().add(electricoTipo);
+		voltorbPokemon.setAltura(", m");
+		voltorbPokemon.setPeso(", Kg");
+		voltorbPokemon.setDescripcion("");
 
 		Pokemon electrodePokemon = new Pokemon();
 		electrodePokemon.setNombre("Electrode");
 		electrodePokemon.getTipos().add(electricoTipo);
+		electrodePokemon.setAltura(", m");
+		electrodePokemon.setPeso(", Kg");
+		electrodePokemon.setDescripcion("");
 
 		Evolucion evolucionVoltorbElectrode = new Evolucion();
 		evolucionVoltorbElectrode.getPokemons().add(voltorbPokemon);
@@ -1469,11 +1736,17 @@ public class InsertData {
 		exeggcutePokemon.setNombre("Exeggcute");
 		exeggcutePokemon.getTipos().add(plantaTipo);
 		exeggcutePokemon.getTipos().add(psiquicoTipo);
+		exeggcutePokemon.setAltura(", m");
+		exeggcutePokemon.setPeso(", Kg");
+		exeggcutePokemon.setDescripcion("");
 
 		Pokemon exeggutorPokemon = new Pokemon();
 		exeggutorPokemon.setNombre("Exeggutor");
 		exeggutorPokemon.getTipos().add(plantaTipo);
 		exeggutorPokemon.getTipos().add(psiquicoTipo);
+		exeggutorPokemon.setAltura(", m");
+		exeggutorPokemon.setPeso(", Kg");
+		exeggutorPokemon.setDescripcion("");
 
 		Evolucion evolucionExeggcuteExeggutor = new Evolucion();
 		evolucionExeggcuteExeggutor.getPokemons().add(exeggcutePokemon);
@@ -1491,10 +1764,16 @@ public class InsertData {
 		Pokemon cubonePokemon = new Pokemon();
 		cubonePokemon.setNombre("Cubone");
 		cubonePokemon.getTipos().add(tierraTipo);
+		cubonePokemon.setAltura(", m");
+		cubonePokemon.setPeso(", Kg");
+		cubonePokemon.setDescripcion("");
 
 		Pokemon marowakPokemon = new Pokemon();
 		marowakPokemon.setNombre("Marowak");
 		marowakPokemon.getTipos().add(tierraTipo);
+		marowakPokemon.setAltura(", m");
+		marowakPokemon.setPeso(", Kg");
+		marowakPokemon.setDescripcion("");
 
 		Evolucion evolucionCuboneMarowak = new Evolucion();
 		evolucionCuboneMarowak.getPokemons().add(cubonePokemon);
@@ -1512,6 +1791,9 @@ public class InsertData {
 		Pokemon hitmonleePokemon = new Pokemon();
 		hitmonleePokemon.setNombre("Hitmonlee");
 		hitmonleePokemon.getTipos().add(luchaTipo);
+		hitmonleePokemon.setAltura(", m");
+		hitmonleePokemon.setPeso(", Kg");
+		hitmonleePokemon.setDescripcion("");
 
 		session.save(hitmonleePokemon);
 
@@ -1520,6 +1802,9 @@ public class InsertData {
 		Pokemon hitmonchanPokemon = new Pokemon();
 		hitmonchanPokemon.setNombre("Hitmonchan");
 		hitmonchanPokemon.getTipos().add(luchaTipo);
+		hitmonchanPokemon.setAltura(", m");
+		hitmonchanPokemon.setPeso(", Kg");
+		hitmonchanPokemon.setDescripcion("");
 
 		session.save(hitmonchanPokemon);
 
@@ -1528,6 +1813,9 @@ public class InsertData {
 		Pokemon lickitungPokemon = new Pokemon();
 		lickitungPokemon.setNombre("Lickitung");
 		lickitungPokemon.getTipos().add(normalTipo);
+		lickitungPokemon.setAltura(", m");
+		lickitungPokemon.setPeso(", Kg");
+		lickitungPokemon.setDescripcion("");
 
 		session.save(lickitungPokemon);
 
@@ -1536,10 +1824,16 @@ public class InsertData {
 		Pokemon koffingPokemon = new Pokemon();
 		koffingPokemon.setNombre("Koffing");
 		koffingPokemon.getTipos().add(venenoTipo);
+		koffingPokemon.setAltura(", m");
+		koffingPokemon.setPeso(", Kg");
+		koffingPokemon.setDescripcion("");
 
 		Pokemon weezingPokemon = new Pokemon();
 		weezingPokemon.setNombre("Weezing");
 		weezingPokemon.getTipos().add(venenoTipo);
+		weezingPokemon.setAltura(", m");
+		weezingPokemon.setPeso(", Kg");
+		weezingPokemon.setDescripcion("");
 
 		Evolucion evolucionKoffingWeezing = new Evolucion();
 		evolucionKoffingWeezing.getPokemons().add(koffingPokemon);
@@ -1558,11 +1852,17 @@ public class InsertData {
 		rhyhornPokemon.setNombre("Rhyhorn");
 		rhyhornPokemon.getTipos().add(tierraTipo);
 		rhyhornPokemon.getTipos().add(rocaTipo);
+		rhyhornPokemon.setAltura(", m");
+		rhyhornPokemon.setPeso(", Kg");
+		rhyhornPokemon.setDescripcion("");
 
 		Pokemon rhydonPokemon = new Pokemon();
 		rhydonPokemon.setNombre("Rhydon");
 		rhydonPokemon.getTipos().add(tierraTipo);
 		rhydonPokemon.getTipos().add(rocaTipo);
+		rhydonPokemon.setAltura(", m");
+		rhydonPokemon.setPeso(", Kg");
+		rhydonPokemon.setDescripcion("");
 
 		Evolucion evolucionRhyhornRhydon = new Evolucion();
 		evolucionRhyhornRhydon.getPokemons().add(rhyhornPokemon);
@@ -1580,6 +1880,9 @@ public class InsertData {
 		Pokemon chanseyPokemon = new Pokemon();
 		chanseyPokemon.setNombre("Chansey");
 		chanseyPokemon.getTipos().add(normalTipo);
+		chanseyPokemon.setAltura(", m");
+		chanseyPokemon.setPeso(", Kg");
+		chanseyPokemon.setDescripcion("");
 
 		session.save(chanseyPokemon);
 
@@ -1588,6 +1891,9 @@ public class InsertData {
 		Pokemon tangelaPokemon = new Pokemon();
 		tangelaPokemon.setNombre("Tangela");
 		tangelaPokemon.getTipos().add(plantaTipo);
+		tangelaPokemon.setAltura(", m");
+		tangelaPokemon.setPeso(", Kg");
+		tangelaPokemon.setDescripcion("");
 
 		session.save(tangelaPokemon);
 
@@ -1596,6 +1902,9 @@ public class InsertData {
 		Pokemon kangaskhanPokemon = new Pokemon();
 		kangaskhanPokemon.setNombre("Kangaskhan");
 		kangaskhanPokemon.getTipos().add(normalTipo);
+		kangaskhanPokemon.setAltura(", m");
+		kangaskhanPokemon.setPeso(", Kg");
+		kangaskhanPokemon.setDescripcion("");
 
 		session.save(kangaskhanPokemon);
 
@@ -1604,10 +1913,16 @@ public class InsertData {
 		Pokemon horseaPokemon = new Pokemon();
 		horseaPokemon.setNombre("Horsea");
 		horseaPokemon.getTipos().add(aguaTipo);
+		horseaPokemon.setAltura(", m");
+		horseaPokemon.setPeso(", Kg");
+		horseaPokemon.setDescripcion("");
 
 		Pokemon seadraPokemon = new Pokemon();
 		seadraPokemon.setNombre("Seadra");
 		seadraPokemon.getTipos().add(aguaTipo);
+		seadraPokemon.setAltura(", m");
+		seadraPokemon.setPeso(", Kg");
+		seadraPokemon.setDescripcion("");
 
 		Evolucion evolucionHorseaSeadra = new Evolucion();
 		evolucionHorseaSeadra.getPokemons().add(horseaPokemon);
@@ -1625,10 +1940,16 @@ public class InsertData {
 		Pokemon goldeenPokemon = new Pokemon();
 		goldeenPokemon.setNombre("Goldeen");
 		goldeenPokemon.getTipos().add(aguaTipo);
+		goldeenPokemon.setAltura(", m");
+		goldeenPokemon.setPeso(", Kg");
+		goldeenPokemon.setDescripcion("");
 
 		Pokemon seakingPokemon = new Pokemon();
 		seakingPokemon.setNombre("Seaking");
 		seakingPokemon.getTipos().add(aguaTipo);
+		seakingPokemon.setAltura(", m");
+		seakingPokemon.setPeso(", Kg");
+		seakingPokemon.setDescripcion("");
 
 		Evolucion evolucionGoldeenSeaking = new Evolucion();
 		evolucionGoldeenSeaking.getPokemons().add(goldeenPokemon);
@@ -1646,11 +1967,17 @@ public class InsertData {
 		Pokemon staryuPokemon = new Pokemon();
 		staryuPokemon.setNombre("Staryu");
 		staryuPokemon.getTipos().add(aguaTipo);
+		staryuPokemon.setAltura(", m");
+		staryuPokemon.setPeso(", Kg");
+		staryuPokemon.setDescripcion("");
 
 		Pokemon starmiePokemon = new Pokemon();
 		starmiePokemon.setNombre("Starmie");
 		starmiePokemon.getTipos().add(aguaTipo);
 		starmiePokemon.getTipos().add(psiquicoTipo);
+		starmiePokemon.setAltura(", m");
+		starmiePokemon.setPeso(", Kg");
+		starmiePokemon.setDescripcion("");
 
 		Evolucion evolucionStaryuStarmie = new Evolucion();
 		evolucionStaryuStarmie.getPokemons().add(staryuPokemon);
@@ -1668,6 +1995,9 @@ public class InsertData {
 		Pokemon mrmimePokemon = new Pokemon();
 		mrmimePokemon.setNombre("Mr. Mime");
 		mrmimePokemon.getTipos().add(psiquicoTipo);
+		mrmimePokemon.setAltura(", m");
+		mrmimePokemon.setPeso(", Kg");
+		mrmimePokemon.setDescripcion("");
 
 		session.save(mrmimePokemon);
 
@@ -1676,6 +2006,9 @@ public class InsertData {
 		Pokemon scytherPokemon = new Pokemon();
 		scytherPokemon.setNombre("Scyther");
 		scytherPokemon.getTipos().add(bichoTipo);
+		scytherPokemon.setAltura(", m");
+		scytherPokemon.setPeso(", Kg");
+		scytherPokemon.setDescripcion("");
 
 		session.save(scytherPokemon);
 
@@ -1685,6 +2018,9 @@ public class InsertData {
 		jynxPokemon.setNombre("Jynx");
 		jynxPokemon.getTipos().add(hieloTipo);
 		jynxPokemon.getTipos().add(psiquicoTipo);
+		jynxPokemon.setAltura(", m");
+		jynxPokemon.setPeso(", Kg");
+		jynxPokemon.setDescripcion("");
 
 		session.save(jynxPokemon);
 
@@ -1693,6 +2029,9 @@ public class InsertData {
 		Pokemon electabuzzPokemon = new Pokemon();
 		electabuzzPokemon.setNombre("Electabuzz");
 		electabuzzPokemon.getTipos().add(electricoTipo);
+		electabuzzPokemon.setAltura(", m");
+		electabuzzPokemon.setPeso(", Kg");
+		electabuzzPokemon.setDescripcion("");
 
 		session.save(electabuzzPokemon);
 
@@ -1701,6 +2040,9 @@ public class InsertData {
 		Pokemon magmarPokemon = new Pokemon();
 		magmarPokemon.setNombre("Magmar");
 		magmarPokemon.getTipos().add(fuegoTipo);
+		magmarPokemon.setAltura(", m");
+		magmarPokemon.setPeso(", Kg");
+		magmarPokemon.setDescripcion("");
 
 		session.save(magmarPokemon);
 
@@ -1709,6 +2051,9 @@ public class InsertData {
 		Pokemon pinsirPokemon = new Pokemon();
 		pinsirPokemon.setNombre("Pinsir");
 		pinsirPokemon.getTipos().add(bichoTipo);
+		pinsirPokemon.setAltura(", m");
+		pinsirPokemon.setPeso(", Kg");
+		pinsirPokemon.setDescripcion("");
 
 		session.save(pinsirPokemon);
 
@@ -1717,6 +2062,9 @@ public class InsertData {
 		Pokemon taurosPokemon = new Pokemon();
 		taurosPokemon.setNombre("Tauros");
 		taurosPokemon.getTipos().add(normalTipo);
+		taurosPokemon.setAltura(", m");
+		taurosPokemon.setPeso(", Kg");
+		taurosPokemon.setDescripcion("");
 
 		session.save(taurosPokemon);
 
@@ -1725,11 +2073,17 @@ public class InsertData {
 		Pokemon magikarpPokemon = new Pokemon();
 		magikarpPokemon.setNombre("Magikarp");
 		magikarpPokemon.getTipos().add(aguaTipo);
+		magikarpPokemon.setAltura(", m");
+		magikarpPokemon.setPeso(", Kg");
+		magikarpPokemon.setDescripcion("");
 
 		Pokemon gyaradosPokemon = new Pokemon();
 		gyaradosPokemon.setNombre("Gyarados");
 		gyaradosPokemon.getTipos().add(aguaTipo);
 		gyaradosPokemon.getTipos().add(voladorTipo);
+		gyaradosPokemon.setAltura(", m");
+		gyaradosPokemon.setPeso(", Kg");
+		gyaradosPokemon.setDescripcion("");
 
 		Evolucion evolucionMagikarpGyarados = new Evolucion();
 		evolucionMagikarpGyarados.getPokemons().add(magikarpPokemon);
@@ -1748,6 +2102,9 @@ public class InsertData {
 		laprasPokemon.setNombre("Lapras");
 		laprasPokemon.getTipos().add(aguaTipo);
 		laprasPokemon.getTipos().add(hieloTipo);
+		laprasPokemon.setAltura(", m");
+		laprasPokemon.setPeso(", Kg");
+		laprasPokemon.setDescripcion("");
 
 		session.save(laprasPokemon);
 
@@ -1756,6 +2113,9 @@ public class InsertData {
 		Pokemon dittoPokemon = new Pokemon();
 		dittoPokemon.setNombre("Ditto");
 		dittoPokemon.getTipos().add(normalTipo);
+		dittoPokemon.setAltura(", m");
+		dittoPokemon.setPeso(", Kg");
+		dittoPokemon.setDescripcion("");
 
 		session.save(dittoPokemon);
 
@@ -1764,18 +2124,30 @@ public class InsertData {
 		Pokemon eeveePokemon = new Pokemon();
 		eeveePokemon.setNombre("Eevee");
 		eeveePokemon.getTipos().add(normalTipo);
+		eeveePokemon.setAltura(", m");
+		eeveePokemon.setPeso(", Kg");
+		eeveePokemon.setDescripcion("");
 
 		Pokemon vaporeonPokemon = new Pokemon();
 		vaporeonPokemon.setNombre("Vaporeon");
 		vaporeonPokemon.getTipos().add(aguaTipo);
+		vaporeonPokemon.setAltura(", m");
+		vaporeonPokemon.setPeso(", Kg");
+		vaporeonPokemon.setDescripcion("");
 
 		Pokemon jolteonPokemon = new Pokemon();
 		jolteonPokemon.setNombre("Jolteon");
 		jolteonPokemon.getTipos().add(electricoTipo);
+		jolteonPokemon.setAltura(", m");
+		jolteonPokemon.setPeso(", Kg");
+		jolteonPokemon.setDescripcion("");
 
 		Pokemon flareonPokemon = new Pokemon();
 		flareonPokemon.setNombre("Flareon");
 		flareonPokemon.getTipos().add(fuegoTipo);
+		flareonPokemon.setAltura(", m");
+		flareonPokemon.setPeso(", Kg");
+		flareonPokemon.setDescripcion("");
 
 		Evolucion evolucionEeveeVaporeon = new Evolucion();
 		evolucionEeveeVaporeon.getPokemons().add(eeveePokemon);
@@ -1809,6 +2181,9 @@ public class InsertData {
 		Pokemon porygonPokemon = new Pokemon();
 		porygonPokemon.setNombre("Porygon");
 		porygonPokemon.getTipos().add(normalTipo);
+		porygonPokemon.setAltura(", m");
+		porygonPokemon.setPeso(", Kg");
+		porygonPokemon.setDescripcion("");
 
 		session.save(porygonPokemon);
 
@@ -1818,11 +2193,17 @@ public class InsertData {
 		omanytePokemon.setNombre("Omanyte");
 		omanytePokemon.getTipos().add(rocaTipo);
 		omanytePokemon.getTipos().add(aguaTipo);
+		omanytePokemon.setAltura(", m");
+		omanytePokemon.setPeso(", Kg");
+		omanytePokemon.setDescripcion("");
 
 		Pokemon omastarPokemon = new Pokemon();
 		omastarPokemon.setNombre("Omastar");
 		omastarPokemon.getTipos().add(rocaTipo);
 		omastarPokemon.getTipos().add(aguaTipo);
+		omastarPokemon.setAltura(", m");
+		omastarPokemon.setPeso(", Kg");
+		omastarPokemon.setDescripcion("");
 
 		Evolucion evolucionOmanyteOmastar = new Evolucion();
 		evolucionOmanyteOmastar.getPokemons().add(omanytePokemon);
@@ -1841,11 +2222,17 @@ public class InsertData {
 		kabutoPokemon.setNombre("Kabuto");
 		kabutoPokemon.getTipos().add(rocaTipo);
 		kabutoPokemon.getTipos().add(aguaTipo);
+		kabutoPokemon.setAltura(", m");
+		kabutoPokemon.setPeso(", Kg");
+		kabutoPokemon.setDescripcion("");
 
 		Pokemon kabutopsPokemon = new Pokemon();
 		kabutopsPokemon.setNombre("Kabutops");
 		kabutopsPokemon.getTipos().add(rocaTipo);
 		kabutopsPokemon.getTipos().add(aguaTipo);
+		kabutopsPokemon.setAltura(", m");
+		kabutopsPokemon.setPeso(", Kg");
+		kabutopsPokemon.setDescripcion("");
 
 		Evolucion evolucionKabutoKabutops = new Evolucion();
 		evolucionKabutoKabutops.getPokemons().add(kabutoPokemon);
@@ -1864,6 +2251,9 @@ public class InsertData {
 		aerodactylPokemon.setNombre("Aerodactyl");
 		aerodactylPokemon.getTipos().add(rocaTipo);
 		aerodactylPokemon.getTipos().add(voladorTipo);
+		aerodactylPokemon.setAltura(", m");
+		aerodactylPokemon.setPeso(", Kg");
+		aerodactylPokemon.setDescripcion("");
 
 		session.save(aerodactylPokemon);
 
@@ -1872,6 +2262,9 @@ public class InsertData {
 		Pokemon snorlaxPokemon = new Pokemon();
 		snorlaxPokemon.setNombre("Snorlax");
 		snorlaxPokemon.getTipos().add(normalTipo);
+		snorlaxPokemon.setAltura(", m");
+		snorlaxPokemon.setPeso(", Kg");
+		snorlaxPokemon.setDescripcion("");
 
 		session.save(snorlaxPokemon);
 
@@ -1881,6 +2274,9 @@ public class InsertData {
 		articunoPokemon.setNombre("Articuno");
 		articunoPokemon.getTipos().add(hieloTipo);
 		articunoPokemon.getTipos().add(voladorTipo);
+		articunoPokemon.setAltura(", m");
+		articunoPokemon.setPeso(", Kg");
+		articunoPokemon.setDescripcion("");
 
 		session.save(articunoPokemon);
 
@@ -1890,6 +2286,9 @@ public class InsertData {
 		zapdosPokemon.setNombre("Zapdos");
 		zapdosPokemon.getTipos().add(electricoTipo);
 		zapdosPokemon.getTipos().add(voladorTipo);
+		zapdosPokemon.setAltura(", m");
+		zapdosPokemon.setPeso(", Kg");
+		zapdosPokemon.setDescripcion("");
 
 		session.save(zapdosPokemon);
 
@@ -1899,6 +2298,9 @@ public class InsertData {
 		moltresPokemon.setNombre("Moltres");
 		moltresPokemon.getTipos().add(fuegoTipo);
 		moltresPokemon.getTipos().add(voladorTipo);
+		moltresPokemon.setAltura(", m");
+		moltresPokemon.setPeso(", Kg");
+		moltresPokemon.setDescripcion("");
 
 		session.save(moltresPokemon);
 
@@ -1907,15 +2309,24 @@ public class InsertData {
 		Pokemon dratiniPokemon = new Pokemon();
 		dratiniPokemon.setNombre("Dratini");
 		dratiniPokemon.getTipos().add(dragonTipo);
+		dratiniPokemon.setAltura(", m");
+		dratiniPokemon.setPeso(", Kg");
+		dratiniPokemon.setDescripcion("");
 
 		Pokemon dragonairPokemon = new Pokemon();
 		dragonairPokemon.setNombre("Dragonair");
 		dragonairPokemon.getTipos().add(dragonTipo);
+		dragonairPokemon.setAltura(", m");
+		dragonairPokemon.setPeso(", Kg");
+		dragonairPokemon.setDescripcion("");
 
 		Pokemon dragonitePokemon = new Pokemon();
 		dragonitePokemon.setNombre("Dragonite");
 		dragonitePokemon.getTipos().add(dragonTipo);
 		dragonitePokemon.getTipos().add(voladorTipo);
+		dragonitePokemon.setAltura(", m");
+		dragonitePokemon.setPeso(", Kg");
+		dragonitePokemon.setDescripcion("");
 
 		Evolucion evolucionDratiniDragonair = new Evolucion();
 		evolucionDratiniDragonair.getPokemons().add(dratiniPokemon);
@@ -1941,6 +2352,9 @@ public class InsertData {
 		Pokemon mewtwoPokemon = new Pokemon();
 		mewtwoPokemon.setNombre("Mewtwo");
 		mewtwoPokemon.getTipos().add(psiquicoTipo);
+		mewtwoPokemon.setAltura(", m");
+		mewtwoPokemon.setPeso(", Kg");
+		mewtwoPokemon.setDescripcion("");
 
 		session.save(mewtwoPokemon);
 
@@ -1949,6 +2363,9 @@ public class InsertData {
 		Pokemon mewPokemon = new Pokemon();
 		mewPokemon.setNombre("Mew");
 		mewPokemon.getTipos().add(psiquicoTipo);
+		mewPokemon.setAltura(", m");
+		mewPokemon.setPeso(", Kg");
+		mewPokemon.setDescripcion("");
 
 		session.save(mewPokemon);
 
