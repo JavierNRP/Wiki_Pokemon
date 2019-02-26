@@ -17,7 +17,8 @@ public class PokeDexAPP extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		scriptDB = new File(System.getenv("USERPROFILE") + File.separator + "PokeDex" + File.separator + "pokedexdb");
+		String path = System.getenv("USERPROFILE")+ "/PokeDex/pokedexdb.script";
+		scriptDB = new File(path);
 		if (!scriptDB.exists()) {
 			Main.insertarDatos();
 		}

@@ -89,7 +89,7 @@ public class Controller implements Initializable {
 
     public Controller() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main.fxml"));
+            FXMLLoader loader = new FXMLLoader(PokeDexAPP.class.getResource("/view/main.fxml"));
             loader.setController(this);
             loader.load();
         } catch (IOException e) {
@@ -131,9 +131,6 @@ public class Controller implements Initializable {
         model.busquedaProperty().addListener((ob, ov, nv) -> {
             try {
                 suggestionElements = new Search().getResultadosBusquedaPokemon(nv);
-                if (suggestionElements.size() > 0 || suggestionElements.isEmpty()) {
-                    model.setActual(suggestionElements.get(0));
-                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -150,7 +147,7 @@ public class Controller implements Initializable {
 
         //Cargar primer pokemon de la base de datos
         session.beginTransaction();
-        Pokemon pkm = session.get(Pokemon.class, 130);
+        Pokemon pkm = session.get(Pokemon.class, 1);
         model.setActual(pkm);
         session.getTransaction().commit();
 
@@ -442,6 +439,10 @@ public class Controller implements Initializable {
             }
         moveTransition.play();
         scaleTransition.play();
+
+    }
+
+    private void playActualCrie() {
         criePlayer.play();
         criePlayer.setStartTime(Duration.ZERO);
         criePlayer.seek(Duration.ZERO);
@@ -451,6 +452,7 @@ public class Controller implements Initializable {
         model.setActual(pkm);
         makeEvolutionChain();
         refreshTypes();
+        playActualCrie();
     }
 
     @FXML
@@ -461,6 +463,8 @@ public class Controller implements Initializable {
             session.getTransaction().commit();
             model.setActual(pkm);
             onChangePokemon(pkm);
+        } else {
+            playSoundEffect(PokeDexAPP.class.getResource("/sounds/notallowed.mp3").toString());
         }
 
     }
@@ -473,6 +477,9 @@ public class Controller implements Initializable {
             session.getTransaction().commit();
             onChangePokemon(pkm);
             playSoundEffect(PokeDexAPP.class.getResource("/sounds/scroll.mp3").toString());
+
+        } else {
+            playSoundEffect(PokeDexAPP.class.getResource("/sounds/notallowed.mp3").toString());
         }
     }
 
@@ -480,20 +487,34 @@ public class Controller implements Initializable {
     public void onSearchButtonAction() {
         System.out.println(suggestionElements);
         if (suggestionElements.size() > 0) {
-            onChangePokemon(suggestionElements.get(0));
+            for (Pokemon pkm : suggestionElements) {
+                if (pkm.getNombre().equalsIgnoreCase(searchBar.getText())) {
+                    onChangePokemon(pkm);
+                }
+            }
         }
     }
 
     @FXML
     public void onUpArrowAction() {
-        greenConsole.setScrollTop(greenConsole.getScrollTop() - SCROLL_SPACE);
-        scrollScreen.setVvalue(scrollScreen.getVvalue() - 0.08);
+        if (greenConsole.getScrollTop() > 0 && scrollScreen.getVvalue() > 0.0) {
+            greenConsole.setScrollTop(greenConsole.getScrollTop() - SCROLL_SPACE);
+            scrollScreen.setVvalue(scrollScreen.getVvalue() - 0.08);
+            playSoundEffect(PokeDexAPP.class.getResource("/sounds/scroll.mp3").toString());
+        } else {
+            playSoundEffect(PokeDexAPP.class.getResource("/sounds/notallowed.mp3").toString());
+        }
     }
 
     @FXML
     public void onDownArrowAction() {
-        greenConsole.setScrollTop(greenConsole.getScrollTop() + SCROLL_SPACE);
-        scrollScreen.setVvalue(scrollScreen.getVvalue() + 0.08);
+        System.out.println("green: "+greenConsole.getScrollTop());
+        System.out.println(scrollScreen.getVvalue());
+        if (scrollScreen.getVvalue() < 1.0 ) {
+            greenConsole.setScrollTop(greenConsole.getScrollTop() + SCROLL_SPACE);
+            scrollScreen.setVvalue(scrollScreen.getVvalue() + 0.08);
+            playSoundEffect(PokeDexAPP.class.getResource("/sounds/scroll.mp3").toString());
+        }
     }
 
     //Getters & Setters

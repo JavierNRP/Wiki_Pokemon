@@ -395,16 +395,16 @@ public class Main {
 		Pokemon wartortlePokemon = new Pokemon();
 		wartortlePokemon.setNombre("Wartortle");
 		wartortlePokemon.getTipos().add(aguaTipo);
-		squirtlePokemon.setAltura("1,0 m");
-		squirtlePokemon.setPeso("22,5 Kg");
-		squirtlePokemon.setDescripcion("Es reconocido como símbolo de longevidad. Los Wartortle ancianos tienen algas sobre el caparazón.");
+		wartortlePokemon.setAltura("1,0 m");
+		wartortlePokemon.setPeso("22,5 Kg");
+		wartortlePokemon.setDescripcion("Es reconocido como símbolo de longevidad. Los Wartortle ancianos tienen algas sobre el caparazón.");
 
 		Pokemon blastoisePokemon = new Pokemon();
 		blastoisePokemon.setNombre("Blastoise");
 		blastoisePokemon.getTipos().add(aguaTipo);
-		squirtlePokemon.setAltura("16, m");
-		squirtlePokemon.setPeso("85,5 Kg");
-		squirtlePokemon.setDescripcion("Deliberadamente se hace más pesado para contrarrestar la fuerza de los chorros de agua que dispara.");
+		blastoisePokemon.setAltura("16 m");
+		blastoisePokemon.setPeso("85,5 Kg");
+		blastoisePokemon.setDescripcion("Deliberadamente se hace más pesado para contrarrestar la fuerza de los chorros de agua que dispara.");
 
 		Evolucion evolucionSquirtleWartortle = new Evolucion();
 		evolucionSquirtleWartortle.getPokemons().add(squirtlePokemon);
@@ -994,18 +994,16 @@ public class Main {
 
 		Pokemon poliwagPokemon = new Pokemon();
 		poliwagPokemon.setNombre("Poliwag");
-		poliwagPokemon.getTipos().add(plantaTipo);
-		poliwagPokemon.getTipos().add(venenoTipo);
+		poliwagPokemon.getTipos().add(aguaTipo);
 
 		Pokemon poliwhirlPokemon = new Pokemon();
 		poliwhirlPokemon.setNombre("Poliwhirl");
-		poliwhirlPokemon.getTipos().add(plantaTipo);
-		poliwhirlPokemon.getTipos().add(venenoTipo);
+		poliwhirlPokemon.getTipos().add(aguaTipo);
 
 		Pokemon poliwrathPokemon = new Pokemon();
 		poliwrathPokemon.setNombre("Poliwrath");
-		poliwrathPokemon.getTipos().add(plantaTipo);
-		poliwrathPokemon.getTipos().add(venenoTipo);
+		poliwrathPokemon.getTipos().add(aguaTipo);
+		poliwrathPokemon.getTipos().add(luchaTipo);
 
 		Evolucion evolucionPoliwagPoliwhirl = new Evolucion();
 		evolucionPoliwagPoliwhirl.getPokemons().add(poliwagPokemon);

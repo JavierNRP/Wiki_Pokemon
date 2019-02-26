@@ -3,6 +3,8 @@ package dad.models.conf;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+
+import dad.PokeDexAPP;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -13,7 +15,7 @@ public class HibernateUtil {
 	Connection conn;
 
 	public HibernateUtil() throws Exception {
-		SessionFactory sessionFactory = new Configuration().configure(new File("src/main/java/dad/models/conf/hibernate.cfg.xml"))
+		SessionFactory sessionFactory = new Configuration().configure(PokeDexAPP.class.getResource("/hibernate.cfg.xml"))
 				.buildSessionFactory();
 		session = sessionFactory.openSession();
 
