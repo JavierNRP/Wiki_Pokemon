@@ -112,5 +112,12 @@ public class textoparapegarenmain {
 		mewPokemon.getTipos().add(psiquicoTipo);
 
 		session.save(mewPokemon);
+
+//		para pegar  |||  datos adicionales
+//					VVV
+//		.setAltura(", m");
+//		.setPeso(", Kg");
+//		.setDescripcion("");
+		
 	}
 }
