@@ -9,6 +9,9 @@ import dad.models.estructura.Tipo;
 import dad.models.searches.Search;
 import javafx.animation.*;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,19 +28,23 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Callback;
 import javafx.util.Duration;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
     public static final int TOTAL_POKEMON = 151;
     public static final int SCROLL_SPACE = 21;
-    public static final int ELMENTOS_POR_DEFECTO_EVOLUTIONVIEW = 3;
     private Model model = new Model();
     private ImageView img1;
     private ImageView img2;
@@ -47,6 +54,8 @@ public class Controller implements Initializable {
     private static Session session;
     private ScaleTransition scaleTransition;
     private TranslateTransition moveTransition;
+    private List<Pokemon> autoCompleteList = new ArrayList<>();
+
 
     @FXML
     private Label pokeNumText;
@@ -80,6 +89,8 @@ public class Controller implements Initializable {
     private VBox typesBox;
     @FXML
     private HBox evolutionView;
+    @FXML
+    private Label evoLabel;
 
     public Controller() {
         try {
@@ -107,19 +118,30 @@ public class Controller implements Initializable {
                 "\nPeso: ", model.getActual().pesoProperty(),
                 "\nDescripción: ", model.getActual().descripcionProperty())
         );
-        model.busquedaProperty().bindBidirectional(searchBar.textProperty());
+        model.mediaProperty().addListener(e -> {
+            criePlayer = new MediaPlayer(model.getMedia());
+        });
+        //Bindeos buscador
+        model.busquedaProperty().bind(searchBar.textProperty());
+        TextFields.bindAutoCompletion(searchBar, param -> {
+            List<Pokemon> completions = autoCompleteList;
+            List<String> remainingCompletions = new ArrayList<>();
+            for(Pokemon currentCompletion : completions) {
+                if(currentCompletion.getNombre().toLowerCase().contains(param.getUserText().toLowerCase()))
+                {
+                    remainingCompletions.add(currentCompletion.getNombre());
+                }
+            }
+            return remainingCompletions;
+        });
+
         model.busquedaProperty().addListener((ob, ov, nv) -> {
-            Search search;
             try {
-                search = new Search();
-                TextFields.bindAutoCompletion(searchBar, search.getResultadosBusquedaPokemon(nv));
+                autoCompleteList = new Search().getResultadosBusquedaPokemon(nv);
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-        });
-        model.mediaProperty().addListener(e -> {
-            criePlayer = new MediaPlayer(model.getMedia());
         });
 
 
@@ -132,7 +154,7 @@ public class Controller implements Initializable {
 
         //Cargar primer pokemon de la base de datos
         session.beginTransaction();
-        Pokemon pkm = session.get(Pokemon.class, 1);
+        Pokemon pkm = session.get(Pokemon.class, 130);
         model.setActual(pkm);
         session.getTransaction().commit();
 
@@ -252,6 +274,8 @@ public class Controller implements Initializable {
             typesGrid.setVisible(false);
             evolutionView.setDisable(true);
             evolutionView.setVisible(false);
+            evoLabel.setDisable(true);
+            evoLabel.setVisible(false);
         } else {
             nameLabel.setDisable(false);
             nameLabel.setVisible(true);
@@ -259,6 +283,8 @@ public class Controller implements Initializable {
             typesGrid.setVisible(true);
             evolutionView.setDisable(false);
             evolutionView.setVisible(true);
+            evoLabel.setDisable(false);
+            evoLabel.setVisible(true);
         }
     }
 
@@ -274,14 +300,11 @@ public class Controller implements Initializable {
         return typelabel;
     }
 
-
-
     private void playSoundEffect(String soundFile) {
         Media media = new Media(soundFile);
         MediaPlayer player = new MediaPlayer(media);
         player.play();
     }
-
 
     private void makeEvolutionChain() {
         evolutionView.getChildren().clear();
@@ -348,7 +371,7 @@ public class Controller implements Initializable {
             evolutionView.getChildren().addAll(makeEvolutionElementView(prePkm), makeEvolutionElementView(model.getActual().toPokemon()));
 
             //Comprobar si el pokemon al que evoluciona tambien tiene otra evolucion
-            if (prePkm.getEvoluciones().size() > 1) {
+            if (!prePkm.getEvoluciones().get(0).getPokemons().get(0).sameId(prePkm)) {
                 //Tiene otra preevolucion
                 Evolucion prePreEvo = prePkm.getEvoluciones().get(0);
                 Pokemon prePrePkm = prePreEvo.getPokemons().get(0);
@@ -357,24 +380,6 @@ public class Controller implements Initializable {
             }
         }
 
-    }
-
-    private HBox makeEvolutionElementView(Pokemon pkm, String metodo) {
-        HBox element = new HBox(15);
-        element.setAlignment(Pos.CENTER);
-        VBox pkmView = new VBox(5);
-
-        Image img = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + pkm.getId() + ".png").toString());
-        ImageView imgView = new ImageView(img);
-        Label name = new Label(pkm.getNombre());
-        name.getStyleClass().add("screen-text");
-        pkmView.getChildren().addAll(imgView, name);
-
-        Label arrowMetodo = new Label(metodo);
-        arrowMetodo.getStyleClass().add("evolution-arrow");
-
-        element.getChildren().addAll(pkmView, arrowMetodo);
-        return element;
     }
 
     private HBox makeEvolutionElementView(Pokemon pkm) {
@@ -392,26 +397,6 @@ public class Controller implements Initializable {
         element.getChildren().addAll(pkmView);
         return element;
     }
-
-
-    private HBox makeEvolutionElementView(String metodo, Pokemon pkm) {
-        HBox element = new HBox(15);
-        element.setAlignment(Pos.CENTER);
-        VBox pkmView = new VBox(5);
-
-        Image img = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + pkm.getId() + ".png").toString());
-        ImageView imgView = new ImageView(img);
-        Label name = new Label(pkm.getNombre());
-        name.getStyleClass().add("screen-text");
-        pkmView.getChildren().addAll(imgView, name);
-
-        Label arrowMetodo = new Label(metodo);
-        arrowMetodo.getStyleClass().add("evolution-arrow");
-
-        element.getChildren().addAll(pkmView, arrowMetodo);
-        return element;
-    }
-
 
     //Funciones FXML
 
