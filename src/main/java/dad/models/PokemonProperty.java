@@ -10,9 +10,16 @@ import javafx.collections.ObservableList;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase intermedia utilizada para volver observables todos los campos de la Clase Pokemon almacenada en la base de datos
+ * para ser bindeados a los distintos elementos de la vista
+ */
 public class PokemonProperty {
     private IntegerProperty id;
 
+    /**
+     *
+     */
     private StringProperty nombre;
     private StringProperty descripcion;
     private StringProperty peso;
@@ -46,7 +53,6 @@ public class PokemonProperty {
     public int getId() {
         return id.get();
     }
-
     public IntegerProperty idProperty() {
         return id;
     }

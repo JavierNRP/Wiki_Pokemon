@@ -10,9 +10,15 @@ import dad.models.estructura.MetodoEvolucion;
 import dad.models.estructura.Pokemon;
 import dad.models.estructura.Tipo;
 
-@SuppressWarnings("Duplicates")
-public class Main {
+/**
+ * Clase con un metodo estático que inserta los datos en la base de datos
+ */
+public class InsertData {
 
+	/**
+	 * Crea todos lso 151 pokemons y los inserta en la base de datos hibernate
+	 * @throws Exception
+	 */
 	public static void insertarDatos() throws Exception {
 		HibernateUtil hibernateUtil = new HibernateUtil();
 		// hibernateUtil.executeSQLCommand("create table survey (id int,name

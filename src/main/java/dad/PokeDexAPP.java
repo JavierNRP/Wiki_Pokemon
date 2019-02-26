@@ -2,14 +2,17 @@ package dad;
 
 import java.io.File;
 
-import dad.models.Main;
+import dad.models.InsertData;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Javadoc
+ * @
+ */
 public class PokeDexAPP extends Application {
 
 	private double xOffset = 0;
@@ -21,7 +24,7 @@ public class PokeDexAPP extends Application {
 		String path = System.getenv("USERPROFILE")+ "/PokeDex/pokedexdb.script";
 		scriptDB = new File(path);
 		if (!scriptDB.exists()) {
-			Main.insertarDatos();
+			InsertData.insertarDatos();
 		}
 		Controller c = new Controller();
 		Scene sc = new Scene(c.getView(), 961, 600);
@@ -36,7 +39,7 @@ public class PokeDexAPP extends Application {
 		});
 		primaryStage.setScene(sc);
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
-		primaryStage.getIcons().add(new Image(PokeDexAPP.class.getResource("/assets/poke.png").toString()));
+//		primaryStage.getIcons().add(new Image(PokeDexAPP.class.getResource("/assets/poke.png").toString()));
 		primaryStage.show();
 	}
 

@@ -10,25 +10,42 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.IndexedEmbedded;
 
+/**
+ * Clase estructura de la base de datos
+ * representa los tipos en la tabla de la base de datos
+ */
+
 @Entity
 @Indexed
 @Table(name = "TIPO")
 public class Tipo implements Serializable {
 
+	/**
+	 * Identidad autogenerada por la base de datos
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 
+	/**
+	 * Nombre del tipo
+	 */
 	@Column(name = "nombre", unique = true, nullable = false)
 	@Field
 	private String nombre;
 
+	/**
+	 * Lista con las eficacias de este tipo a los otros tipos
+	 */
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "eficacias")
 	@ElementCollection(targetClass = Eficacia.class)
 	private List<Eficacia> eficacias = new ArrayList<>();
 
+	/**
+	 * Lista de pokemon que pertenecen a este tipo
+	 */
 	@ManyToMany(mappedBy = "tipos",cascade = CascadeType.ALL)
 	private List<Pokemon> pokemons = new LinkedList<>();
 

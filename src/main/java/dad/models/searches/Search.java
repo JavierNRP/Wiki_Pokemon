@@ -10,16 +10,27 @@ import org.hibernate.search.query.dsl.QueryBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase que realiza busquedas Lucene en la base de datos
+ */
 public class Search {
 
     Session sesion;
     FullTextSession fullTextSesion;
 
+    /**
+     * Instancia una nueva busqueda fulltext
+     * @throws Exception
+     */
     public Search() throws Exception {
         sesion = Controller.getSession();
         fullTextSesion = org.hibernate.search.Search.getFullTextSession(sesion);
     }
 
+    /**
+     * @param busqueda Cadena de texto que se buscara en la base de datos por el metodo wildcard
+     * @return Lista de los 5 priemros resutlkados que devuelva la busqueda wildcard
+     */
     public List<Pokemon> getResultadosBusquedaPokemon(String busqueda) {
         List<Pokemon> resultadosList = new ArrayList<>();
         sesion.beginTransaction();
