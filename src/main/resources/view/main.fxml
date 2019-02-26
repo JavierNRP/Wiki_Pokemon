@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
@@ -46,7 +47,7 @@
                         <HBox fx:id="evolutionView" alignment="CENTER" fillHeight="false" prefHeight="132.0" prefWidth="325.0" />
                      </center>
                      <bottom>
-                        <HBox fx:id="methodView" alignment="CENTER" fillHeight="false" prefWidth="325.0" spacing="50.0" styleClass="screen-text" BorderPane.alignment="CENTER" />
+                        <HBox fx:id="methodView" alignment="CENTER" fillHeight="false" prefWidth="325.0" spacing="35.0" styleClass="screen-text" BorderPane.alignment="CENTER" />
                      </bottom>
                      <top>
                         <HBox alignment="CENTER" prefHeight="22.0" prefWidth="325.0" BorderPane.alignment="CENTER">
@@ -68,7 +69,7 @@
          <children>
             <Label fx:id="pokeNumText" alignment="CENTER" layoutX="23.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="75.0" styleClass="numPokedex" text="???" />
          </children></AnchorPane>
-      <Button layoutX="920.0" layoutY="121.0" mnemonicParsing="false" onAction="#onCloseButtonAction" styleClass="closeButton" text="X" />
+      <Button fx:id="closeButton" layoutX="933.0" layoutY="130.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onCloseButtonAction" prefHeight="20.0" prefWidth="20.0" styleClass="closeButton" />
       <TextArea fx:id="greenConsole" editable="false" layoutX="556.0" layoutY="200.0" prefHeight="236.0" prefWidth="385.0" styleClass="green-console" wrapText="true">
          <opaqueInsets>
             <Insets />
@@ -81,7 +82,7 @@
             <InnerShadow />
          </effect></TextField>
       <Button fx:id="searchButton" layoutX="914.0" layoutY="161.0" maxHeight="25.0" maxWidth="25.0" mnemonicParsing="false" onAction="#onSearchButtonAction" prefHeight="25.0" prefWidth="25.0" styleClass="search-button" />
-      <Button layoutX="870.0" layoutY="482.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="67.0" styleClass="blue-button">
+      <Button layoutX="870.0" layoutY="482.0" mnemonicParsing="false" onAction="#onCryButtonAction" prefHeight="63.0" prefWidth="67.0" styleClass="blue-button">
          <effect>
             <InnerShadow />
          </effect></Button>
@@ -110,5 +111,6 @@
             <InnerShadow />
          </effect>
       </ToggleButton>
+      <CheckBox fx:id="muteCry" layoutX="565.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="67.0" />
    </children>
 </AnchorPane>

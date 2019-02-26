@@ -24,8 +24,7 @@ public class PokeDexAPP extends Application {
 			Main.insertarDatos();
 		}
 		Controller c = new Controller();
-		Scene sc = new Scene(c.getView(), 1080, 1080);
-//		Scene sc = new Scene(c.getView(), 961, 600);
+		Scene sc = new Scene(c.getView(), 961, 600);
 		sc.setFill(Color.TRANSPARENT);
 		sc.setOnMousePressed(event -> {
 			xOffset = event.getSceneX();

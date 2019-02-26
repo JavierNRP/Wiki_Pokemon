@@ -2,10 +2,7 @@ package dad.models;
 
 import dad.PokeDexAPP;
 import dad.models.estructura.Pokemon;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
@@ -18,6 +15,7 @@ public class Model {
     private ObjectProperty<Image> frame2;
     private ObjectProperty<Media> media;
     private StringProperty busqueda;
+    private BooleanProperty mute;
 
 	public Model() {
 		actual = new PokemonProperty(this);
@@ -25,6 +23,7 @@ public class Model {
 		frame2 = new SimpleObjectProperty<>(this, "FRAME 2");
 		media = new SimpleObjectProperty<>(this,"MEDIA");
 		busqueda = new SimpleStringProperty(this, "busqueda", "");
+        mute = new SimpleBooleanProperty(this, "CRY MUTE");
 	}
 
     public PokemonProperty getActual() {
@@ -97,5 +96,17 @@ public class Model {
 
     public void setMedia(Media media) {
         this.media.set(media);
+    }
+
+    public boolean isMute() {
+        return mute.get();
+    }
+
+    public BooleanProperty muteProperty() {
+        return mute;
+    }
+
+    public void setMute(boolean mute) {
+        this.mute.set(mute);
     }
 }

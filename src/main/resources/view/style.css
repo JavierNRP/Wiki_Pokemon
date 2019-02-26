@@ -40,15 +40,17 @@
 }
 
 .closeButton {
+    -fx-background-image: url("../image/pokedex/closeButton.png");
+    -fx-background-size: cover;
+    -fx-border-color: transparent;
     -fx-background-color: transparent;
-    -fx-font-family: monospaced;
-    -fx-font-size: 20px;
-    -fx-text-fill: #760000;
-    -fx-font-weight: 900;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
 }
 
-.closeButton:hover {
-    -fx-text-fill: #400000;
+.closeButton:pressed {
+    -fx-background-image: url("../image/pokedex/closeButton-pressed.png");
+    -fx-translate-y: 3;
 }
 
 .closeButton:pressed {
@@ -176,6 +178,7 @@
     -fx-font-family: Consolas;
     -fx-font-size: 14;
     -fx-font-weight: bolder;
+    -fx-opacity: 1.0;
 }
 
 .type-label {
@@ -195,6 +198,29 @@
     -fx-font-style: Italic;
     -fx-text-fill: darkred;
 }
-.evo-method-label {
+.evo-method-arrow {
+    -fx-background-image: url("../image/pokedex/evo-arrow.png");
+    -fx-background-size: stretch;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.check-box>.box {
+    -fx-background-color: transparent;
+    -fx-padding: 10 10 10 10
+}
 
+.check-box>.box>.mark {
+    -fx-background-image: url("../image/pokedex/mute.png");
+    -fx-background-size: cover;
+    -fx-shape: none;
+    -fx-padding: 20 20 20 20
+
+}
+
+.check-box:selected>.box>.mark{
+    -fx-background-color: transparent;
+    -fx-background-size: cover;
+    -fx-background-image: url("../image/pokedex/unmute.png");
 }
