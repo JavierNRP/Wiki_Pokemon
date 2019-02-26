@@ -9,9 +9,6 @@ import dad.models.estructura.Tipo;
 import dad.models.searches.Search;
 import javafx.animation.*;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
 import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,16 +25,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Callback;
 import javafx.util.Duration;
-import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -54,7 +48,8 @@ public class Controller implements Initializable {
     private static Session session;
     private ScaleTransition scaleTransition;
     private TranslateTransition moveTransition;
-    private List<Pokemon> autoCompleteList = new ArrayList<>();
+    private List<Pokemon> suggestionElements = new ArrayList<>();
+    private List<String> suggestionTextList = new ArrayList<>();
 
 
     @FXML
@@ -122,22 +117,23 @@ public class Controller implements Initializable {
             criePlayer = new MediaPlayer(model.getMedia());
         });
         //Bindeos buscador
-        model.busquedaProperty().bind(searchBar.textProperty());
+        model.busquedaProperty().bindBidirectional(searchBar.textProperty());
         TextFields.bindAutoCompletion(searchBar, param -> {
-            List<Pokemon> completions = autoCompleteList;
-            List<String> remainingCompletions = new ArrayList<>();
-            for(Pokemon currentCompletion : completions) {
-                if(currentCompletion.getNombre().toLowerCase().contains(param.getUserText().toLowerCase()))
-                {
-                    remainingCompletions.add(currentCompletion.getNombre());
+            suggestionTextList = new ArrayList<>();
+            for (Pokemon currentCompletion : suggestionElements) {
+                if (currentCompletion.getNombre().toLowerCase().contains(param.getUserText().toLowerCase())) {
+                    suggestionTextList.add(currentCompletion.getNombre());
                 }
             }
-            return remainingCompletions;
+            return suggestionTextList;
         });
 
         model.busquedaProperty().addListener((ob, ov, nv) -> {
             try {
-                autoCompleteList = new Search().getResultadosBusquedaPokemon(nv);
+                suggestionElements = new Search().getResultadosBusquedaPokemon(nv);
+                if (suggestionElements.size() > 0 || suggestionElements.isEmpty()) {
+                    model.setActual(suggestionElements.get(0));
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
