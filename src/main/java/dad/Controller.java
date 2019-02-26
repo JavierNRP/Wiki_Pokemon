@@ -9,6 +9,7 @@ import dad.models.estructura.Tipo;
 import dad.models.searches.Search;
 import javafx.animation.*;
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ObservableValue;
 import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,18 +18,27 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -86,6 +96,8 @@ public class Controller implements Initializable {
     private HBox evolutionView;
     @FXML
     private Label evoLabel;
+    @FXML
+    private HBox methodView;
 
     public Controller() {
         try {
@@ -157,6 +169,8 @@ public class Controller implements Initializable {
         //Crear transicion con la animacion del pokemon
         img1 = new ImageView();
         img2 = new ImageView();
+        img1.getStyleClass().add("evo-pkm-view");
+        img2.getStyleClass().add("evo-pkm-view");
 
         //Bindear las imagesproperty
         img1.imageProperty().bind(model.frame1Property());
@@ -269,6 +283,9 @@ public class Controller implements Initializable {
             evolutionView.setVisible(false);
             evoLabel.setDisable(true);
             evoLabel.setVisible(false);
+            methodView.setDisable(true);
+            methodView.setVisible(false);
+
         } else {
             nameLabel.setDisable(false);
             nameLabel.setVisible(true);
@@ -278,6 +295,8 @@ public class Controller implements Initializable {
             evolutionView.setVisible(true);
             evoLabel.setDisable(false);
             evoLabel.setVisible(true);
+            methodView.setDisable(false);
+            methodView.setVisible(true);
         }
     }
 
@@ -301,6 +320,7 @@ public class Controller implements Initializable {
 
     private void makeEvolutionChain() {
         evolutionView.getChildren().clear();
+        methodView.getChildren().clear();
         if (model.getActual().getEvoluciones().isEmpty()) {
             //Sin Evolucion
             Label label = new Label("Sin Evoluciones");
@@ -310,6 +330,7 @@ public class Controller implements Initializable {
             if (model.getActual().getEvoluciones().size() > 2) {
                 //MUCHAS EVOLUCIONES DISTINTAS (CASO EEVE)
                 evolutionView.getChildren().add(makeEvolutionElementView(model.getActual().toPokemon()));
+                evolutionView.getChildren().add(makeEvoMethodsLabel(model.getActual().getEvoluciones().get(0).getMetodo().toString()));
                 VBox evos = new VBox(5);
                 for (Evolucion e : model.getActual().getEvoluciones()) {
                     Pokemon pkm = e.getPokemons().get(1);
@@ -325,6 +346,8 @@ public class Controller implements Initializable {
                 //Obtener los Pokemon de la clase Evolucion
                 Pokemon prePkm = preEvo.getPokemons().get(0);
                 Pokemon evoPkm = evo.getPokemons().get(1);
+                methodView.getChildren().add(makeEvoMethodsLabel(preEvo.getMetodo().toString()));
+                methodView.getChildren().add(makeEvoMethodsLabel(evo.getMetodo().toString()));
 
                 //Crear los ImageView con las evoluciones
                 Image preImg = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + prePkm.getId() + ".png").toString());
@@ -344,6 +367,8 @@ public class Controller implements Initializable {
             Evolucion evo = model.getActual().getEvoluciones().get(0);
             Pokemon evoPkm = evo.getPokemons().get(1);
 
+            methodView.getChildren().add(makeEvoMethodsLabel(evo.getMetodo().toString()));
+
             evolutionView.getChildren().addAll(makeEvolutionElementView(model.getActual().toPokemon()), makeEvolutionElementView(evoPkm));
 
             //Comprobar si el pokemon al que evoluciona tambien tiene otra evolucion
@@ -351,6 +376,8 @@ public class Controller implements Initializable {
                 //Tiene una evolucion
                 Evolucion posEvo = evoPkm.getEvoluciones().get(1);
                 Pokemon posEvoPkm = posEvo.getPokemons().get(1);
+
+                methodView.getChildren().add(makeEvoMethodsLabel(posEvo.getMetodo().toString()));
 
                 evolutionView.getChildren().add(makeEvolutionElementView(posEvoPkm));
             }
@@ -361,6 +388,8 @@ public class Controller implements Initializable {
             Evolucion pre = model.getActual().getEvoluciones().get(0);
             Pokemon prePkm = pre.getPokemons().get(0);
 
+            methodView.getChildren().add(makeEvoMethodsLabel(pre.getMetodo().toString()));
+
             evolutionView.getChildren().addAll(makeEvolutionElementView(prePkm), makeEvolutionElementView(model.getActual().toPokemon()));
 
             //Comprobar si el pokemon al que evoluciona tambien tiene otra evolucion
@@ -368,6 +397,8 @@ public class Controller implements Initializable {
                 //Tiene otra preevolucion
                 Evolucion prePreEvo = prePkm.getEvoluciones().get(0);
                 Pokemon prePrePkm = prePreEvo.getPokemons().get(0);
+
+                methodView.getChildren().add(0, makeEvoMethodsLabel(prePreEvo.getMetodo().toString()));
 
                 evolutionView.getChildren().add(0, makeEvolutionElementView(prePrePkm));
             }
@@ -377,15 +408,36 @@ public class Controller implements Initializable {
 
     private HBox makeEvolutionElementView(Pokemon pkm) {
         HBox element = new HBox(15);
+        element.getStyleClass().add("evolution-view");
         element.setAlignment(Pos.CENTER);
+        element.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> onChangePokemon(pkm));
         VBox pkmView = new VBox(5);
+        pkmView.setAlignment(Pos.CENTER);
 
         Image img = new Image(PokeDexAPP.class.getResource("/image/pokemon/" + pkm.getId() + ".png").toString());
         ImageView imgView = new ImageView(img);
+        imgView.getStyleClass().add("evo-pkm-view");
+        DropShadow ds = new DropShadow(15, Color.DARKRED);
+        element.addEventHandler(MouseEvent.MOUSE_ENTERED, e ->{
+            imgView.requestFocus();
+        });
+        element.addEventHandler(MouseEvent.MOUSE_EXITED, e ->{
+            screen.requestFocus();
+        });
+        imgView.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue ) ->
+        {
+            if ( newValue )
+            {
+                imgView.setEffect( ds );
+            }
+            else
+            {
+                imgView.setEffect( null );
+            }
+        });
         Label name = new Label(pkm.getNombre());
         name.getStyleClass().add("screen-text");
         pkmView.getChildren().addAll(imgView, name);
-
 
         element.getChildren().addAll(pkmView);
         return element;
@@ -455,6 +507,13 @@ public class Controller implements Initializable {
         playActualCrie();
     }
 
+    private Label makeEvoMethodsLabel(String method) {
+        Label l = new Label(method);
+        l.getStyleClass().add("screen-text");
+        l.getStyleClass().add("evo-method-label");
+        return l;
+    }
+
     @FXML
     public void onNextPokemonAction() {
         if (model.getActual().getId() < TOTAL_POKEMON) {
@@ -463,6 +522,7 @@ public class Controller implements Initializable {
             session.getTransaction().commit();
             model.setActual(pkm);
             onChangePokemon(pkm);
+            scrollScreen.setVvalue(0.0);
         } else {
             playSoundEffect(PokeDexAPP.class.getResource("/sounds/notallowed.mp3").toString());
         }
@@ -477,7 +537,7 @@ public class Controller implements Initializable {
             session.getTransaction().commit();
             onChangePokemon(pkm);
             playSoundEffect(PokeDexAPP.class.getResource("/sounds/scroll.mp3").toString());
-
+            scrollScreen.setVvalue(0.0);
         } else {
             playSoundEffect(PokeDexAPP.class.getResource("/sounds/notallowed.mp3").toString());
         }
@@ -485,7 +545,6 @@ public class Controller implements Initializable {
 
     @FXML
     public void onSearchButtonAction() {
-        System.out.println(suggestionElements);
         if (suggestionElements.size() > 0) {
             for (Pokemon pkm : suggestionElements) {
                 if (pkm.getNombre().equalsIgnoreCase(searchBar.getText())) {
@@ -508,9 +567,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void onDownArrowAction() {
-        System.out.println("green: "+greenConsole.getScrollTop());
-        System.out.println(scrollScreen.getVvalue());
-        if (scrollScreen.getVvalue() < 1.0 ) {
+        if (scrollScreen.getVvalue() < 1.0) {
             greenConsole.setScrollTop(greenConsole.getScrollTop() + SCROLL_SPACE);
             scrollScreen.setVvalue(scrollScreen.getVvalue() + 0.08);
             playSoundEffect(PokeDexAPP.class.getResource("/sounds/scroll.mp3").toString());

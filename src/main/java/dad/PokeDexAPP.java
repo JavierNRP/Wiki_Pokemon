@@ -5,6 +5,7 @@ import java.io.File;
 import dad.models.Main;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,7 +24,8 @@ public class PokeDexAPP extends Application {
 			Main.insertarDatos();
 		}
 		Controller c = new Controller();
-		Scene sc = new Scene(c.getView(), 961, 600);
+		Scene sc = new Scene(c.getView(), 1080, 1080);
+//		Scene sc = new Scene(c.getView(), 961, 600);
 		sc.setFill(Color.TRANSPARENT);
 		sc.setOnMousePressed(event -> {
 			xOffset = event.getSceneX();
@@ -35,6 +37,7 @@ public class PokeDexAPP extends Application {
 		});
 		primaryStage.setScene(sc);
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
+		primaryStage.getIcons().add(new Image(PokeDexAPP.class.getResource("/assets/poke.png").toString()));
 		primaryStage.show();
 	}
 

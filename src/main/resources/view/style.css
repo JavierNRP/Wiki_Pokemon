@@ -184,3 +184,17 @@
     -fx-border-radius: 10px;
     -fx-border-width: 2.5px;
 }
+.evolution-view:hover {
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-border-color: darkred;
+    -fx-cursor: hand;
+}
+.evolution-view:hover .screen-text {
+    -fx-font-weight: bold;
+    -fx-font-style: Italic;
+    -fx-text-fill: darkred;
+}
+.evo-method-label {
+
+}
