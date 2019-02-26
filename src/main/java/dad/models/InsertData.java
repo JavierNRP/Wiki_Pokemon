@@ -16,7 +16,7 @@ import dad.models.estructura.Tipo;
 public class InsertData {
 
 	/**
-	 * Crea todos lso 151 pokemons y los inserta en la base de datos hibernate
+	 * Crea todos los 151 pokemons y los inserta en la base de datos hibernate
 	 * @throws Exception
 	 */
 	public static void insertarDatos() throws Exception {
