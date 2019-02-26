@@ -1,4 +1,4 @@
-package test;
+package dad.models;
 
 import org.hibernate.Session;
 
@@ -13,7 +13,7 @@ import dad.models.estructura.Tipo;
 @SuppressWarnings("Duplicates")
 public class Main {
 
-	public static void main(String[] args) throws Exception {
+	public static void insertarDatos() throws Exception {
 		HibernateUtil hibernateUtil = new HibernateUtil();
 		// hibernateUtil.executeSQLCommand("create table survey (id int,name
 		// varchar);");
@@ -1964,6 +1964,5 @@ public class Main {
 
 		// hibernateUtil.checkData("select * from survey");
 	}
-
-}
+	}
 

@@ -50,7 +50,6 @@ public class Controller implements Initializable {
     private TranslateTransition moveTransition;
     private List<Pokemon> suggestionElements = new ArrayList<>();
     private List<String> suggestionTextList = new ArrayList<>();
-    private boolean wasSelected = false;
 
 
     @FXML
@@ -120,7 +119,6 @@ public class Controller implements Initializable {
         //Bindeos buscador
         model.busquedaProperty().bindBidirectional(searchBar.textProperty());
         TextFields.bindAutoCompletion(searchBar, param -> {
-            wasSelected = false;
             suggestionTextList = new ArrayList<>();
             for (Pokemon currentCompletion : suggestionElements) {
                 if (currentCompletion.getNombre().toLowerCase().contains(param.getUserText().toLowerCase())) {
@@ -133,13 +131,14 @@ public class Controller implements Initializable {
         model.busquedaProperty().addListener((ob, ov, nv) -> {
             try {
                 suggestionElements = new Search().getResultadosBusquedaPokemon(nv);
+                if (suggestionElements.size() > 0 || suggestionElements.isEmpty()) {
+                    model.setActual(suggestionElements.get(0));
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
         });
-
-        //Bindeo del pokemon actual con los demas elementos
 
 
         //Obtener la sesion de la base de datos;
@@ -151,8 +150,8 @@ public class Controller implements Initializable {
 
         //Cargar primer pokemon de la base de datos
         session.beginTransaction();
-        Pokemon pkm = session.get(Pokemon.class, 1);
-        onChangePokemon(pkm);
+        Pokemon pkm = session.get(Pokemon.class, 130);
+        model.setActual(pkm);
         session.getTransaction().commit();
 
         //Ocultar los campos de detalles
