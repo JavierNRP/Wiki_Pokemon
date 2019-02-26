@@ -1,6 +1,5 @@
 package dad.models.conf;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -29,6 +28,10 @@ public class HibernateUtil {
 
 	public Session getSession() {
 		return session;
+	}
+	
+	public Connection getConn() {
+		return conn;
 	}
 
 }
