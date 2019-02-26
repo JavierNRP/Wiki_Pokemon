@@ -2,7 +2,6 @@ package dad.models;
 
 import org.hibernate.Session;
 
-import components.TypesData;
 import dad.models.conf.HibernateUtil;
 import dad.models.estructura.Eficacia;
 import dad.models.estructura.Evolucion;

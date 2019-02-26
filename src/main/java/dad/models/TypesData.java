@@ -1,4 +1,4 @@
-package components;
+package dad.models;
 public class TypesData {
 	static public String[] typeNames = {
 			"Normal", "Lucha", "Volador", "Veneno",

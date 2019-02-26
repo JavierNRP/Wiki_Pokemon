@@ -1,6 +1,6 @@
 package dad;
 
-import components.TypesData;
+import dad.models.TypesData;
 import dad.models.Model;
 import dad.models.conf.HibernateUtil;
 import dad.models.estructura.Evolucion;
