@@ -2,7 +2,6 @@ package dad.models;
 
 import org.hibernate.Session;
 
-import components.TypesData;
 import dad.models.conf.HibernateUtil;
 import dad.models.estructura.Eficacia;
 import dad.models.estructura.Evolucion;
@@ -16,7 +15,7 @@ import dad.models.estructura.Tipo;
 public class InsertData {
 
 	/**
-	 * Crea todos lso 151 pokemons y los inserta en la base de datos hibernate
+	 * Crea todos los 151 pokemons y los inserta en la base de datos hibernate
 	 * @throws Exception
 	 */
 	public static void insertarDatos() throws Exception {
