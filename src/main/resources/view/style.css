@@ -212,7 +212,7 @@
 }
 
 .check-box>.box>.mark {
-    -fx-background-image: url("../image/pokedex/mute.png");
+    -fx-background-image: url("../image/pokedex/unmute.png");
     -fx-background-size: cover;
     -fx-shape: none;
     -fx-padding: 20 20 20 20
@@ -222,5 +222,5 @@
 .check-box:selected>.box>.mark{
     -fx-background-color: transparent;
     -fx-background-size: cover;
-    -fx-background-image: url("../image/pokedex/unmute.png");
+    -fx-background-image: url("../image/pokedex/mute.png");
 }
