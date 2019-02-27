@@ -3,8 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>PokeDex</groupId>
-	<artifactId>PokeDexKanto</artifactId>
+	<artifactId>PokeDex</artifactId>
 	<version>9.9.9.9</version>
+	<name>PokeDex</name>
+	<description>Aplicación para consultar datos básicos de pokemon</description>
 
 	<properties>
 		<maven.compiler.source>10</maven.compiler.source>
@@ -16,24 +18,24 @@
 
 	<build>
 		<plugins>
-			<!--<plugin>-->
-				<!--<groupId>org.apache.maven.plugins</groupId>-->
-				<!--<artifactId>maven-jar-plugin</artifactId>-->
-				<!--<version>3.1.1</version>-->
-				<!--<configuration>-->
-					<!--<archive>-->
-						<!--<manifest>-->
-							<!--<addClasspath>true</addClasspath>-->
-							<!--&lt;!&ndash; directorio relativo al jar con las librerías (dependencias) &ndash;&gt;-->
-							<!--<classpathPrefix>libs/</classpathPrefix>-->
-							<!--&lt;!&ndash; clase principal del proyecto (método main) &ndash;&gt;-->
-							<!--<mainClass>${mainClass}</mainClass>-->
-						<!--</manifest>-->
-					<!--</archive>-->
-					<!--&lt;!&ndash; directorio donde se genera el jar (por defecto es 'target') &ndash;&gt;-->
-					<!--<outputDirectory>${project.build.directory}/app</outputDirectory>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <!-- directorio relativo al jar con las librerías (dependencias) -->
+                            <classpathPrefix>libs/</classpathPrefix>
+                            <!-- clase principal del proyecto (método main) -->
+                            <mainClass>${mainClass}</mainClass>
+                        </manifest>
+                    </archive>
+                    <!-- directorio donde se genera el jar (por defecto es 'target') -->
+                    <outputDirectory>${project.build.directory}/app</outputDirectory>
+                </configuration>
+            </plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -95,10 +97,9 @@
 							<!-- ruta del ejecutable generado -->
 							<outfile>${project.build.directory}/app/${project.name}.exe</outfile>
 							<!-- ruta del icono de la aplicación -->
-							<icon>assets/windows/poke.ico</icon>
 							<classPath>
 								<!-- clase principal del jar (la que contiene el main) -->
-								<mainClass>dad.holamundo.fxml.HolaMundoApp</mainClass>
+								<mainClass>dad.PokeDexAPP</mainClass>
 							</classPath>
 							<jre>
 								<bundledJre64Bit>true</bundledJre64Bit>
@@ -111,10 +112,10 @@
 								<!-- información adicional del fichero EXE generado -->
 								<fileVersion>1.0.0.0</fileVersion>
 								<txtFileVersion>1.0.0.0</txtFileVersion>
-								<copyright>Desarrollo de Interfaces</copyright>
+								<copyright>Copyright</copyright>
 								<fileDescription>${project.description}</fileDescription>
-								<productVersion>${project.version}.0</productVersion>
-								<txtProductVersion>${project.version}.0</txtProductVersion>
+								<productVersion>${project.version}</productVersion>
+								<txtProductVersion>${project.version}</txtProductVersion>
 								<productName>${project.name}</productName>
 								<internalName>${project.name}</internalName>
 								<originalFilename>${project.name}.exe</originalFilename>
