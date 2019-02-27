@@ -575,9 +575,9 @@ public class InsertData {
 		Pokemon raticatePokemon = new Pokemon();
 		raticatePokemon.setNombre("Raticate");
 		raticatePokemon.getTipos().add(normalTipo);
-		raticatePokemon.setAltura(", m");
-		raticatePokemon.setPeso(", Kg");
-		raticatePokemon.setDescripcion("");
+		raticatePokemon.setAltura("0,7 m");
+		raticatePokemon.setPeso("18,5 Kg");
+		raticatePokemon.setDescripcion("Roe cualquier cosa con sus duros colmillos. Puede hasta derribar ciertos edificios royéndolos.");
 
 		Evolucion evolucionRattataRaticate = new Evolucion();
 		evolucionRattataRaticate.getPokemons().add(rattataPokemon);
@@ -596,17 +596,17 @@ public class InsertData {
 		spearowPokemon.setNombre("Spearow");
 		spearowPokemon.getTipos().add(normalTipo);
 		spearowPokemon.getTipos().add(voladorTipo);
-		spearowPokemon.setAltura(", m");
-		spearowPokemon.setPeso(", Kg");
-		spearowPokemon.setDescripcion("");
+		spearowPokemon.setAltura("0,3 m");
+		spearowPokemon.setPeso("2,0 Kg");
+		spearowPokemon.setDescripcion("Aletea con sus cortas alas para hacer salir a los insectos de la hierba, y los caza con su pico.");
 
 		Pokemon fearowPokemon = new Pokemon();
 		fearowPokemon.setNombre("Fearow");
 		fearowPokemon.getTipos().add(normalTipo);
 		fearowPokemon.getTipos().add(voladorTipo);
-		fearowPokemon.setAltura(", m");
-		fearowPokemon.setPeso(", Kg");
-		fearowPokemon.setDescripcion("");
+		fearowPokemon.setAltura("1,2 m");
+		fearowPokemon.setPeso("38,0 Kg");
+		fearowPokemon.setDescripcion("Asciende al cielo repentinamente para caer después en picado, y de un solo golpe atrapar a su presa.");
 
 		Evolucion evolucionSpearowFearow = new Evolucion();
 		evolucionSpearowFearow.getPokemons().add(spearowPokemon);
@@ -624,16 +624,16 @@ public class InsertData {
 		Pokemon ekansPokemon = new Pokemon();
 		ekansPokemon.setNombre("Ekans");
 		ekansPokemon.getTipos().add(venenoTipo);
-		ekansPokemon.setAltura(", m");
-		ekansPokemon.setPeso(", Kg");
-		ekansPokemon.setDescripcion("");
+		ekansPokemon.setAltura("2,0 m");
+		ekansPokemon.setPeso("6,9 Kg");
+		ekansPokemon.setDescripcion("Puede separar su mandíbula para engullir a grandes presas, aunque esto le dificulte el movimiento.");
 
 		Pokemon arbokPokemon = new Pokemon();
 		arbokPokemon.setNombre("Arbok");
 		arbokPokemon.getTipos().add(venenoTipo);
-		arbokPokemon.setAltura(", m");
-		arbokPokemon.setPeso(", Kg");
-		arbokPokemon.setDescripcion("");
+		arbokPokemon.setAltura("3,5 m");
+		arbokPokemon.setPeso("65,0 Kg");
+		arbokPokemon.setDescripcion("Paralizando a su presa con los dibujos de su piel, apresa y envenena a la asustada víctima.");
 
 		Evolucion evolucionEkansArbok = new Evolucion();
 		evolucionEkansArbok.getPokemons().add(ekansPokemon);
@@ -651,16 +651,16 @@ public class InsertData {
 		Pokemon pikachuPokemon = new Pokemon();
 		pikachuPokemon.setNombre("Pikachu");
 		pikachuPokemon.getTipos().add(electricoTipo);
-		pikachuPokemon.setAltura(", m");
-		pikachuPokemon.setPeso(", Kg");
-		pikachuPokemon.setDescripcion("");
+		pikachuPokemon.setAltura("0,4 m");
+		pikachuPokemon.setPeso("6,0 Kg");
+		pikachuPokemon.setDescripcion("Este inteligente Pokémon tuesta las duras bayas con electricidad para hacerlas más comestibles.");
 
 		Pokemon raichuPokemon = new Pokemon();
 		raichuPokemon.setNombre("Raichu");
 		raichuPokemon.getTipos().add(electricoTipo);
-		raichuPokemon.setAltura(", m");
-		raichuPokemon.setPeso(", Kg");
-		raichuPokemon.setDescripcion("");
+		raichuPokemon.setAltura("0,8 m");
+		raichuPokemon.setPeso("30,0 Kg");
+		raichuPokemon.setDescripcion("Cuando se carga de electricidad, sus músculos se tensan y se vuelve más agresivo de lo normal.");
 
 		Evolucion evolucionPikachuRaichu = new Evolucion();
 		evolucionPikachuRaichu.getPokemons().add(pikachuPokemon);
@@ -678,16 +678,16 @@ public class InsertData {
 		Pokemon sandshrewPokemon = new Pokemon();
 		sandshrewPokemon.setNombre("Sandshrew");
 		sandshrewPokemon.getTipos().add(tierraTipo);
-		sandshrewPokemon.setAltura(", m");
-		sandshrewPokemon.setPeso(", Kg");
-		sandshrewPokemon.setDescripcion("");
+		sandshrewPokemon.setAltura("0,6 m");
+		sandshrewPokemon.setPeso("12,0 Kg");
+		sandshrewPokemon.setDescripcion("Si cayese de gran altura, este Pokémon podría convertirse en una pelota y rebotar contra el suelo.");
 
 		Pokemon sandshlashPokemon = new Pokemon();
 		sandshlashPokemon.setNombre("Sandshlash");
 		sandshlashPokemon.getTipos().add(tierraTipo);
-		sandshlashPokemon.setAltura(", m");
-		sandshlashPokemon.setPeso(", Kg");
-		sandshlashPokemon.setDescripcion("");
+		sandshlashPokemon.setAltura("1,0 m");
+		sandshlashPokemon.setPeso("29,5 Kg");
+		sandshlashPokemon.setDescripcion("En un intento por esconderse, saldrá corriendo a gran velocidad, dejando tras de sí una gran polvareda.");
 
 		Evolucion evolucionSandshrewSandshlash = new Evolucion();
 		evolucionSandshrewSandshlash.getPokemons().add(sandshrewPokemon);
@@ -705,24 +705,24 @@ public class InsertData {
 		Pokemon nidoranFPokemon = new Pokemon();
 		nidoranFPokemon.setNombre("NidoranH");
 		nidoranFPokemon.getTipos().add(venenoTipo);
-		nidoranFPokemon.setAltura(", m");
-		nidoranFPokemon.setPeso(", Kg");
-		nidoranFPokemon.setDescripcion("");
+		nidoranFPokemon.setAltura("0,4 m");
+		nidoranFPokemon.setPeso("7,0 Kg");
+		nidoranFPokemon.setDescripcion("El veneno oculto en su pequeño cuerno es extremadamente potente. El menor roce sería fatal.");
 
 		Pokemon nidorinaPokemon = new Pokemon();
 		nidorinaPokemon.setNombre("Nidorina");
 		nidorinaPokemon.getTipos().add(venenoTipo);
-		nidorinaPokemon.setAltura(", m");
-		nidorinaPokemon.setPeso(", Kg");
-		nidorinaPokemon.setDescripcion("");
+		nidorinaPokemon.setAltura("0,8 m");
+		nidorinaPokemon.setPeso("20,0 Kg");
+		nidorinaPokemon.setDescripcion("Cuando alimenta a sus crías, primero mastica y ablanda la comida y luego la escupe para su prole.");
 
 		Pokemon nidoqueenPokemon = new Pokemon();
 		nidoqueenPokemon.setNombre("Nidoqueen");
 		nidoqueenPokemon.getTipos().add(venenoTipo);
 		nidoqueenPokemon.getTipos().add(tierraTipo);
-		nidoqueenPokemon.setAltura(", m");
-		nidoqueenPokemon.setPeso(", Kg");
-		nidoqueenPokemon.setDescripcion("");
+		nidoqueenPokemon.setAltura("1,3 m");
+		nidoqueenPokemon.setPeso("60,0 Kg");
+		nidoqueenPokemon.setDescripcion("Su cuerpo está cubierto por pequeñas escamas. Nunca parece acobardarse ante ningún ataque.");
 
 		Evolucion evolucionNidoranFNidorina = new Evolucion();
 		evolucionNidoranFNidorina.getPokemons().add(nidoranFPokemon);
@@ -748,24 +748,24 @@ public class InsertData {
 		Pokemon nidoranMPokemon = new Pokemon();
 		nidoranMPokemon.setNombre("NidoranM");
 		nidoranMPokemon.getTipos().add(venenoTipo);
-		nidoranMPokemon.setAltura(", m");
-		nidoranMPokemon.setPeso(", Kg");
-		nidoranMPokemon.setDescripcion("");
+		nidoranMPokemon.setAltura("9,0 m");
+		nidoranMPokemon.setPeso("0,5 Kg");
+		nidoranMPokemon.setDescripcion("Es pequeño, pero su cuerno está lleno de veneno. Primero embiste, y después lanza su venenosa cornada.");
 
 		Pokemon nidorinoPokemon = new Pokemon();
 		nidorinoPokemon.setNombre("Nidorino");
 		nidorinoPokemon.getTipos().add(venenoTipo);
-		nidorinoPokemon.setAltura(", m");
-		nidorinoPokemon.setPeso(", Kg");
-		nidorinoPokemon.setDescripcion("");
+		nidorinoPokemon.setAltura("0,9 m");
+		nidorinoPokemon.setPeso("19,5 Kg");
+		nidorinoPokemon.setDescripcion("Levanta sus grandes orejas para vigilar. Si detecta algo, atacará de inmediato.");
 
 		Pokemon nidokingPokemon = new Pokemon();
 		nidokingPokemon.setNombre("Nidoking");
 		nidokingPokemon.getTipos().add(venenoTipo);
 		nidokingPokemon.getTipos().add(tierraTipo);
-		nidokingPokemon.setAltura(", m");
-		nidokingPokemon.setPeso(", Kg");
-		nidokingPokemon.setDescripcion("");
+		nidokingPokemon.setAltura("1,4 m");
+		nidokingPokemon.setPeso("62,0 Kg");
+		nidokingPokemon.setDescripcion("Mueve su cola en combate. Si su enemigo queda atontado, le embiste con su robusto cuerpo.");
 
 		Evolucion evolucionNidoranMNidorino = new Evolucion();
 		evolucionNidoranMNidorino.getPokemons().add(nidoranMPokemon);
@@ -791,16 +791,16 @@ public class InsertData {
 		Pokemon clefairyPokemon = new Pokemon();
 		clefairyPokemon.setNombre("Clefairy");
 		clefairyPokemon.getTipos().add(hadaTipo);
-		clefairyPokemon.setAltura(", m");
-		clefairyPokemon.setPeso(", Kg");
-		clefairyPokemon.setDescripcion("");
+		clefairyPokemon.setAltura("0,6 m");
+		clefairyPokemon.setPeso("7,5 Kg");
+		clefairyPokemon.setDescripcion("La luz de luna que guarda en las alas de su lomo parece darle la habilidad de flotar en el aire.");
 
 		Pokemon clefablePokemon = new Pokemon();
 		clefablePokemon.setNombre("Clefable");
 		clefablePokemon.getTipos().add(hadaTipo);
-		clefablePokemon.setAltura(", m");
-		clefablePokemon.setPeso(", Kg");
-		clefablePokemon.setDescripcion("");
+		clefablePokemon.setAltura("1,3 m");
+		clefablePokemon.setPeso("40,0 Kg");
+		clefablePokemon.setDescripcion("Con su fino oído puede percibir sonidos muy lejanos. Suele habitar en lugares silenciosos.");
 
 		Evolucion evolucionClefairyClefable = new Evolucion();
 		evolucionClefairyClefable.getPokemons().add(clefairyPokemon);
@@ -818,16 +818,16 @@ public class InsertData {
 		Pokemon vulpixPokemon = new Pokemon();
 		vulpixPokemon.setNombre("Vulpix");
 		vulpixPokemon.getTipos().add(fuegoTipo);
-		vulpixPokemon.setAltura(", m");
-		vulpixPokemon.setPeso(", Kg");
-		vulpixPokemon.setDescripcion("");
+		vulpixPokemon.setAltura("0,6 m");
+		vulpixPokemon.setPeso("9,9 Kg");
+		vulpixPokemon.setDescripcion("A medida que crece, su blanca cola gana color y se divide en seis. Es cálido y adorable.");
 
 		Pokemon ninetalesPokemon = new Pokemon();
 		ninetalesPokemon.setNombre("Ninetales");
 		ninetalesPokemon.getTipos().add(fuegoTipo);
-		ninetalesPokemon.setAltura(", m");
-		ninetalesPokemon.setPeso(", Kg");
-		ninetalesPokemon.setDescripcion("");
+		ninetalesPokemon.setAltura("1,1 m");
+		ninetalesPokemon.setPeso("19,9 Kg");
+		ninetalesPokemon.setDescripcion("Cuentan algunas leyendas que cada una de sus nueve colas posee su propio y único poder místico.");
 
 		Evolucion evolucionVulpixNinetales = new Evolucion();
 		evolucionVulpixNinetales.getPokemons().add(vulpixPokemon);
