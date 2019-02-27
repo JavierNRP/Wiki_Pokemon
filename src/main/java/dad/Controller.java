@@ -7,6 +7,7 @@ import dad.models.estructura.Evolucion;
 import dad.models.estructura.Pokemon;
 import dad.models.estructura.Tipo;
 import dad.models.searches.Search;
+import dad.reports.AbstractJasperReports;
 import javafx.animation.*;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ObservableValue;
@@ -36,6 +37,7 @@ import org.hibernate.Session;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -56,6 +58,7 @@ public class Controller implements Initializable {
     private Boolean details = false;
     private MediaPlayer criePlayer;
     private static Session session;
+    private static Connection con;
     private ScaleTransition scaleTransition;
     private TranslateTransition moveTransition;
     private List<Pokemon> suggestionElements = new ArrayList<>();
@@ -167,7 +170,9 @@ public class Controller implements Initializable {
 
         //Obtener la sesion de la base de datos;
         try {
-            session = new HibernateUtil().getSession();
+            HibernateUtil hu = new HibernateUtil();
+            session = hu.getSession();
+            con = hu.getConn();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -496,11 +501,14 @@ public class Controller implements Initializable {
 
     @FXML
     public void onCloseButtonAction() {
+//        AbstractJasperReports.createReport(con,PokeDexAPP.class.getResource("/templateReport.jrxml").toString());
+//        AbstractJasperReports.createReport(con,PokeDexAPP.class.getResource("/Leaf_Green_Table_Based.jrxml").toString());
         System.exit(0);
     }
 
     @FXML
     public void onDetailsButtonAction() {
+        scrollScreen.setVvalue(0.0);
         if (moveTransition.getStatus() != Animation.Status.RUNNING && scaleTransition.getStatus() != Animation.Status.RUNNING)
             if (!details) {
                 details = true;

@@ -1,12 +1,10 @@
 package dad.reports;
 
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -17,8 +15,11 @@ public abstract class AbstractJasperReports {
 
 	public static void createReport(Connection connection, String path) {
 		try {
-			report = (JasperReport) JRLoader.loadObjectFromFile(path);
-			reportFilled = JasperFillManager.fillReport(report, null, connection);
+			JasperReport report = JasperCompileManager.compileReport("C:\\Users\\bzjua\\IdeaProjects\\Wiki_Pokemon\\target\\classes\\Leaf_Green_Table_Based.jrxml");
+			JasperPrint print = JasperFillManager.fillReport(report,null,connection);
+			reportFilled = JasperFillManager.fillReport(report, new HashMap<>(), connection);
+			String salida = System.getenv("USERPROFILE")+ "/PokeDex/pokedexReport.pdf";
+			JasperExportManager.exportReportToPdfFile(reportFilled, salida);
 		} catch (JRException e) {
 			e.printStackTrace();
 		}
