@@ -12,18 +12,12 @@
 
 
 
-## Prerrequisitos
-
-​	Es recomendable tener instalado [Java Runtime Enviroment](https://www.java.com/es/download/)
-
-
 
 ## Instalación/Ejecución
 
 1. En la pestaña [Releases](https://github.com/JavierNRP/Wiki_Pokemon/releases), descargue el ZIP con el ejecutable
 2. Descomprima la carpeta descargada
 3. Ejecute el .exe
-4. ¡Disfrute!
 
 
 
