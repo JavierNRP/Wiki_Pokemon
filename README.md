@@ -20,7 +20,7 @@
 
 ## Instalación/Ejecución
 
-1. En la pestaña [Releases](), descargue el ZIP con el ejecutable
+1. En la pestaña [Releases](https://github.com/JavierNRP/Wiki_Pokemon/releases), descargue el ZIP con el ejecutable
 2. Descomprima la carpeta descargada
 3. Ejecute el .exe
 4. ¡Disfrute!
@@ -38,16 +38,6 @@
 [HSQLDB](http://hsqldb.org/)
 
 [CSS](https://www.w3schools.com/css/)
-
-
-
-## Versión
-
-1.0.0
-
-Futuros cambios serán almacenados en el repositorio según se vaya actualizando
-
-
 
 
 
