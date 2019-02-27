@@ -16,24 +16,24 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.1.1</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<!-- directorio relativo al jar con las librerías (dependencias) -->
-							<classpathPrefix>libs/</classpathPrefix>
-							<!-- clase principal del proyecto (método main) -->
-							<mainClass>${mainClass}</mainClass>
-						</manifest>
-					</archive>
-					<!-- directorio donde se genera el jar (por defecto es 'target') -->
-					<outputDirectory>${project.build.directory}/app</outputDirectory>
-				</configuration>
-			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-jar-plugin</artifactId>-->
+				<!--<version>3.1.1</version>-->
+				<!--<configuration>-->
+					<!--<archive>-->
+						<!--<manifest>-->
+							<!--<addClasspath>true</addClasspath>-->
+							<!--&lt;!&ndash; directorio relativo al jar con las librerías (dependencias) &ndash;&gt;-->
+							<!--<classpathPrefix>libs/</classpathPrefix>-->
+							<!--&lt;!&ndash; clase principal del proyecto (método main) &ndash;&gt;-->
+							<!--<mainClass>${mainClass}</mainClass>-->
+						<!--</manifest>-->
+					<!--</archive>-->
+					<!--&lt;!&ndash; directorio donde se genera el jar (por defecto es 'target') &ndash;&gt;-->
+					<!--<outputDirectory>${project.build.directory}/app</outputDirectory>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

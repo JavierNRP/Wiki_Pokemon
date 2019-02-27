@@ -23,9 +23,9 @@ public class InsertData {
 		// hibernateUtil.executeSQLCommand("create table survey (id int,name
 		// varchar);");
 		Session session = hibernateUtil.getSession();
-		
+
 		session.beginTransaction();
-		
+
 		Tipo normalTipo = new Tipo();
 		normalTipo.setNombre("Normal");
 		for (int i = 0; i < TypesData.typeDamage[0].length; i++) {
@@ -295,7 +295,7 @@ public class InsertData {
 			}
 		}
 		session.save(hadaTipo);
-		
+
 //		Bulbasaur Ivysaur Venusaur
 
 		Pokemon bulbasaurPokemon = new Pokemon();
@@ -305,7 +305,7 @@ public class InsertData {
 		bulbasaurPokemon.setAltura("0,7 m");
 		bulbasaurPokemon.setPeso("6,9 Kg");
 		bulbasaurPokemon.setDescripcion("La semilla de su lomo estÃ¡ llena de nutrientes. La semilla brota a medida que el PokÃ©mon crece.");
-		
+
 
 		Pokemon ivysaurPokemon = new Pokemon();
 		ivysaurPokemon.setNombre("Ivysaur");
@@ -481,7 +481,7 @@ public class InsertData {
 		weedlePokemon.getTipos().add(venenoTipo);
 		weedlePokemon.setAltura("0,3 m");
 		weedlePokemon.setPeso("3,2 Kg");
-		weedlePokemon.setDescripcion("Su venenoso aguijón es muy potente y su colorido cuerpo hace que los enemigos huyan.");
+		weedlePokemon.setDescripcion("Su venenoso aguijÃ³n es muy potente y su colorido cuerpo hace que los enemigos huyan.");
 
 		Pokemon kakunaPokemon = new Pokemon();
 		kakunaPokemon.setNombre("Kakuna");
@@ -489,7 +489,7 @@ public class InsertData {
 		kakunaPokemon.getTipos().add(venenoTipo);
 		kakunaPokemon.setAltura("0,6 m");
 		kakunaPokemon.setPeso("10,0 Kg");
-		kakunaPokemon.setDescripcion("Aunque sea un capullo, es capaz de moverse. Extenderá su púa venenosa si es atacado.");
+		kakunaPokemon.setDescripcion("Aunque sea un capullo, es capaz de moverse. ExtenderÃ¡ su pÃºa venenosa si es atacado.");
 
 		Pokemon beedrillPokemon = new Pokemon();
 		beedrillPokemon.setNombre("Beedrill");
@@ -534,7 +534,7 @@ public class InsertData {
 		pidgeottoPokemon.getTipos().add(voladorTipo);
 		pidgeottoPokemon.setAltura("1,1 m");
 		pidgeottoPokemon.setPeso("30,0 Kg");
-		pidgeottoPokemon.setDescripcion("Su visión es extraordinaria. Aunque vuele muy alto, detectará todo movimiento de su presa.");
+		pidgeottoPokemon.setDescripcion("Su visiÃ³n es extraordinaria. Aunque vuele muy alto, detectarÃ¡ todo movimiento de su presa.");
 
 		Pokemon pidgeotPokemon = new Pokemon();
 		pidgeotPokemon.setNombre("Pidgeot");
@@ -542,7 +542,7 @@ public class InsertData {
 		pidgeotPokemon.getTipos().add(voladorTipo);
 		pidgeotPokemon.setAltura("1,5 m");
 		pidgeotPokemon.setPeso("39,5 Kg");
-		pidgeotPokemon.setDescripcion("Sus músculos pectorales son tan fuertes que podría parar una ventisca con unos cuantos aleteos.");
+		pidgeotPokemon.setDescripcion("Sus mÃºsculos pectorales son tan fuertes que podrÃ­a parar una ventisca con unos cuantos aleteos.");
 
 		Evolucion evolucionPidgeyPidgeotto = new Evolucion();
 		evolucionPidgeyPidgeotto.getPokemons().add(pidgeyPokemon);
@@ -746,7 +746,7 @@ public class InsertData {
 //		NidoranM Nidorino Nidoking
 
 		Pokemon nidoranMPokemon = new Pokemon();
-		nidoranMPokemon.setNombre("Nidoranâ™‚");
+		nidoranMPokemon.setNombre("NidoranM");
 		nidoranMPokemon.getTipos().add(venenoTipo);
 		nidoranMPokemon.setAltura(", m");
 		nidoranMPokemon.setPeso(", Kg");
